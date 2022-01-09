@@ -1,4 +1,3 @@
-console.log('js loaded');
 document.addEventListener('DOMContentLoaded', () => {
 	const sidebar = document.querySelector(".sidebar");
 	const dropdownContent = document.querySelector("#dropdown-menu")

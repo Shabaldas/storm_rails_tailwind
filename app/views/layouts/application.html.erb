@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>StormRailsTailwind</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
+
+<head>
+  <title>StormRailsTailwind</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-<%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'app', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <%= stylesheet_pack_tag 'application' , 'data-turbolinks-track' : 'reload' %>
+  <%= stylesheet_link_tag 'application' , media: 'all' , 'data-turbolinks-track' : 'reload' %>
+  <%= javascript_pack_tag 'app' , 'data-turbolinks-track' : 'reload' %>
+  <%= javascript_pack_tag 'application' , 'data-turbolinks-track' : 'reload' %>
+</head>
 
-  <body class="min-h-screen bg-light-grey">
-    <%= render 'shared/header' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
-  </body>
+<body class="min-h-screen bg-light-grey">
+  <%= render 'shared/header' %>
+  <%= yield %>
+  <%= render 'shared/footer' %>
+</body>
+
 </html>
