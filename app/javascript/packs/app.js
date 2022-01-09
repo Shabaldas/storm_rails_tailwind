@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			document.body.style.overflow = "visible";
 		} else if (e.target.closest(".dropdown-menu-button")) {
 			dropdownContent.classList.toggle("hidden")
+		}else{
+			dropdownContent.classList.toggle("hidden")
 		}
 	})
 })
