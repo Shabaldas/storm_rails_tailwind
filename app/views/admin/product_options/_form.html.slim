@@ -1,0 +1,6 @@
+= semantic_form_for [:admin, @product_option], builder: ActiveAdmin::FormBuilder do |f|
+  = f.inputs 'Values' do
+    - f.has_many :product_option_values, new_record: 'Add value', allow_destroy: true do |op_field|
+      - op_field.input :option_value_id, as: :select, collection: resource.option.option_values.map { |ov| [ov.value, ov.id] }
+      - op_field.input :price, min: 0, step: 0.5
+  = f.actions

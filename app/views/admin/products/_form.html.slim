@@ -1,0 +1,14 @@
+= semantic_form_for [:admin, @product], builder: ActiveAdmin::FormBuilder do |f|
+  = f.inputs do
+    = f.semantic_errors
+    = f.input :name
+    = f.input :description
+    = f.input :product_type,  class: "default-select"
+    = f.input :price
+    = f.input :category,  as: :select, collection: nested_dropdown(ProductCategory.all.arrange), label: 'Category'
+
+    = f.inputs 'Options' do
+      - f.has_many :product_options, new_record: 'Add option', allow_destroy: true do |op_field|
+        - op_field.input :option_id, as: :select, collection: Option.all, include_blank: false
+        - op_field.input :primary, as: :boolean
+    = f.actions
