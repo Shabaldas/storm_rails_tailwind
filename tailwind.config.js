@@ -18,7 +18,17 @@ module.exports = {
       xl: '1280px',
       '2xl': '1536px',
     },
-    colors: ({ colors }) => ({
+    colors: {
+      'light-grey': '#e9e9e9',
+      'main-yellow':'#F1C232',
+      'dark-blue':'#2A343E',
+      'dark-secondary':'#6E7579',
+      'grey':'#B2BDC5',
+      'white':'#FFFFFF',
+      'light-red':'#E9646B',
+      'black':'#000000',
+      'green':'#96E06C',
+      'origin':'#67ACEC',
       inherit: colors.inherit,
       current: colors.current,
       transparent: colors.transparent,
@@ -46,7 +56,7 @@ module.exports = {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
-    }),
+    },
     columns: {
       auto: 'auto',
       1: '1',
