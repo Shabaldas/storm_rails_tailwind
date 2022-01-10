@@ -130,3 +130,5 @@ Style/ClassAndModuleChildren:
 
 Metrics/BlockLength:
   IgnoredMethods: ['describe', 'context']
+  Exclude:
+    - 'app/admin/**/*'

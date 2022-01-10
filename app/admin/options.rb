@@ -1,7 +1,7 @@
 ActiveAdmin.register Option do
   permit_params  :title, :slug, :option_type,
                  :measurement,
-                 option_values_attributes: %i[id value _destroy]
+                 option_values_attributes: [:id, :value, :_destroy]
 
   form partial: 'admin/options/form'
 

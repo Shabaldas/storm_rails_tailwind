@@ -1,7 +1,7 @@
 ActiveAdmin.register ProductOption do
   menu false
 
-  permit_params product_option_values_attributes: %i[id option_value_id price _destroy]
+  permit_params product_option_values_attributes: [:id, :option_value_id, :price, :_destroy]
 
   form partial: 'admin/product_options/form'
 
