@@ -1,0 +1,66 @@
+<header class="w-full h-16">
+	<div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 md:px-24">
+		<div class="flex w-1/2 justify-between">
+			<div class="w-24">
+				<%= image_tag("partials_img/logo.png") %>
+			</div>
+			<nav class="w-2/3 hidden md:block text-gray-800 font-medium">
+				<ul
+					class="h-full flex flex-col md:flex-row flex-initial justify-between items-center text-center tracking-wide">
+					<!-- menu links -->
+					<li class="px-4 cursor-pointer"><a href="#">Головна</a></li>
+					<li class="px-4 cursor-pointer"><a href="#">Калькулятор</a></li>
+					<li class="px-4 cursor-pointer"><a href="#">Магазин</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="hidden w-20 flex-0 md:flex justify-between">
+			<div class="w-7 h-7 pt-1 flex items-center relative">
+				<div class="dropdown-menu-button cursor-pointer" aria-expanded="true" aria-haspopup="true">
+					<%= image_tag("partials_img/user.png") %>
+				</div>
+				<div
+					class="hidden origin-top-right absolute top-8 -left-16 mt-2 w-40 rounded-md text-center shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+					id="dropdown-menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+					<div class="py-1 text-gray-800 font-medium" role="none">
+						<!-- sign up link -->
+						<a href="users/sign_up" class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">Реєстрація</a>
+						<hr />
+						<!-- sign in link -->
+						<a href="users/sign_in" class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">Вхід</a>
+					</div>
+				</div>
+			</div>
+			<div class="w-7 h-7 pt-1 relative flex items-center cursor-pointer">
+				<!-- cart link -->
+				<a href="#">
+					<%= image_tag("partials_img/basket_icon_grey.png") %>
+				</a>
+				<span
+					class="w-5 h-5 absolute -top-2 left-3 flex justify-center items-center bg-yellow-400 rounded-full text-xs">12</span>
+			</div>
+		</div>
+		<div
+			class="sidebar bg-gray-800 text-white text-center flex flex-col justify-center items-center w-full space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full transition duration-700 ease-in-out">
+			<div class="close-btn absolute top-4 right-6">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</div>
+			<ul>
+				<!-- mobile menu links -->
+				<li class="py-4"><a href="#">Головна</a></li>
+				<li class="py-4"><a href="#">Калькулятор</a></li>
+				<li class="py-4"><a href="#">Магазин</a></li>
+				<li class="py-4"><a href="#">Особистий кабінет</a></li>
+				<li class="py-4"><a href="#">Корзина</a></li>
+			</ul>
+			</nav>
+		</div>
+		<div class="block mobile-menu-button focus:outline-none focus:bg-gray-700 md:hidden">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+			</svg>
+		</div>
+	</div>
+</header>
