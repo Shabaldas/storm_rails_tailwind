@@ -18,7 +18,7 @@ module.exports = {
       xl: '1280px',
       '2xl': '1536px',
     },
-    colors: ({ colors }) => ({
+    colors: {
       inherit: colors.inherit,
       current: colors.current,
       transparent: colors.transparent,
@@ -46,7 +46,7 @@ module.exports = {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
-    }),
+    },
     columns: {
       auto: 'auto',
       1: '1',
