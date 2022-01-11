@@ -1,0 +1,12 @@
+= semantic_form_for [:admin, @option], builder: ActiveAdmin::FormBuilder do |f|
+  = f.inputs do
+    = f.semantic_errors
+    = f.input :title
+    = f.input :slug
+    = f.input :option_type, as: :select, collection: enum_select(Option.option_types)
+    = f.input :measurement, as: :select, collection: enum_select(Option.measurements)
+
+    = f.inputs 'Option Values' do
+      - f.has_many :option_values, new_record: 'Add value', allow_destroy: true do |op_field|
+        - op_field.input :value
+    = f.actions

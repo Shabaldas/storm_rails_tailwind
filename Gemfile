@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
 
+gem 'activeadmin'
+gem 'active_skin'
+gem 'ancestry'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
 gem 'foreman'
 gem 'puma', '~> 5.0'
@@ -17,6 +20,10 @@ gem 'devise-i18n'
 gem 'dotenv-rails', '~> 2.7'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
+gem 'friendly_id', '~> 5.4.0'
+gem 'seedbank'
+gem 'simple_form'
+gem 'slim-rails'
 
 # gem 'image_processing', '~> 1.2'
 
@@ -30,6 +37,7 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 end
 
 group :development do

@@ -1,0 +1,152 @@
+ua:
+  hello: "Слава Україні"
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"
+  products:
+    index:
+      no_filtered_products: 'Продукти за вказаними вимогами відсутні'
+    show:
+      count: 'Кількість'
+  product_categories:
+    show:
+      no_products: 'Продукти відсутні, сука!'
+
+  active_admin:
+    dashboard: "Панель управління"
+    dashboard_welcome:
+      welcome: "Ласкаво просимо в Active Admin. Це стандартна сторінка керування сайтом."
+      call_to_action: "Чтобы добавить сюда что-нибудь загляните в 'app/admin/dashboard.rb'"
+    view: "Відкрити"
+    edit: "Редагувати"
+    delete: "Видалити"
+    delete_confirmation: "Ви впевненні, що хотите це видалити?"
+    new_model: "Створити %{model}"
+    edit_model: "Редагувати %{model}"
+    delete_model: "Видалити %{model}"
+    details: "%{model} детальніше"
+    cancel: "ВІдміна"
+    empty: "Пусто"
+    previous: "Попередня."
+    next: "Наступна."
+    download: "Загрузка:"
+    has_many_new: "Добавити %{model}"
+    has_many_delete: "Видалити"
+    has_many_remove: "Очистити"
+    filters:
+      buttons:
+        filter: "Фільтрувати"
+        clear: "Очистити"
+      predicates:
+        contains: "Містить"
+        equals: "Рівно"
+        starts_with: "Починається з"
+        ends_with: "Закінчується"
+        greater_than: "більше"
+        less_than: "менше"
+        from: "Від"
+        to: "До"
+    search_status:
+      headline: "Статус пошуку:"
+      current_scope: "Область:"
+      current_filters: "Поточний фільтр:"
+      no_current_filters: "Жоден"
+    status_tag:
+      "yes": "Так"
+      "no": "Ні"
+      "unset": "Ні"
+    main_content: "Создайте %{model}#main_content для отображения содержимого."
+    logout: "Выйти"
+    powered_by: "3D Storm"
+    sidebars:
+      filters: "Фільтри"
+      search_status: "Статус пошуку"
+    pagination:
+      empty: "%{model} не знайдено"
+      one: "Результат: <b>1</b> %{model}"
+      one_page: "Результат: <b>%{n}</b> %{model}"
+      multiple: "Результат: %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> из <b>%{total}</b>"
+      multiple_without_total: "Результат: %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b>"
+      entry:
+        one: "запис"
+        few: "записи"
+        many: "записів"
+        other: "записів"
+    any: "Будь-який"
+    blank_slate:
+      content: "Поки що не існує %{resource_name}."
+      link: "Створити"
+    dropdown_actions:
+      button_label: "Операція"
+    batch_actions:
+      button_label: "Группові операції"
+      default_confirmation: "Ви впевнені, що хотите це зробити?"
+      delete_confirmation: "Ви впевнені, що хотите це видалити %{plural_model}?"
+      succesfully_destroyed:
+        one: "Успішно видалено: 1 %{model}"
+        few: "Успішно видалено: %{count} %{plural_model}"
+        many: "Успішно видалено: %{count} %{plural_model}"
+        other: "Успішно видалено: %{count} %{plural_model}"
+      selection_toggle_explanation: "(Відмінити все / Забрати виділене)"
+      action_label: "%{title} вибране"
+      labels:
+        destroy: "Видалити"
+    comments:
+      created_at: "Дата створення"
+      resource_type: "Тип ресурсу"
+      author_type: "Тип автора"
+      body: "Текст"
+      author: "Автор"
+      add: "Добавити Коментар"
+      delete: "Видалити Коментар"
+      delete_confirmation: "Ви впевненні, що хотите видалити цей коментар?"
+      resource: "Ресурс"
+      no_comments_yet: "Поки, що немає комментарів."
+      author_missing: "Анонім"
+      title_content: "Комментарі (%{count})"
+      errors:
+        empty_text: "Комментар не збережено, текст не повинен бути пустим."
+    devise:
+      username:
+        title: "Ім'я користувача"
+      email:
+        title: "Ел. пошта"
+      password:
+        title: "Пароль"
+      sign_up:
+        title: "Зареєструватись"
+        submit: "Зареєструватись"
+      login:
+        title: "Ввійти"
+        remember_me: "Запам'ятати мене"
+        submit: "Ввійти"
+      reset_password:
+        title: "Забыли пароль?"
+        submit: "Сбросить пароль"
+      change_password:
+        title: "Изменение пароля"
+        submit: "Изменение пароля"
+      unlock:
+        title: "Повторно отправить инструкции по разблокировке"
+        submit: "Повторно отправить инструкции по разблокировке"
+      resend_confirmation_instructions:
+        title: "Выслать повторно письмо с активацией"
+        submit: "Выслать повторно письмо с активацией"
+      links:
+        sign_up: "Зареєструватись"
+        sign_in: "Ввійти"
+        forgot_your_password: "Забыли пароль?"
+        sign_in_with_omniauth_provider: "Ввійти за допомогою %{provider}"
+        resend_unlock_instructions: "Повторна відправка інтсрукцій розблокування"
+        resend_confirmation_instructions: Повторна відправка інтсрукцій підтвердження"
+    unsupported_browser:
+      headline: "Будь ласка, зверніть увагу, що Active Admin більше не підтримує стрі врсії Internet Explorer починаючи з версіїї IE 8"
+      recommendation: "Ми рекомендуємо обновити версію вашего браузера (<a href=\"http://windows.microsoft.com/ie\">Internet Explorer</a>, <a href=\"https://chrome.google.com/\">Google Chrome</a>, або <a href=\"https://mozilla.org/firefox/\">Firefox</a>)."
+      turn_off_compatibility_view: "Якщо ви використовуєте IE 9 або новіше, переконайтесь, що <a href=\"https://support.microsoft.com/ru-ru/help/17471\">ви включили опцію \"Перегляд в режимі сумсності\"</a>."
+    access_denied:
+      message: "Ви не авторизовані для виконання данної дії."
+    index_list:
+      table: "Таблиця"
+      block: "Список"
+      grid: "Сітка"
+      blog: "Блог"

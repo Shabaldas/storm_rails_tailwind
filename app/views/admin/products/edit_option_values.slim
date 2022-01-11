@@ -1,0 +1,7 @@
+= semantic_form_for [:admin, resource], url: update_option_values_admin_product_path(resource, option_id: params[:option_id]), method: :put, builder: ActiveAdmin::FormBuilder do |f|
+- option = Option_find_by(option_id: params[:option_id])
+
+  = f.inputs do
+    = f.semantic_errors
+    = f.input :option_value_ids, as: :check_boxes, collection: option_select_collection(@option_values)
+    = f.actions
