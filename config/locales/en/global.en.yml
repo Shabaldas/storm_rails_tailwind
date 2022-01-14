@@ -1,0 +1,25 @@
+en:
+  global:
+    admin:
+      product: "Related products"
+      add_product: "Add product"
+    translate: "The Storm is now in English!"
+    header:
+      head: "Main page"
+      calculator: "Calculator"
+      shop: "Shop"
+      registration: "Registration"
+      sign_in: "Sign in"
+      my_office: "My office"
+      basket: "Basket"
+      en_switch: "English"
+      uk_switch: "Ukrainian"
+    footer:
+      calculator: "Calculator"
+      shop: "Shop"
+      my_office: "My office"
+      contacts: "Contacts:"
+      address: "Address:"
+      street: "st. Tysmenytska, 248"
+      city: "Ivano-Frankivsk"
+      law: " All right reserved"

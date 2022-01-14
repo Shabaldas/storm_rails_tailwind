@@ -2,7 +2,7 @@ ActiveAdmin.register Product do
   permit_params :name, :description, :status,
                 :category_id, :product_type, :price,
                 :main_picture, related_product_ids: [],
-                product_options_attributes: [:id, :option_id, :primary, :_destroy]
+                               product_options_attributes: [:id, :option_id, :primary, :_destroy]
 
   form partial: 'admin/products/form'
 
@@ -48,7 +48,7 @@ ActiveAdmin.register Product do
           column 'Value' do |product_option|
             product.product_option_values.joins(:product_option)
                    .where(product_options: { id: product_option.id }).each do |pov|
-              li pov.value + '' + pov.measurement + ' - ' + number_to_uah(pov.price)
+              li "#{pov.value}#{pov.measurement} - #{number_to_uah(pov.price)}"
             end
             nil
           end
@@ -58,8 +58,8 @@ ActiveAdmin.register Product do
         end
       end
     end
-
-    panel ('Повязані продукти' + link_to('Додати продукт', add_related_products_admin_product_path(product), class: 'right panel_header_action')).html_safe do
+    panel (t('global.admin.product') + link_to(t('global.admin.add_product'), add_related_products_admin_product_path(product),
+                                               class: 'right panel_header_action')).html_safe do
       table_for product.related_products do
         column :id
         column :name
@@ -77,7 +77,7 @@ ActiveAdmin.register Product do
     product_option = resource.product_options.find_by(option_id: params[:option_id])
     current_option_value_ids =
       Option.find_by(id: params[:option_id]).option_values.map { |i| i.id.to_s }
-    option_value_ids = params.dig(:product, :option_value_ids).reject(&:blank?)
+    option_value_ids = params.dig(:product, :option_value_ids).compact_blank
     option_values_for_delete = current_option_value_ids - option_value_ids
     product_value_ids = resource.option_values.map { |i| i.id.to_s }
 

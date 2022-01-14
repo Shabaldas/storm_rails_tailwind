@@ -113,6 +113,9 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.10.1)
       devise (>= 4.8.0)
+    devise_invitable (2.0.6)
+      actionmailer (>= 5.0)
+      devise (>= 4.6)
     diff-lcs (1.5.0)
     docile (1.4.0)
     dotenv (2.7.6)
@@ -264,6 +267,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails-i18n (7.0.1)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (6.1.4.4)
       actionpack (= 6.1.4.4)
       activesupport (= 6.1.4.4)
@@ -413,6 +419,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   devise-i18n
+  devise_invitable
   dotenv-rails (~> 2.7)
   faker!
   foreman
@@ -426,6 +433,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.4)
   rails-controller-testing
+  rails-i18n
   rspec-rails (~> 5.0, >= 5.0.1)
   rubocop
   rubocop-performance

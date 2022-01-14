@@ -14,7 +14,7 @@ module ApplicationHelper
   def option_measurements_collection(items)
     measurement = items.first.measurement
 
-    items.map { |i| [i.value + ' ' + measurement, i.option_value_id] }
+    items.map { |i| ["#{i.value} #{measurement}", i.option_value_id] }
   end
 
   def nested_dropdown(items)
@@ -24,5 +24,9 @@ module ApplicationHelper
       result += nested_dropdown(sub_items) if sub_items.present?
     end
     result
+  end
+
+  def current_locale?(locale)
+    I18n.locale == locale
   end
 end
