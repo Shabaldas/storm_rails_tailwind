@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   private
-  
+
   def authenticate_admin_user!
     return unless !current_user || current_user.customer?
 
