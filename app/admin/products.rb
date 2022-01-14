@@ -58,8 +58,8 @@ ActiveAdmin.register Product do
         end
       end
     end
-
-    panel "Повязані продукти#{link_to('Додати продукт', add_related_products_admin_product_path(product), class: 'right panel_header_action')}".html_safe do
+    panel (t('global.admin.product') + link_to(t('global.admin.add_product'), add_related_products_admin_product_path(product),
+                                               class: 'right panel_header_action')).html_safe do
       table_for product.related_products do
         column :id
         column :name

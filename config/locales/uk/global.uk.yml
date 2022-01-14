@@ -1,5 +1,8 @@
 uk:
   global:
+    admin:
+      product: "Повязані продукти"
+      add_product: "Додати продукт"
     translate: "The Storm  зараз українською!"
     header:
       head: "Головна сторінка"
