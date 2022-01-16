@@ -1,3 +1,23 @@
-<div class="w-full h-full">
-	<h1>home page</h1>
+<div class="w-full h-full max-w-screen-2xl mx-auto px-7 md:px-24">
+	<div class="min-h-screen relative flex justify-center items-center">
+		<div class="flex flex-col justify-center items-center lg:flex-row lg:justify-between">
+			<div class="lg:w-6/12 text-center lg:text-left order-2 lg:order-1 relative">
+				<div class="lg:absolute lg:-top-36">
+					<p class="text-xs text-slate-500 uppercase">3D-Друк</p>
+					<h1 class="text-3xl lg:text-6xl text-gray-800 pt-2 font-medium">Твоя ідея,<br /> наше втілення</h1>
+				</div>
+			</div>
+			<div class="w-full order-1 lg:order-2">
+				<%= image_tag("home_img/models.png") %>
+			</div>
+		</div>
+	</div>
+	<div class="relative">
+		<h4 class="absolute bottom-16 text-zinc-500">Гортай вниз</h4>
+		<span class="after:content-[''] w-px h-8 absolute bottom-4 bg-zinc-500 "></span>
+	</div>
+	<div>
+		<p>Друк здійснюється спеціальним пристроєм — 3D-принтером, який забезпечує створення фізичного об'єкта шляхом
+			послідовного накладання пластичного матеріалу на основі віртуальної 3D-моделі. </p>
+	</div>
 </div>
