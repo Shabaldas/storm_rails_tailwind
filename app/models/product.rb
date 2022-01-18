@@ -12,6 +12,10 @@ class Product < ApplicationRecord
   has_one :primary_product_option, ->(_where) { where primary: true }, class_name: 'ProductOption'
   has_one :primary_option, through: :primary_product_option, class_name: 'Option', source: :option
 
+
+  has_one_attached :main_picture
+  has_many_attached :files
+
   belongs_to :category, class_name: 'ProductCategory'
 
   enum product_type: { option_price: 0, own_price: 1 }
