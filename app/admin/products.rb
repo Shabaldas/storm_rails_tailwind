@@ -1,8 +1,8 @@
 ActiveAdmin.register Product do
   permit_params :name, :description, :status,
                 :category_id, :product_type, :price,
-                :main_picture, related_product_ids: [],
-                               product_options_attributes: [:id, :option_id, :primary, :_destroy]
+                :main_picture, related_product_ids: [], files: [],
+                product_options_attributes: [:id, :option_id, :primary, :_destroy]
 
   form partial: 'admin/products/form'
 
@@ -16,7 +16,10 @@ ActiveAdmin.register Product do
     end
     column :product_type
     column('Category') { |product| product.category&.name }
-
+    column :main_picture do |product|
+      image_tag product.main_picture, height: '100' if product.main_picture.present?
+    end
+    
     actions
   end
 
@@ -31,6 +34,9 @@ ActiveAdmin.register Product do
         row 'Price' do |product|
           number_to_uah(product.price)
         end
+      end
+      row :picture do |product|
+        image_tag product.main_picture, height: '250' if product.main_picture.present?
       end
 
       row :created_at
