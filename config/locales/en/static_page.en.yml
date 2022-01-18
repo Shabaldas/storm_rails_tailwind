@@ -1,0 +1,27 @@
+en:
+  static_page:
+    home:
+      3d_print: "3D-print"
+      title_part1: "Your ideas,"
+      title_part2: "our incarnations"
+      scroll_text: "Scroll down"
+      print_desc: "Printing is carried out by a special device - a 3D printer, which provides the creation of a physical object by sequentially applying plastical material based on a virtual 3D model."
+      tabs_title_1: "600 projects"
+      tabs_title_2: "200 projects"
+      tabs_title_3: "1000 projects"
+      render : "Render"
+      modeling : "Modeling"
+      print : "Print"
+      quality_subtitle : "Quality"
+      quality_title1 : "Many levels of"
+      quality_title2 : "detail"
+      quality_desc : "All print settings are set up automatically. Print quality will depend on the height of the layer"
+      low : "Low"
+      middle : 'Middle'
+      high : "High"
+      component_subtitle : "Components of industrial class"
+      component_title_1 : "Precise printers."
+      component_title_2 : "Precise results."
+      question_title: "Have any questions ?"
+      question_suptitle: "Leave your number and we will answer all your questions"
+      
