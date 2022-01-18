@@ -1,9 +1,17 @@
 en:
   global:
+    registration:
+      sign_in: "Sign in"
+      back: "Back"
+      password: "Forgot your password?"
+      goggle: "Sign in with Goggle"
+      sign_up: "Sign up"
+      email_or: "E-mail or phone number"
+      remember_me: "Remember me"
     admin:
       product: "Related products"
       add_product: "Add product"
-    translate: "The Storm is now in English!"
+    translate: "The Storm is now in Eng lish!"
     header:
       head: "Main page"
       calculator: "Calculator"

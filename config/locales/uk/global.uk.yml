@@ -1,5 +1,13 @@
 uk:
   global:
+    registration:
+      sign_in: "Вхід"
+      back: "Назад"
+      password: "Забули свій пароль?"
+      goggle: "Вхід через Google"
+      sign_up: "Зареєструватися"
+      email_or: "E-mail або номер телефону"
+      remember_me: "    Запам'ятати мене"
     admin:
       product: "Повязані продукти"
       add_product: "Додати продукт"
