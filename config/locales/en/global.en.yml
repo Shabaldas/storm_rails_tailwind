@@ -8,6 +8,7 @@ en:
       sign_up: "Sign up"
       email_or: "E-mail or phone number"
       remember_me: "Remember me"
+      or: "OR"
     admin:
       product: "Related products"
       add_product: "Add product"
