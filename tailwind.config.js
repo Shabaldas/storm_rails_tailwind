@@ -14,7 +14,7 @@ module.exports = {
     screens: {
       sm: '640px',
       md: '768px',
-      lg: '1024px',
+      lg: '1025px',
       xl: '1280px',
       '2xl': '1536px',
     },
@@ -111,6 +111,7 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
+      98: '40rem'
     },
     animation: {
       none: 'none',
