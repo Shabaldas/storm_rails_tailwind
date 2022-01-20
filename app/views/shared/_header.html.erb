@@ -30,9 +30,10 @@
               <%= link_to t('global.header.sign_in'), user_session_path %>
             </p>
             <hr />
-            <p class="text-gray-700 block px-4 py-2 text-sm cursor-pointer"><%-I18n.available_locales.each do |locale| %>
-              <%= link_to_unless current_locale?(locale), I18n.t("global.header.#{locale}_switch"), locale_path(locale), method: :put %><% end %>
-            </p>
+            <ul class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">
+              <%-I18n.available_locales.each do |locale| %>
+                <li><%= link_to_unless current_locale?(locale), I18n.t("global.header.#{locale}_switch"), locale_path(locale), method: :put %><% end %></li>
+            </ul>
           </div>
         </div>
       </div>

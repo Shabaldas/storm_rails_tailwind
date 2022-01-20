@@ -58,6 +58,7 @@ export default class extends Controller {
   }
 
   close(e) {
+    console.log(e)
     if (e && this.preventDefaultActionClosing) {
       e.preventDefault();
     }
