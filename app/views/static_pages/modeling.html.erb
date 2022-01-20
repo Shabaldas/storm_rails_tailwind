@@ -1,1 +1,17 @@
-<h1> MODELING</h1>
+<div id="app" data-controller="demo">
+    <ol>
+        <li><button data-action="click->demo#launchDemo" data-name="Daniel Coulbourne" data-email="daniel@tighten.co" data-title="Developer">Daniel</button></li>
+        <li><button data-action="click->demo#launchDemo" data-name="Caleb Porzio" data-email="caleb@tighten.co" data-title="Developer">Caleb</button></li>
+    </ol>
+
+    <div class="modal" data-controller="modal co-host-modal" data-target="demo.modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h2 data-target="modal.name"></h2>
+                <span data-target="modal.title"></span>
+                <a data-target="modal.email" href=""></a>
+                <button data-action="click->modal#close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

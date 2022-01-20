@@ -21,13 +21,17 @@
         </div>
         <div class="hidden origin-top-right absolute top-8 -left-16 mt-2 w-40 rounded-md text-center shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
           id="dropdown-menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-          <div class="py-1 text-gray-800 font-medium" role="none">
+          <div data-controller="demo" class="py-1 text-gray-800 font-medium" role="none">
             <p class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">
               <%= link_to t('global.header.registration'), new_user_registration_path %>
             </p>
             <hr />
             <p class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">
-              <%= link_to t('global.header.sign_in'), user_session_path %>
+              <div>
+              <a href="#close" title="Close" class="close">X</a>
+                <%=render 'devise/sessions/new'%>
+              </div>
+              <%# <%= link_to t('global.header.sign_in'), user_session_path %> %>
             </p>
             <hr />
             <ul class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">
