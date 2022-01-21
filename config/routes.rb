@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'static_pages#home', as: :home
 
-  get 'show_login_form'
   get 'print', to: 'static_pages#print', as: :print
   get 'rendering', to: 'static_pages#rendering', as: :rendering
   get 'modeling', to: 'static_pages#modeling', as: :modeling

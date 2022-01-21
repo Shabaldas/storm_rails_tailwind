@@ -26,11 +26,14 @@
               <%= link_to t('global.header.registration'), new_user_registration_path %>
             </p>
             <hr />
+            
             <p class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">
-              <div>
-              <a href="#close" title="Close" class="close">X</a>
-                <%# <%=render 'devise/sessions/new'%> %>
+              <div data-controller="renderer">
+              <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }  %>
+              <span data-target="renderer.display"></span>
               </div>
+            </div>
+                <%# <%=render 'devise/sessions/new'%> %>
               <%# <%= link_to t('global.header.sign_in'), user_session_path %> %>
             </p>
             <hr />
