@@ -6,6 +6,7 @@ ruby '3.0.1'
 gem 'activeadmin'
 gem 'active_skin'
 gem 'ancestry'
+gem 'active_storage_validations'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
 gem 'foreman'
 gem 'puma', '~> 5.0'
@@ -27,7 +28,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'rails-i18n'
 
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
