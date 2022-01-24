@@ -1,7 +1,6 @@
 
 import { Controller } from '@hotwired/stimulus';
 
-
 export default class extends Controller {
   static targets = ['container', "unhide"]
   static values = {
@@ -12,8 +11,6 @@ export default class extends Controller {
     // The class we should toggle on the container
     this.toggleClass = this.data.get('class') || 'hidden';
     console.log("Hello, Stimulus!", this.element)
-
-
 
     // The ID of the background to hide/remove
     this.backgroundId = this.data.get('backgroundId') || 'modal-background';
@@ -58,7 +55,6 @@ export default class extends Controller {
   }
 
   close(e) {
-    console.log(e)
     if (e && this.preventDefaultActionClosing) {
       e.preventDefault();
     }
