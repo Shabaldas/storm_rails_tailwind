@@ -1,4 +1,92 @@
-input[type='radio']:checked{
-	background-image: none;
-	background-color: yellow;
+$track-w: 20em;
+$track-h: .25em;
+$thumb-d: 0.75em;
+$track-c: rgba(233, 227, 227, 0.637);
+$dist: $track-w - $thumb-d;
+
+@mixin track() {
+	box-sizing: border-box;
+	border: none;
+	width: 100%;
+  height: 0.33em;
+	background: $track-c;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+}
+@mixin thumb() {
+	box-sizing: border-box;
+	border: none;
+	width: $thumb-d; height: $thumb-d;
+	border-radius: 50%;
+	background: #facc15;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+
+.range-slider {
+  display: flex;
+  flex-wrap: wrap;
+	align-items: center;
+	position: relative;
+  width: 100%;
+  
+  input[type="range"] {
+    &, &::-webkit-slider-thumb { -webkit-appearance: none }
+    flex: 1 1 100%;
+    margin: 0;
+    padding: 0;
+    
+    &::-webkit-slider-runnable-track { @include track() }
+    &::-moz-range-track { @include track }
+    &::-ms-track { @include track }
+    
+    &::-webkit-slider-thumb {
+      margin-top: .5*($track-h - $thumb-d);
+      @include thumb
+    }
+    &::-moz-range-thumb { @include thumb }
+    &::-ms-thumb {
+      margin-top: 0;
+      @include thumb
+    }
+    
+    &::-ms-tooltip { display: none }
+    
+    &:last-of-type::-moz-range-track { background: darkred; display: none; background: none transparent; }
+  }
+}
+
+.range-slider.-multiple {
+  position: relative;
+  z-index: 1;
+  
+  input {
+    width: 80%;
+    position: absolute;
+    top: 0;
+    left: 10%;
+		z-index: 1;
+  }
+  output {
+    width: calc(10% - 20px - 1rem);
+    position: absolute;
+    top: 20px;
+    
+    &:first-of-type {
+      left: 0;
+      margin-right: 1rem;
+      margin-left: 0
+    }
+    &:last-of-type {
+      right: 0;
+      margin-right: 0;
+      margin-left: 1rem
+    }
+  }
+}
+
+input[type="radio"]:checked + label{
+	color: #1f2937;
 }
