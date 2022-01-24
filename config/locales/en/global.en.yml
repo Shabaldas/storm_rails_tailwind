@@ -23,6 +23,8 @@ en:
       basket: "Basket"
       en_switch: "English"
       uk_switch: "Ukrainian"
+      edit_profile: "Edit Profile"
+      log_out: "Log Out"
     footer:
       calculator: "Calculator"
       shop: "Shop"

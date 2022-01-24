@@ -23,6 +23,8 @@ uk:
       basket: "Кошик"
       en_switch: "Англійська"
       uk_switch: "Українська"
+      edit_profile: "Редагувати профіль"
+      log_out: "Вийти"
     footer:
       calculator: "Калькулятор"
       shop: "Магазин"
