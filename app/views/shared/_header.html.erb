@@ -11,6 +11,10 @@
           <li class="px-4 cursor-pointer"><%= link_to t('global.header.head'), home_path %></li>
           <li class="px-4 cursor-pointer"><%= link_to t('global.header.calculator'), home_path %></li>
           <li class="px-4 cursor-pointer"><%= link_to t('global.header.shop'), home_path %></li>
+          <li data-controller="renderer">
+                <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }  %>
+                <span data-target="renderer.display"></span>
+              </li>
         </ul>
       </nav>
     </div>
@@ -26,20 +30,20 @@
               <%= link_to t('global.header.registration'), new_user_registration_path %>
             </p>
             <hr />
-            
+
             <p class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">
               <div data-controller="renderer">
-              <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }  %>
-              <span data-target="renderer.display"></span>
+                <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }  %>
+                <span data-target="renderer.display"></span>
               </div>
-            </div>
                 <%# <%=render 'devise/sessions/new'%> %>
               <%# <%= link_to t('global.header.sign_in'), user_session_path %> %>
             </p>
             <hr />
             <ul class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">
               <%-I18n.available_locales.each do |locale| %>
-                <li><%= link_to_unless current_locale?(locale), I18n.t("global.header.#{locale}_switch"), locale_path(locale), method: :put %><% end %></li>
+                <li><%= link_to_unless current_locale?(locale), I18n.t("global.header.#{locale}_switch"), locale_path(locale), method: :put %></li>
+              <% end %>
             </ul>
           </div>
         </div>
