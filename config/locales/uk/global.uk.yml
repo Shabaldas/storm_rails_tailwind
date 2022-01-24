@@ -7,7 +7,7 @@ uk:
     header:
       head: "Головна"
       calculator: "Калькулятор"
-      shop: "Магазин"
+      store: "Магазин"
       registration: "Реєстрація"
       sign_in: "Увійти"
       my_office: "Мій офіс"
@@ -16,7 +16,6 @@ uk:
       uk_switch: "Українська"
     footer:
       calculator: "Калькулятор"
-      shop: "Магазин"
       my_office: "Мій офіс"
       contacts: "Контакти:"
       address: "Адреса:"

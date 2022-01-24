@@ -1,0 +1,18 @@
+en:
+  stores:
+    index:
+      categories_suptitle: "Categories"
+      categories_title1: "Medical models"
+      categories_title2: "Engineering details"
+      categories_title3: "Radio devices"
+      categories_title4: "New technologies"
+      price: "Price"
+      materials_suptitle: "Materials"
+      materials_title1: "Plastic 32"
+      materials_title2: "Plastic 18"
+      materials_title3: "New plastic"
+      search_btn: "Search"
+      category_type1: "Collectible figurines"
+      goods_title1: "Organic Cubes"
+      goods_title2: "Incredible Hulk"
+      goods_title3: "Heart valves"

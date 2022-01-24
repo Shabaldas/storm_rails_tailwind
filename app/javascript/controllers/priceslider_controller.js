@@ -1,6 +1,4 @@
-
 import { Controller } from '@hotwired/stimulus';
-
 export default class extends Controller {
 	static targets=['range', 'value', 'rangeFrom', 'rangeTo', 'valueFrom', 'valueTo'];
 	connect() {
@@ -38,7 +36,5 @@ export default class extends Controller {
     this.valueToTarget.innerHTML = toValue
     this.valueToTarget.style.position='relative';
     this.valueToTarget.style.left=toValue/14 + 'px'
-  }
-
-  
+  } 
 }
