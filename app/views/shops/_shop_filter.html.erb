@@ -1,0 +1,99 @@
+<div class="pb-4">
+	<h4 class="text-lg text-gray-800">Категорії</h4>
+	<div class="mt-3">
+		<div class="flex justify-between">
+			<div class="flex items-center">
+				<input id="medical_models" type="radio" name="category" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;"/>
+				<label for="medical_models" class="ml-3">Медичні моделі</h5>
+			</div>
+			<p>765</p>
+		</div>
+	</div>
+	<div class="mt-3">
+		<div class="flex justify-between items-center">
+			<div class="flex items-center">
+				<input id="engineer_models" type="radio" name="category" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+				<label for="engineer_models" class="ml-3">Інженерні деталі</h5>
+			</div>
+			<p>23</p>
+		</div>
+	</div>
+	<div class="mt-3">
+		<div class="flex justify-between items-center">
+			<div class="flex items-center">
+				<input id="radio_models" type="radio" name="category" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+				<label for="radio_models" class="ml-3">Радіо пристрої</h5>
+			</div>
+			<p>18</p>
+		</div>
+	</div>
+	<div class="mt-3">
+		<div class="flex justify-between items-center">
+			<div class="flex items-center">
+				<input id="new_models" type="radio" name="category" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+				<label for="new_models" class="ml-3">Новітні технології</h5>
+			</div>
+			<p>11</p>
+		</div>
+	</div>
+</div>
+<hr />
+<div class="py-4">
+	<h4 class="text-lg text-gray-800">Ціна</h4>
+	<div class="pt-3 pb-6">
+		<fieldset class="range-slider -multiple" data-controller="priceslider">
+			<div class="shadow-track"></div>
+			<input  type="range" 
+							name="value[from]" 
+							class="range-slider__range" 
+							data-target="priceslider.rangeFrom" 
+							data-action="input->priceslider#updateFromValue"
+							value="147"
+							min="0"
+							max="1500"
+							step="1"
+				/>
+			<input  type="range"
+							name="value[to]"
+							class="range-slider__range"
+							data-target="priceslider.rangeTo"
+							data-action="input->priceslider#updateToValue"
+							value="765"
+							min="0"
+							max="1500"
+							step="1"
+				/>
+			<output class="range-slider__value" for="value[from]" data-target="priceslider.valueFrom">0</output>
+			<output class="range-slider__value" for="value[to]" data-target="priceslider.valueTo">0</output>
+		</fieldset>
+	</div>
+	
+</div>
+<hr />
+<div class="py-4">
+	<h4 class="text-lg text-gray-800">Матеріали</h4>
+	<div class="mt-3">
+		<div class="flex items-center">
+			<input id="material1" type="radio" name="material" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+			<label for="material1" class="ml-3">Пластмаса 32</h5>
+		</div>
+	</div>
+	<div class="mt-3">
+		<div class="flex items-center">
+			<input id="material2" type="radio" name="material" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+			<label for="material2" class="ml-3">Пластмаса 18</h5>
+		</div>
+	</div>
+	<div class="mt-3">
+		<div class="flex items-center">
+			<input id="material3" type="radio" name="material" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+			<label for="material3" class="ml-3">Нова пластмаса</h5>
+		</div>
+	</div>
+</div>
+<hr/>
+<div class="pt-5 pb-3 text-gray-800">
+	<a href="#">
+		<button class="w-full py-2 bg-yellow-400 flex flex-center justify-center rounded hover:bg-yellow-500">Search</button>
+	</a>
+</div>

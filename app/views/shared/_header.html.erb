@@ -1,65 +1,122 @@
 <header class="w-full h-16 relative z-30">
-  <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 md:px-24">
+  <div class="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-7 lg:px-24">
     <div class="flex w-1/2 justify-between">
       <div class="w-24">
         <%= link_to home_path do %>
           <%= image_tag("partials_img/logo.png") %>
-        <% end %>
+            <% end %>
       </div>
-      <nav class="w-2/3 hidden md:block text-gray-800 font-medium">
-        <ul class="h-full flex flex-col md:flex-row flex-initial justify-between items-center text-center tracking-wide">
-          <li class="px-4 cursor-pointer"><%= link_to t('global.header.head'), home_path %></li>
-          <li class="px-4 cursor-pointer"><%= link_to t('global.header.calculator'), home_path %></li>
-          <li class="px-4 cursor-pointer"><%= link_to t('global.header.shop'), shop_path %></li>
+      <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
+        <ul class="h-full flex flex-col lg:flex-row flex-initial justify-between items-center text-center tracking-wide">
+          <li class="px-4 cursor-pointer">
+            <%= link_to t('global.header.head'), home_path %>
+          </li>
+          <li class="px-4 cursor-pointer">
+            <%= link_to t('global.header.calculator'), home_path %>
+          </li>
+          <li class="px-4 cursor-pointer">
+            <%= link_to t('global.header.shop'), home_path %>
+          </li>
         </ul>
       </nav>
     </div>
-    <div class="hidden w-20 flex-0 md:flex justify-between">
-      <div class="w-7 h-7 pt-1 flex items-center relative">
-        <div class="dropdown-menu-button cursor-pointer" aria-expanded="true" aria-haspopup="true">
-          <%= image_tag("partials_img/user.png") %>
+    <div class="w-10 lg:w-36 flex lg:flex justify-between items-center">
+      <div class="w-20 hidden lg:flex lg:justify-between">
+        <div class="w-7 h-7 pt-1 flex items-center relative">
+          <div class="inline-block text-sm leading-none rounded no-underline text-gray hover:text-gray-900  mt-4 lg:mt-0">
+            <div class="relative" data-controller="dropdown" data-dropdown-active-target='#activeTarget'>
+              <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button"
+                data-dropdown-target="button" tabindex="0" class="inline-block select-none">
+                <span class="appearance-none flex items-center inline-block text-gray-700">
+                  <%= image_tag("partials_img/user.png") %>
+                </span>
+              </div>
+              <div id='activeTarget' data-dropdown-target="menu" class="absolute -right-14 mt-2 hidden">
+                <div class="w-38 shadow rounded border overflow-hidden block text-base text-gray-900 bg-white">
+                  <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
+                    <%= link_to t('global.header.registration'), new_user_registration_path %>
+                  </p>
+                  <hr />
+                  <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
+                    <%= link_to t('global.header.sign_in'), user_session_path %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="hidden origin-top-right absolute top-8 -left-16 mt-2 w-40 rounded-md text-center shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-          id="dropdown-menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-          <div class="py-1 text-gray-800 font-medium" role="none">
-            <p class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">
-              <%= link_to t('global.header.registration'), new_user_registration_path %>
-            </p>
-            <hr />
-            <p class="text-gray-700 block px-4 py-2 text-sm cursor-pointer">
-              <%= link_to t('global.header.sign_in'), user_session_path %>
-            </p>
-            <hr />
-            <p class="text-gray-700 block px-4 py-2 text-sm cursor-pointer"><%-I18n.available_locales.each do |locale| %>
-              <%= link_to_unless current_locale?(locale), I18n.t("global.header.#{locale}_switch"), locale_path(locale), method: :put %><% end %>
-            </p>
+        <div class="w-7 h-7 pt-1 relative flex items-center cursor-pointer">
+          <p>
+            <%= link_to home_path do %>
+              <%= image_tag("partials_img/basket_icon_grey.png") %>
+            <% end %>
+          </p>
+          <span
+            class="w-5 h-5 absolute -top-2 left-3 flex justify-center items-center bg-yellow-400 rounded-full text-xs">12</span>
+        </div>
+      </div>
+      <div class="-mt-4 lg:mt-2">
+        <div class="inline-block text-sm leading-none rounded no-underline text-gray mt-4 lg:mt-0">
+          <div class="relative" data-controller="dropdown" data-dropdown-active-target='#activeTarget'>
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide" role="button"
+              data-dropdown-target="button" tabindex="0" class="inline-block select-none relative right-12 lg:right-0">
+              <span class="appearance-none flex items-center inline-block text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                </svg>
+              </span>
+            </div>
+            <div id='activeTarget' data-dropdown-target="menu" class="absolute right-0 lg:-right-12 mt-2 hidden">
+              <div class="w-38 shadow  rounded border overflow-hidden">
+                <ul class="block bg-white">
+                  <span class="w-full h-px absolute top-8 bg-gray-300"></span>
+                    <%-I18n.available_locales.each do |locale| %>
+                      <li class="text-base text-gray-900 text-center block px-5 py-1 cursor-pointer"><%= link_to_unless current_locale?(locale), I18n.t("global.header.#{locale}_switch"), locale_path(locale), method: :put %></li>
+                    <% end %>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="w-7 h-7 pt-1 relative flex items-center cursor-pointer">
-        <p>
-          <%= link_to home_path do %>
-            <%= image_tag("partials_img/basket_icon_grey.png") %>
-          <% end %>
-        </p>
-        <span class="w-5 h-5 absolute -top-2 left-3 flex justify-center items-center bg-yellow-400 rounded-full text-xs">12</span>
-      </div>
     </div>
-    <div class="sidebar bg-gray-800 text-white text-center flex flex-col justify-center items-center w-full space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full transition duration-700 ease-in-out">
-      <div class="close-btn absolute top-4 right-6">
+  </div>
+  <div data-controller="sidebar" class="flex justify-end mr-5 -mt-12">
+    <div data-sidebar-target="sidebarContainer" data-expanded="1"
+      class="sidebar bg-gray-800 text-white text-center min-h-screen flex flex-col justify-center items-center w-full space-y-6 py-7 px-2 absolute z-40 inset-y-0 left-0 transform -translate-x-full transition duration-700 ease-in-out">
+      <div class="close-btn absolute top-5 right-4" data-action="click->sidebar#toggle">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </div>
       <ul>
-        <li class="py-4"><%= link_to t('global.header.head'), home_path %></li>
-        <li class="py-4"><%= link_to t('global.header.calculator'), home_path %></li>
-        <li class="py-4"><%= link_to t('global.header.my_office'), home_path %></li>
-        <li class="py-4"><%= link_to t('global.header.shop'), home_path %></li>
-        <li class="py-4"><%= link_to t('global.header.basket'), home_path %></li>
+        <li class="py-5">
+          <%= link_to t('global.header.head'), home_path %>
+        </li>
+        <li class="py-5">
+          <%= link_to t('global.header.calculator'), home_path %>
+        </li>
+        <li class="py-5">
+          <%= link_to t('global.header.my_office'), home_path %>
+        </li>
+        <li class="py-5">
+          <%= link_to t('global.header.shop'), home_path %>
+        </li>
+        <li class="py-5">
+          <%= link_to t('global.header.basket'), home_path %>
+        </li>
+        <li class="py-5">
+          <%= link_to t('global.header.registration'), new_user_registration_path %>
+        </li>
+        <li class="py-5">
+          <%= link_to t('global.header.sign_in'), user_session_path %>
+        </li>
       </ul>
     </div>
-    <div class="block mobile-menu-button focus:outline-none focus:bg-gray-700 md:hidden">
+    <div data-action="click->sidebar#toggle" data-sidebar-target="icon"
+      class="w-6 mobile-menu-button focus:outline-none focus:bg-gray-700 lg:hidden">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
