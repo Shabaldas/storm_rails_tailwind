@@ -2,7 +2,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets = ['container']
+  static targets = ['container', 'unhide']
   static values = {
     backdropColor: { type: String, default: 'rgba(0, 0, 0, 0.8)' }
   }
@@ -122,5 +122,17 @@ export default class extends Controller {
     if (this.scrollPosition === undefined) return;
 
     document.documentElement.scrollTop = this.scrollPosition;
+  }
+
+  password(e) {
+    if (this.unhideTarget.type === "password") {
+      e.target.classList.remove('fa-eye-slash');
+      e.target.classList.add('fa-eye');
+      this.unhideTarget.type = "text";
+    } else {
+      e.target.classList.remove('fa-eye');
+      e.target.classList.add('fa-eye-slash');
+      this.unhideTarget.type = "password";
+    }
   }
 }

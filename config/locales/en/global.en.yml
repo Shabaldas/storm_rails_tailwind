@@ -1,5 +1,14 @@
 en:
   global:
+    registration:
+      sign_in: "Sign in"
+      back: "Back"
+      password: "Forgot your password?"
+      goggle: "Sign in with Goggle"
+      sign_up: "Sign up"
+      email_or: "E-mail or phone number"
+      remember_me: "Remember me"
+      or: "Or"
     admin:
       product: "Related products"
       add_product: "Add product"
@@ -14,6 +23,8 @@ en:
       en_switch: "English"
       uk_switch: "Ukrainian"
       store: "Shop"
+      edit_profile: "Edit Profile"
+      log_out: "Log Out"
     footer:
       calculator: "Calculator"
       my_office: "My office"

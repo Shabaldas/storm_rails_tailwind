@@ -33,13 +33,26 @@
               </div>
               <div id='activeTarget' data-dropdown-target="menu" class="absolute -right-14 mt-2 hidden">
                 <div class="w-38 shadow rounded border overflow-hidden block text-base text-gray-900 bg-white">
-                  <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
-                    <%= link_to t('global.header.registration'), new_user_registration_path %>
-                  </p>
-                  <hr />
-                  <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
-                    <%= link_to t('global.header.sign_in'), user_session_path %>
-                  </p>
+                  <%- if user_signed_in? %>
+                    <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
+                        <%= link_to t('global.header.edit_profile'), edit_user_registration_path %>
+                    </p>
+                    <hr />
+                    <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
+                      <%= link_to t('global.header.log_out'), destroy_user_session_path %>
+                    </p>
+                  <%- else %>
+                    <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
+                      <%= link_to t('global.header.registration'), new_user_registration_path %>
+                    </p>
+                    <hr />
+                    <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
+                      <div class="text-center px-7 pt-2 pb-1 cursor-pointer" data-controller="renderer">
+                        <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }  %>
+                        <span data-target="renderer.display"></span>
+                      </div>
+                    </p>
+                  <%- end %>
                 </div>
               </div>
             </div>
