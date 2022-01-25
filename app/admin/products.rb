@@ -2,7 +2,7 @@ ActiveAdmin.register Product do
   permit_params :name, :description, :status,
                 :category_id, :product_type, :price,
                 :main_picture, related_product_ids: [], files: [],
-                product_options_attributes: [:id, :option_id, :primary, :_destroy]
+                product_options_attributes: [:id, :option_id, :primary, :_destroy]  # rubocop:disable  Layout/HashAlignment
 
   form partial: 'admin/products/form'
 

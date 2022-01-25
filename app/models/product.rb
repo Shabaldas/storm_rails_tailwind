@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   has_many :product_relations, dependent: :destroy
   has_many :related_products, through: :product_relations, source: :related_to
 
-  has_one :primary_product_option, ->(_where) { where primary: true }, class_name: 'ProductOption'
+  has_one :primary_product_option, ->(_where) { where primary: true }, class_name: 'ProductOption', dependent: :destroy # rubocop:disable  Rails/InverseOf
   has_one :primary_option, through: :primary_product_option, class_name: 'Option', source: :option
 
   has_one_attached :main_picture
