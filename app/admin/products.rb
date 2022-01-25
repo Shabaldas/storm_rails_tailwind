@@ -19,7 +19,7 @@ ActiveAdmin.register Product do
     column :main_picture do |product|
       image_tag product.main_picture, height: '100' if product.main_picture.present?
     end
-    
+
     actions
   end
 

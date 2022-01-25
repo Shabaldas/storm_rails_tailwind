@@ -1,5 +1,8 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <div class="text-center px-7 pt-2 pb-1 cursor-pointer" data-controller="renderer">
+    <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }  %>
+    <span data-target="renderer.display"></span>
+  </div>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
