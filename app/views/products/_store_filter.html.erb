@@ -2,23 +2,78 @@
 	<h4 class="text-lg text-gray-800">
 		<%= t('stores.index.categories_suptitle') %>
 	</h4>
+
   <%- @product_categories.each do |category| %>
     <div class="mt-3 cursor-pointer">
       <div class="flex justify-between">
         <div class="flex items-center">
-          <input id="medical_models" type="radio" name="category"
+          <input type="radio" name="category"
             class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
             style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
-          <label for="medical_models" class="ml-3 cursor-pointer">
+          <label class="ml-3 cursor-pointer">
             <%= category.name %>
           </label>
         </div>
         <%= category.products.count %>
       </div>
     </div>
-  <%end%>
+  <% end %>
 </div>
 <hr />
+
+<div class="mt-3 cursor-pointer">
+  <div class="flex justify-between">
+    <div class="flex items-center">
+      <input id="medical_models" type="radio" name="category"
+        class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+        style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+      <label for="medical_models" class="ml-3 cursor-pointer">
+        <%= t('stores.index.categories_title1') %>
+      </label>
+    </div>
+    <p>765</p>
+  </div>
+	<div class="mt-3 cursor-pointer">
+		<div class="flex justify-between items-center">
+			<div class="flex items-center">
+				<input id="engineer_models" type="radio" name="category"
+					class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+					style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+				<label for="engineer_models" class="ml-3 cursor-pointer">
+					<%= t('stores.index.categories_title2') %>
+				</label>
+			</div>
+			<p>23</p>
+		</div>
+	</div>
+	<div class="mt-3 cursor-pointer">
+		<div class="flex justify-between items-center">
+			<div class="flex items-center">
+				<input id="radio_models" type="radio" name="category"
+					class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+					style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+				<label for="radio_models" class="ml-3 cursor-pointer">
+					<%= t('stores.index.categories_title3') %>
+				</label>
+			</div>
+			<p>18</p>
+		</div>
+	</div>
+	<div class="mt-3 cursor-pointer">
+		<div class="flex justify-between items-center">
+			<div class="flex items-center">
+				<input id="new_models" type="radio" name="category"
+					class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+					style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+				<label for="new_models" class="ml-3 cursor-pointer">
+					<%= t('stores.index.categories_title4') %>
+				</label>
+			</div>
+			<p>11</p>
+		</div>
+	</div>
+</div>
+
 <div class="pt-3 pb-5">
 	<h4 class="text-lg text-gray-800">
 		<%= t('stores.index.price') %>
