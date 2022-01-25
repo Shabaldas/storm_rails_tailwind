@@ -1,0 +1,19 @@
+uk:
+  stores:
+    index:
+      categories_suptitle: "Категорії"
+      categories_title1: "Медичні моделі"
+      categories_title2: "Інженерні деталі"
+      categories_title3: "Радіо пристрої"
+      categories_title4: "Новітні технології"
+      price: "Ціна"
+      materials_suptitle: "Матеріали"
+      materials_title1: "Пластмаса 32"
+      materials_title2: "Пластмаса 18"
+      materials_title3: "Нова пластмаса"
+      search_btn: "Пошук"
+      category_type1: "Колекційні фігурки"
+      goods_title1: "Органічні кубики"
+      goods_title2: "Неймовірний Халк"
+      goods_title3: "Клапани серця"
+      filter_btn: "Фільтри"

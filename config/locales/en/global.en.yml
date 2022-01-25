@@ -7,16 +7,15 @@ en:
     header:
       head: "Main"
       calculator: "Calculator"
-      shop: "Shop"
       registration: "Registration"
       sign_in: "Sign in"
       my_office: "My office"
       basket: "Basket"
       en_switch: "English"
       uk_switch: "Ukrainian"
+      store: "Shop"
     footer:
       calculator: "Calculator"
-      shop: "Shop"
       my_office: "My office"
       contacts: "Contacts:"
       address: "Address:"
