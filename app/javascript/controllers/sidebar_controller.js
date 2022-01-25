@@ -4,7 +4,6 @@ export default class extends Controller {
   static targets=[ "sidebarContainer", "sidebarBg" ]
 
   toggle() {
-    console.log('toogle');
     if (this.sidebarContainerTarget.dataset.expanded === "1") {
       this.collapse()
     } else {

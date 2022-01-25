@@ -1,40 +1,33 @@
 import { Controller } from '@hotwired/stimulus';
 export default class extends Controller {
-	static targets=['range', 'value', 'rangeFrom', 'rangeTo', 'valueFrom', 'valueTo'];
-	connect() {
-    if (this.hasValueTarget)     { this.valueTarget.innerHTML = this.rangeTarget.value }
-    if (this.hasValueToTarget)   { this.valueToTarget.innerHTML = this.rangeToTarget.value }
-    if (this.hasValueFromTarget) { this.valueFromTarget.innerHTML = this.rangeFromTarget.value }
-  }
-  
-  updateValue(evt) {
-    this.valueTarget.innerHTML = evt.currentTarget.value;
-  }
-  
-  updateFromValue() {
-    let fromValue = this.rangeFromTarget.value
-    let toValue = this.rangeToTarget.value
-    
-    if (fromValue >= toValue) {
-      this.rangeToTarget.value = fromValue
-      this.valueToTarget.innerHTML = fromValue
-    }
-    
-    this.valueFromTarget.innerHTML = fromValue
-    this.valueFromTarget.style.position='relative';
-    this.valueFromTarget.style.left=fromValue/14+ 'px'
-  }
-  
-  updateToValue() {
-    let fromValue = this.rangeFromTarget.value
-    let toValue = this.rangeToTarget.value
-    
-    if (toValue <= fromValue) {
-      this.rangeFromTarget.value = toValue
-      this.valueFromTarget.innerHTML = toValue
-    }
-    this.valueToTarget.innerHTML = toValue
-    this.valueToTarget.style.position='relative';
-    this.valueToTarget.style.left=toValue/14 + 'px'
-  } 
+   static targets = ['sliderOne', 'sliderTwo', 'displayValOne', 'displayValTwo', 'sliderTrack'];
+
+   connect() {
+      this.sliderOne()
+      this.sliderTwo()
+   }
+
+   sliderOne() {
+      if (parseInt(this.sliderTwoTarget.value) - parseInt(this.sliderOneTarget.value) <= 0) {
+         this.sliderOneTarget.value = parseInt(this.sliderTwoTarget.value);
+      }
+      this.displayValOneTarget.textContent = this.sliderOneTarget.value;
+      this.displayValOneTarget.style.left = this.sliderOneTarget.value / this.sliderOneTarget.max + 'px';
+      this.fillColor();
+   }
+
+   sliderTwo() {
+      if (parseInt(this.sliderTwoTarget.value) - parseInt(this.sliderOneTarget.value) <= 0) {
+         this.sliderTwoTarget.value = parseInt(this.sliderOneTarget.value);
+      }
+      this.displayValTwoTarget.textContent = this.sliderTwoTarget.value;
+      this.displayValTwoTarget.style.right = (this.sliderOneTarget.max - this.sliderTwoTarget.value) / this.sliderOneTarget.max + 'px';
+      this.fillColor();
+   }
+
+   fillColor() {
+      this.percent1 = (this.sliderOneTarget.value / this.sliderOneTarget.max) * 100;
+      this.percent2 = (this.sliderTwoTarget.value / this.sliderOneTarget.max) * 100;
+      this.sliderTrackTarget.style.background = `linear-gradient(to right, #ded7e7 ${this.percent1}% , #f3bb13 ${this.percent1}% , #f3bb13 ${this.percent2}%, #ded7e7 ${this.percent2}%)`;
+   }
 }

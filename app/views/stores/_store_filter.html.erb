@@ -5,10 +5,12 @@
 	<div class="mt-3 cursor-pointer">
 		<div class="flex justify-between">
 			<div class="flex items-center">
-				<input id="medical_models" type="radio" name="category" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;"/>
+				<input id="medical_models" type="radio" name="category"
+					class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+					style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
 				<label for="medical_models" class="ml-3 cursor-pointer">
 					<%= t('stores.index.categories_title1') %>
-				</h5>
+				</label>
 			</div>
 			<p>765</p>
 		</div>
@@ -16,10 +18,12 @@
 	<div class="mt-3 cursor-pointer">
 		<div class="flex justify-between items-center">
 			<div class="flex items-center">
-				<input id="engineer_models" type="radio" name="category" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+				<input id="engineer_models" type="radio" name="category"
+					class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+					style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
 				<label for="engineer_models" class="ml-3 cursor-pointer">
 					<%= t('stores.index.categories_title2') %>
-				</h5>
+				</label>
 			</div>
 			<p>23</p>
 		</div>
@@ -27,10 +31,12 @@
 	<div class="mt-3 cursor-pointer">
 		<div class="flex justify-between items-center">
 			<div class="flex items-center">
-				<input id="radio_models" type="radio" name="category" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+				<input id="radio_models" type="radio" name="category"
+					class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+					style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
 				<label for="radio_models" class="ml-3 cursor-pointer">
 					<%= t('stores.index.categories_title3') %>
-				</h5>
+				</label>
 			</div>
 			<p>18</p>
 		</div>
@@ -38,79 +44,73 @@
 	<div class="mt-3 cursor-pointer">
 		<div class="flex justify-between items-center">
 			<div class="flex items-center">
-				<input id="new_models" type="radio" name="category" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+				<input id="new_models" type="radio" name="category"
+					class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+					style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
 				<label for="new_models" class="ml-3 cursor-pointer">
 					<%= t('stores.index.categories_title4') %>
-				</h5>
+				</label>
 			</div>
 			<p>11</p>
 		</div>
 	</div>
 </div>
 <hr />
-<div class="py-4">
+<div class="pt-3 pb-5">
 	<h4 class="text-lg text-gray-800">
 		<%= t('stores.index.price') %>
 	</h4>
-	<div class="pt-3 cursor-pointer pb-6">
-		<fieldset class="range-slider -multiple" data-controller="priceslider">
-			<div class="shadow-track"></div>
-			<input  type="range" 
-							name="value[from]" 
-							class="range-slider__range" 
-							data-target="priceslider.rangeFrom" 
-							data-action="input->priceslider#updateFromValue"
-							value="147"
-							min="0"
-							max="1500"
-							step="1"
-				/>
-			<input  type="range"
-							name="value[to]"
-							class="range-slider__range"
-							data-target="priceslider.rangeTo"
-							data-action="input->priceslider#updateToValue"
-							value="765"
-							min="0"
-							max="1500"
-							step="1"
-				/>
-			<output class="range-slider__value" for="value[from]" data-target="priceslider.valueFrom">0</output>
-			<output class="range-slider__value" for="value[to]" data-target="priceslider.valueTo">0</output>
-		</fieldset>
+	<div class="pt-4 cursor-pointer pb-8">
+		<div class="price-range-slider" data-controller="priceslider">
+			<div class="price-container">
+				<div class="slider-track" data-priceslider-target="sliderTrack"></div>
+				<input type="range" min="0" max="3000" value="425" data-priceslider-target="sliderOne" data-action="input->priceslider#sliderOne" />
+				<input type="range" min="0" max="3000" value="1075" data-priceslider-target="sliderTwo" data-action="input->priceslider#sliderTwo" />
+			</div>
+			<div class="slider-range">
+				<span id="range1" data-priceslider-target="displayValOne"></span>
+				<span id="range2" data-priceslider-target="displayValTwo"></span>
+			</div>
+		</div>
 	</div>
 </div>
 <hr />
-<div class="py-4">
+<div class="pt-3 pb-4">
 	<h4 class="text-lg text-gray-800">
 		<%= t('stores.index.materials_suptitle') %>
 	</h4>
 	<div class="mt-3 cursor-pointer">
 		<div class="flex items-center">
-			<input id="material1" type="radio" name="material" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+			<input id="material1" type="radio" name="material"
+				class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+				style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
 			<label for="material1" class="ml-3 cursor-pointer">
 				<%= t('stores.index.materials_title1') %>
-			</h5>
+			</label>
 		</div>
 	</div>
 	<div class="mt-3 cursor-pointer">
 		<div class="flex items-center">
-			<input id="material2" type="radio" name="material" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+			<input id="material2" type="radio" name="material"
+				class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+				style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
 			<label for="material2" class="ml-3 cursor-pointer">
 				<%= t('stores.index.materials_title2') %>
-			</h5>
+			</label>
 		</div>
 	</div>
 	<div class="mt-3 cursor-pointer">
 		<div class="flex items-center">
-			<input id="material3" type="radio" name="material" class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none " style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
+			<input id="material3" type="radio" name="material"
+				class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
+				style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
 			<label for="material3" class="ml-3 cursor-pointer">
 				<%= t('stores.index.materials_title3') %>
-			</h5>
+			</label>
 		</div>
 	</div>
 </div>
-<hr/>
+<hr />
 <div class="pt-5 pb-3 cursor-pointer text-gray-800">
 	<a href="#">
 		<button class="w-full py-2 bg-yellow-400 flex flex-center justify-center rounded hover:bg-yellow-500">
