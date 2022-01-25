@@ -7,8 +7,8 @@ uk:
       goggle: "Вхід через Google"
       sign_up: "Зареєструватися"
       email_or: "E-mail або номер телефону"
-      remember_me: "    Запам'ятати мене"
-      or: "АБО"
+      remember_me: "Запам'ятати мене"
+      or: "Або"
     admin:
       product: "Повязані продукти"
       add_product: "Додати продукт"
