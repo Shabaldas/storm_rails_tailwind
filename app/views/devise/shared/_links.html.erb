@@ -2,27 +2,22 @@
   <div class="text-center px-7 pt-2 pb-1 cursor-pointer" data-controller="renderer">
     <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }  %>
     <span data-target="renderer.display"></span>
+<% end %>
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <div class="my-2 bg-orange-400 hover:bg-orange-400 text-white text-center font-bold py-2 px-4 rounded-lg">
+    <%= link_to t('global.registration.sign_up'), new_registration_path(resource_name) %><br />
   </div>
 <% end %>
-
-<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-<% end %>
-
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-<% end %>
-
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <div class="my-2 bg-orange-400 hover:bg-orange-400 text-white text-center font-bold py-2 px-4 rounded-lg">
+    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  </div>
 <% end %>
-
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+  <div class="my-2 bg-orange-400 hover:bg-orange-400 text-white text-center font-bold py-2 px-4 rounded-lg">
+    <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+  </div>
 <% end %>
-
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post %><br />
-  <% end %>
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to t('global.registration.password'), new_password_path(resource_name) %><br />
 <% end %>
