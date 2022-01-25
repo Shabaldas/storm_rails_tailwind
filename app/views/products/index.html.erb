@@ -1,6 +1,6 @@
 <div class="w-full max-w-screen-2xl mx-auto flex justify-between px-7 md:px-24 mt-8">
 	<div class="w-80 hidden h-full max-h-min bg-white lg:rounded-lg py-4 px-7 text-zinc-500 lg:block">
-		<%= render 'stores/store_filter' %>
+		<%= render 'products/store_filter' %>
 	</div>
 	<div data-controller="sidebar" data-sidebar-display-class='shops' class="lg:overflow-hidden">
 		<div data-sidebar-target="sidebarContainer" data-expanded="1" class="sidebar w-72 h-screen absolute top-0 left-0 z-50 bg-white lg:rounded-lg py-4 px-7 text-zinc-500 inset-y-0 left-0 transform -translate-x-full transition duration-700 ease-in-out">
@@ -10,7 +10,7 @@
 				</svg>
 			</div>
 			<div>
-				<%= render 'stores/store_filter' %>
+				<%= render 'products/store_filter' %>
 			</div>
 		</div>
 		<div data-sidebar-target="sidebarBg" data-action="click->sidebar#toggle" class="w-screen h-screen absolute top-0 left-0 bg-slate-900 opacity-80 z-30 hidden"></div>
@@ -65,34 +65,29 @@
 					<%= image_tag("shop_img/model3.png") %>
 				</div>
 			</div>
-			<div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
-				<div class="px-5 py-5">
-					<p class="text-zinc-400 text-base">
-						<%= t('stores.index.categories_title1') %>
-					</p>
-					<h4 class="text-white text-2xl font-medium">
-						<%= t('stores.index.goods_title3') %>
-					</h4>
-					<p class="text-3xl text-white pt-5">₴ 329</p>
-				</div>
-				<div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
-					<%= image_tag("shop_img/model4.png") %>
-				</div>
-			</div>
-			<div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
-				<div class="px-5 py-5">
-					<p class="text-zinc-400 text-base">
-						<%= t('stores.index.categories_title2') %>
-					</p>
-					<h4 class="text-white text-2xl font-medium">
-						<%= t('stores.index.goods_title1') %>
-					</h4>
-					<p class="text-3xl text-white pt-5">₴ 329</p>
-				</div>
-				<div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
-					<%= image_tag("shop_img/model5.png") %>
-				</div>
-			</div>
+
+      <%- @products.each do |product| %>
+        <%= link_to product_path(product.id) do %>
+          <div class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+            <div class="px-5 py-5">
+              <p class="text-zinc-400 text-base">
+                <%= product.category.name%>
+              </p>
+              <h4 class="text-white text-2xl font-medium">
+                <%= product.name %>
+              </h4>
+              <p class="text-3xl text-white pt-5">
+                ₴ <%= product.price %>
+              </p>
+            </div>
+            <div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
+              <% if product.main_picture.attached? %>
+                <%= image_tag(product.main_picture) %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
 		</div>
 	</div>
 </div>
