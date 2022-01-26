@@ -19,16 +19,16 @@
                               label: false,
                               input_html: { autocomplete: "email" } %>
                 </div>
-                <div class="relative" >
+                <div data-controller="password" class="relative" >
                   <%= f.label :password %>
-                  <%= f.password_field :password, autocomplete: "current-password", class: 'form-control unhide', "data-modal-target": "unhide" %>
-                  <a data-action="click->modal#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></a>
+                  <%= f.password_field :password, autocomplete: "current-password", class: 'form-control unhide', "data-password-target": "unhide" %>
+                  <a data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></a>
                 </div>
                 <div class="my-1.5" >
-                  <%= f.input :remember_me, as: :boolean, label: t('global.registration.remember_me'), input_html: { class: "mr-2  text-regal-orange py-2 px-2 align-text-top "} if devise_mapping.rememberable?%>
+                  <%= f.input :remember_me, as: :boolean, label: t('global.registration.remember_me'), input_html: { class: "mr-2  text-yellow-500 py-2 px-2 align-text-top "} if devise_mapping.rememberable?%>
                 </div>
                 <div class="flex-grow border-t border-gray-300"></div>
-                <div class="my-2 bg-regal-orange hover:bg-orange-400 text-black text-center font-bold py-2 px-4 rounded-md">
+                <div class="my-2 bg-yellow-500 hover:bg-orange-400 text-black text-center font-bold py-2 px-4 rounded-md">
                   <%= f.button :submit, t('global.header.sign_in') %>
                 </div>
                 <div class="relative flex  items-center">
