@@ -1,35 +1,135 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="w-full h-full max-w-screen-2xl mx-auto px-7 md:px-24 pb-10">
+  <div class="mt-10 w-full lg:w-4/6 h-full" >
+    <div class="text-2xl text-gray-800 font-medium">
+        <%= t('devise.registrations.edit_profile', event_name: resource.first_name) %>
+    </div>
+      <div class="flex items-center mt-8">
+        <div class="w-6 h-6">
+          <%= image_tag("partials_img/user.png") %>
+        </div>
+        <div class="ml-2 text-gray-800 text-base font-medium">
+          <%= t('devise.registrations.personal_date') %>
+        </div>
+      </div>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="mt-3 mb-3 w-full h-px bg-gray-400"></div>
+      <div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :first_name, t('devise.registrations.first_name') %>
+            </div>
+            <div class="mt-1">
+              <%= f.text_field :first_name,
+                                required: false,
+                                class: 'w-full rounded',
+                                label: false,
+                                input_html: { autocomplete: "first_name" } %>
+            </div>
+          </div>
+          <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
+            <div>
+              <%= f.label :last_name, t('devise.registrations.last_name') %>
+            </div>
+            <div class="mt-1">
+            <%= f.text_field :last_name,
+                              required: false,
+                              class: 'w-full rounded',
+                              label: false,
+                              input_html: { autocomplete: "last_name" } %>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center mt-5">
+          <div class="w-full lg:w-3/5">
+            <div>
+              <%= f.label :phone, t('devise.registrations.phone') %>
+            </div>
+            <div class="mt-1">
+            <%= f.phone_field :phone,
+                              required: false,
+                              label: false,
+                              class: 'w-full rounded',
+                              autofocus: true,
+                              placeholder: 'xxx-xxx-xxxx',
+                              input_html: { autocomplete: "phone" } %>
+            </div>
+          </div>
+          <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
+            <div>
+              <%= f.label :email, t('devise.registrations.email') %>
+            </div>
+            <div class="mt-1">
+            <%= f.text_field :email,
+                              required: false,
+                              class: 'w-full rounded',
+                              label: false,
+                              input_html: { autocomplete: "email" } %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-10">
+        <div class="flex">
+          <div class="w-6 h-6">
+            <%= image_tag("partials_img/lock.png") %>
+          </div>
+          <div class="ml-2 text-gray-800 text-base font-medium">
+            <%= t('devise.registrations.new_password') %>
+          </div>
+        </div>
+        <div class="mt-3 mb-3 w-full h-px bg-gray-400"></div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
+          <div data-controller="password" class="w-full lg:w-3/5" >
+            <div class="mt-1">
+              <%= f.label :current_password %>
+            </div>
+            <div class="mt-1 relative">
+              <%= f.password_field :current_password, autocomplete: "current-password", class: 'w-full rounded form-control unhide', "data-password-target": "unhide" %>
+              <a data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></a>
+            </div>
+          </div>
+          <div data-controller="password" class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6" >
+            <div class="mt-1">
+              <%= f.label :password_confirmation %>
+            </div>
+            <div class="mt-1 relative">
+              <%= f.password_field :password_confirmation, autocomplete: "current-password", class: 'w-full rounded form-control unhide', "data-password-target": "unhide" %>
+              <a data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></a>
+            </div>
+          </div>
+        </div>
+      <div class="pt-10">
+        <div class="flex">
+          <div class="w-6 h-6">
+            <%= image_tag("partials_img/lock.png") %>
+          </div>
+          <div class="ml-2 text-gray-800 text-base font-medium">
+            <%= t('devise.registrations.existing_password') %>
+          </div>
+        </div>
+        <div class="mt-3 mb-3 w-full h-px bg-gray-400"></div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center">
+          <div data-controller="password" class="w-full lg:w-2/4" >
+            <div class="mt-1">
+              <%= f.label :password %>
+            </div>
+            <div class="mt-1 relative">
+              <%= f.password_field :password, autocomplete: "current-password", class: 'w-full rounded form-control unhide', "data-password-target": "unhide" %>
+              <a data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></a>
+            </div>
+          </div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        </div>
+        <div class="flex flex-col lg:flex-row lg:justify-between items-center mt-3">
+          <div class="w-full md:w-56 mt-5 py-3 bg-yellow-400 flex flex-center justify-center rounded-lg hover:bg-yellow-500 uppercase">
+            <%= f.button :submit, t('devise.registrations.update') %>
+          </div>
+          <div class="w-full md:w-56 mt-5 py-3 bg-yellow-400 flex flex-center justify-center rounded-lg hover:bg-yellow-500 uppercase">
+            <%= link_to t('devise.registrations.back'), :back %>
+          </div>
+        </div>
+      </div>
     <% end %>
-
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>
