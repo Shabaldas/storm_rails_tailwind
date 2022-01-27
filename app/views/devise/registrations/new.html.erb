@@ -101,7 +101,7 @@
         </div>
         <div class="pt-5 pb-3 cursor-pointer text-gray-800">
             <button class="w-full md:w-56 mt-5 py-3 bg-yellow-400 flex flex-center justify-center rounded-lg hover:bg-yellow-500 uppercase">
-              <%= link_to t('devise.registrations.save'), new_registration_path(resource_name) %>
+              <%= f.button :submit, t('devise.registrations.save') %>
             </button>
         </div>
       </div>
