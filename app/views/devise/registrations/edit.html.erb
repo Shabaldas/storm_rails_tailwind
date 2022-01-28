@@ -22,7 +22,7 @@
             <div class="mt-1">
               <%= f.text_field :first_name,
                                 required: false,
-                                class: 'w-full rounded',
+                                class: "w-full rounded",
                                 label: false,
                                 input_html: { autocomplete: "first_name" } %>
             </div>
@@ -34,7 +34,7 @@
             <div class="mt-1">
             <%= f.text_field :last_name,
                               required: false,
-                              class: 'w-full rounded',
+                              class: "w-full rounded",
                               label: false,
                               input_html: { autocomplete: "last_name" } %>
             </div>
@@ -49,7 +49,7 @@
             <%= f.phone_field :phone,
                               required: false,
                               label: false,
-                              class: 'w-full rounded',
+                              class: "w-full rounded",
                               autofocus: true,
                               placeholder: 'xxx-xxx-xxxx',
                               input_html: { autocomplete: "phone" } %>
@@ -62,7 +62,7 @@
             <div class="mt-1">
             <%= f.text_field :email,
                               required: false,
-                              class: 'w-full rounded',
+                              class: "w-full rounded",
                               label: false,
                               input_html: { autocomplete: "email" } %>
             </div>
@@ -85,8 +85,8 @@
               <%= f.label :current_password %>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :current_password, autocomplete: "current-password", class: 'w-full rounded form-control unhide', "data-password-target": "unhide" %>
-              <a data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></a>
+              <%= f.password_field :current_password, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
+              <div data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></div>
             </div>
           </div>
           <div data-controller="password" class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6" >
@@ -94,8 +94,8 @@
               <%= f.label :password_confirmation %>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :password_confirmation, autocomplete: "current-password", class: 'w-full rounded form-control unhide', "data-password-target": "unhide" %>
-              <a data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></a>
+              <%= f.password_field :password_confirmation, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
+              <div data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></div>
             </div>
           </div>
         </div>
@@ -115,8 +115,8 @@
               <%= f.label :password %>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :password, autocomplete: "current-password", class: 'w-full rounded form-control unhide', "data-password-target": "unhide" %>
-              <a data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></a>
+              <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
+              <div data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></div>
             </div>
           </div>
 
