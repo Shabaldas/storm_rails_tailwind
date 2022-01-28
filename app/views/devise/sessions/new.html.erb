@@ -8,8 +8,8 @@
           </div>
           <div class="p-4 lg:p-8 text-left">
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="">
-                <div class="">
+              <div>
+                <div>
                   <%= f.label :email, t('devise.registrations.email_or') %>
                   <%= f.text_field :email,
                               required: false,
@@ -19,7 +19,7 @@
                 </div>
                 <div data-controller="password" class="relative mt-2" >
                   <%= f.label :password %>
-                  <%= f.password_field :password, autocomplete: "current-password", class: ' w-full form-control unhide', "data-password-target": "unhide" %>
+                  <%= f.password_field :password, autocomplete: "current-password", class:' w-full form-control unhide', "data-password-target": "unhide" %>
                   <a data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></a>
                 </div>
                 <div class="my-4" >

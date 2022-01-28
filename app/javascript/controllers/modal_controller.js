@@ -2,7 +2,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets = ['container']
+  static targets = ["container"]
   static values = {
     backdropColor: { type: String, default: 'rgba(0, 0, 0, 0.8)' }
   }
