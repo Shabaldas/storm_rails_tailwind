@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def number_to_uah(amount)
     number_to_currency(amount, unit: '₴')
   end
