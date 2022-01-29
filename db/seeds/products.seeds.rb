@@ -1,6 +1,6 @@
 after :product_categories do
   ProductCategory.all.each do |category|
-    5.times do
+    10.times do
       Product.create(
         name: Faker::Commerce.product_name,
         category: category,
