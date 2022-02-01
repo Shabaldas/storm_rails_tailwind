@@ -13,7 +13,7 @@ export default class extends Controller {
     this.enteringClass = this.data.get('enteringClass') || null
     this.leavingClass = this.data.get('leavingClass') || null
 
-    if(this.hasAccordionIconTarget){
+    if (this.hasAccordionIconTarget){
       this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>`
@@ -27,8 +27,8 @@ export default class extends Controller {
   }
 
   disconnect() {
-    
-    if(this.hasAccordionIconTarget){
+
+    if (this.hasAccordionIconTarget){
       this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
     </svg>`
@@ -56,7 +56,7 @@ export default class extends Controller {
       (() => {
         this.contentTarget.classList.remove(this.toggleClass)
         this.element.setAttribute("aria-expanded", "true")
-        if(this.hasAccordionIconTarget){
+        if (this.hasAccordionIconTarget){
           this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>`
@@ -89,7 +89,7 @@ export default class extends Controller {
         this._invisibleClassList[0].forEach(klass => this.contentTarget.classList.add(klass))
         this._visibleClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
         this._leavingClassList[0].forEach(klass => this.contentTarget.classList.add(klass))
-        if(this.hasAccordionIconTarget){
+        if (this.hasAccordionIconTarget){
           this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
         </svg>`

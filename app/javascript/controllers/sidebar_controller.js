@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets=[ "sidebarContainer"]
+  static targets=["sidebarContainer"]
 
   toggle() {
     if (this.sidebarContainerTarget.dataset.expanded === "1") {
