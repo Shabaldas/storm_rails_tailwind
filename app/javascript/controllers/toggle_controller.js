@@ -2,7 +2,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['menu', 'button']
+  static targets = ['content', 'button', 'accordionIcon']
   static values = { open: Boolean }
 
   connect() {
@@ -13,16 +13,28 @@ export default class extends Controller {
     this.enteringClass = this.data.get('enteringClass') || null
     this.leavingClass = this.data.get('leavingClass') || null
 
+    if(this.hasAccordionIconTarget){
+      this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>`
+    }
+
     if (this.hasButtonTarget) {
-      this.buttonTarget.addEventListener("keydown", this._onMenuButtonKeydown)
+      this.buttonTarget.addEventListener("keydown", this._onContentButtonKeydown)
     }
 
     this.element.setAttribute("aria-haspopup", "true")
   }
 
   disconnect() {
+    
+    if(this.hasAccordionIconTarget){
+      this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+    </svg>`
+    }
     if (this.hasButtonTarget) {
-      this.buttonTarget.removeEventListener("keydown", this._onMenuButtonKeydown)
+      this.buttonTarget.removeEventListener("keydown", this._onContentButtonKeydown)
     }
   }
 
@@ -42,20 +54,25 @@ export default class extends Controller {
   _show(cb) {
     setTimeout(
       (() => {
-        this.menuTarget.classList.remove(this.toggleClass)
+        this.contentTarget.classList.remove(this.toggleClass)
         this.element.setAttribute("aria-expanded", "true")
+        if(this.hasAccordionIconTarget){
+          this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>`
+        }
         this._enteringClassList[0].forEach(
           (klass => {
-            this.menuTarget.classList.add(klass)
+            this.contentTarget.classList.add(klass)
           }).bind(this),
         )
-        this._invisibleClassList[0].forEach(klass => this.menuTarget.classList.remove(klass))
+        this._invisibleClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
         this._visibleClassList[0].forEach(klass => {
-          this.menuTarget.classList.add(klass)
+          this.contentTarget.classList.add(klass)
         })
         setTimeout(
           (() => {
-            this._enteringClassList[0].forEach(klass => this.menuTarget.classList.remove(klass))
+            this._enteringClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
           }).bind(this),
           this.enterTimeout[0],
         )
@@ -69,15 +86,20 @@ export default class extends Controller {
     setTimeout(
       (() => {
         this.element.setAttribute("aria-expanded", "false")
-        this._invisibleClassList[0].forEach(klass => this.menuTarget.classList.add(klass))
-        this._visibleClassList[0].forEach(klass => this.menuTarget.classList.remove(klass))
-        this._leavingClassList[0].forEach(klass => this.menuTarget.classList.add(klass))
+        this._invisibleClassList[0].forEach(klass => this.contentTarget.classList.add(klass))
+        this._visibleClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
+        this._leavingClassList[0].forEach(klass => this.contentTarget.classList.add(klass))
+        if(this.hasAccordionIconTarget){
+          this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>`
+        }
         setTimeout(
           (() => {
-            this._leavingClassList[0].forEach(klass => this.menuTarget.classList.remove(klass))
+            this._leavingClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
             if (typeof cb == 'function') cb()
 
-            this.menuTarget.classList.add(this.toggleClass)
+            this.contentTarget.classList.add(this.toggleClass)
           }).bind(this),
           this.leaveTimeout[0],
         )
@@ -85,7 +107,7 @@ export default class extends Controller {
     )
   }
 
-  _onMenuButtonKeydown = event => {
+  _onContentButtonKeydown = event => {
     switch (event.keyCode) {
       case 13: // enter
       case 32: // space
