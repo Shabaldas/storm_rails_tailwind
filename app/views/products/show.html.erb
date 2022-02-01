@@ -1,100 +1,201 @@
-<div class="w-full h-full max-w-screen-2xl mx-auto flex justify-between pb-14 px-7 mt-8 md:px-24 mt-8">
+<div class="w-screen h-full lg:max-w-screen-2xl lg:mx-auto block lg:flex lg:justify-between pb-14 px-7 mt-8 md:px-24 mt-8 overflow-hidden">
   <div class="w-full lg:w-1/3">
-    <div class="flex items-center">
+    <div class="flex items-center -ml-1.5">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
       </svg>
-      <a href="#" class="font-base font-medium text-gray-800 ml-2">Назад до покупок</a>
+      <a href="#" class="font-base font-medium text-gray-800 ml-2">
+        <%= t('show.product.link') %>
+      </a>
     </div>
     <div class="mt-6">
-      <div class="flex justify-between items-end font-medium text-gray-800">
+      <div class="block md:flex md:justify-between items-end font-medium text-gray-800">
         <div>
-          <p class="text-zinc-500 text-base font-normal">Колекційні фігурки</p>
-          <h4 class="text-2xl pt-1">Неймовірний Халк</h4>
+          <p class="text-zinc-500 text-base font-normal">
+            <%= t('show.product.suptitle') %>
+          </p>
+          <h4 class="text-2xl pt-1">
+            <%= t('show.product.title') %>
+          </h4>
         </div>
         <p class="text-3xl">₴ 329</p>
       </div>
       <div class="w-full h-px bg-zinc-400 my-3"></div>
       <div class="mt-1">
-        <p class="text-zinc-500 text-base">Колір</p>
+        <p class="text-zinc-500 text-base">
+          <%= t('show.product.parameter1') %>
+        </p>
         <div class="w-full lg:w-4/6 flex justify-between items-center mt-3">
-          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none "
+          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400"
             style="background-color:white; background-image: none; border: none;" />
-          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none "
+          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400"
             style="background-color:#E9646B; ;background-image: none; border: none;" />
-          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none "
+          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400"
             style="background-color:#F1C232; background-image: none; border: none;" />
-          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none "
+          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400"
             style="background-color:#000000; background-image: none; border: none;" />
-          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none "
+          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400"
             style="background-color:#96E06C; background-image: none; border: none;" />
-          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none "
+          <input type="radio" name="model_color" class="w-8 h-8 appearance-none bg-none checked:ring-1 ring-offset-2 ring-gray-400"
             style="background-color:#67ACEC; background-image: none; border: none;" />
         </div>
-        <p class="text-zinc-500 text-base mt-6">Кількість</p>
+        <p class="text-zinc-500 text-base mt-6">
+          <%= t('show.product.parameter2') %>
+        </p>
         <select name="count" class="w-full rounded mt-1">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <p class="text-zinc-500 text-base mt-4">Висота</p>
+        <p class="text-zinc-500 text-base mt-4">
+          <%= t('show.product.parameter3') %>
+        </p>
         <select name="height" class="w-full rounded mt-1">
-          <option value="1">4 (no base) inches</option>
+          <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-        <button class="w-full h-14 bg-yellow-400 flex items-center justify-center font-medium uppercase text-gray-800 rounded-2xl mt-8">Додати
-          до кошика</button>
+        <button class="w-full h-14 bg-yellow-400 flex items-center justify-center font-medium uppercase text-gray-800 rounded-2xl mt-8">
+          <%= t('show.product.btn') %>
+        </button>
       </div>
       <div class="font-base text-gray-800 mt-6">
         <div data-controller="toggle" data-toggle-active-target='#activeTarget'>
           <div data-action="click->toggle#toggle click@window->toggle#hide" role="button" data-toggle-target="button" tabindex="0" class="flex justify-between items-center">
-            <p class="font-medium pt-5 pb-3">Опис</p>
+            <p class="font-medium pt-5 pb-3">
+              <%= t('show.product.acc_title1') %>
+            </p>
             <div data-toggle-target="accordionIcon" class="mt-3"></div>
           </div>
           <div id='activeTarget' data-toggle-target="content" class="hidden pt-3">
-            <p>Халк (Девід Баннер) — науковець, що працює на уряд.У нього ідея створення універсальних солдатів, які
-              нічого не бояться, невразливі і швидко відновлюються. У нього народжується син Брюс, і батько бере його
-              кров на аналіз.
-            </p>
+            <p><%= t('show.product.content') %></p>
           </div>
           <div class="w-full h-px bg-zinc-400 mt-3"></div>
         </div>
         <div data-controller="toggle" data-toggle-active-target='#activeTarget'>
           <div data-action="click->toggle#toggle click@window->toggle#hide" role="button" data-toggle-target="button" tabindex="0" class="flex justify-between items-center">
-            <p class="font-medium pt-5 pb-3">Характеристики</p>
+            <p class="font-medium pt-5 pb-3">
+              <%= t('show.product.acc_title2') %>
+            </p>
             <div data-toggle-target="accordionIcon" class="mt-3"></div>
           </div>
           <div id='activeTarget' data-toggle-target="content" class="hidden pt-3">
-            <p>Халк (Девід Баннер) — науковець, що працює на уряд.У нього ідея створення універсальних солдатів, які
-              нічого не бояться, невразливі і швидко відновлюються. У нього народжується син Брюс, і батько бере його
-              кров на аналіз.
-            </p>
+            <p><%= t('show.product.content') %></p>
           </div>
           <div class="w-full h-px bg-zinc-400 mt-3"></div>
         </div>
         <div data-controller="toggle" data-toggle-active-target='#activeTarget'>
           <div data-action="click->toggle#toggle click@window->toggle#hide" role="button" data-toggle-target="button" tabindex="0" class="flex justify-between items-center">
-            <p class="font-medium pt-5 pb-3">Доставка та повернення</p>
+            <p class="font-medium pt-5 pb-3">
+              <%= t('show.product.acc_title3') %>
+            </p>
             <div data-toggle-target="accordionIcon" class="mt-3"></div>
           </div>
           <div id='activeTarget' data-toggle-target="content" class="hidden pt-3">
-            <p>Халк (Девід Баннер) — науковець, що працює на уряд.У нього ідея створення універсальних солдатів, які
-              нічого не бояться, невразливі і швидко відновлюються. У нього народжується син Брюс, і батько бере його
-              кров на аналіз.
-            </p>
+            <p><%= t('show.product.content') %></p>
           </div>
           <div class="w-full h-px bg-zinc-400 mt-3"></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="w-full lg:w-2/3">
-    <div data-controller="carousel" class="swiper-container">
+  <div class="w-full lg:w-2/3 relative">
+    <div data-controller="carousel" class="swiper-container w-full lg:w-9/12 -ml-2 lg:ml-44 mt-16 lg:mt-10"
+         data-carousel-options-value='{"pagination": { "el": ".swiper-pagination"}, "navigation": { "nextEl": ".swiper-button-next","prevEl": ".swiper-button-prev"}}'>
       <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide flex justify-center items-center">
+          <%= image_tag("shop_img/hulk1.png") %>
+        </div>
+        <div class="swiper-slide flex justify-center items-center">
+          <%= image_tag("shop_img/hulk2.png") %>
+        </div>
+        <div class="swiper-slide flex justify-center items-center">
+          <%= image_tag("shop_img/hulk3.png") %>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next hidden lg:block absolute inset-y-1/3 mt-6 -right-2" style="color:#1f2937" tabindex="0" role="button"
+        aria-label="Next slide" aria-controls="swiper-wrapper-dec5216f065e46c3" aria-disabled="false"></div>
+      <div class="swiper-button-prev absolute inset-y-1/3 left-28 mt-6 hidden lg:block" style="color:#1f2937" tabindex="-1" role="button"
+        aria-label="Previous slide" aria-controls="swiper-wrapper-dec5216f065e46c3" aria-disabled="true"></div>
+    <div class="swiper-pagination w-32 flex justify-between -ml-16 lg:ml-0 inset-x-1/2 mt-5"></div>
+  </div>
+</div>
+<div class="w-screen h-full lg:max-w-screen-2xl lg:mx-auto pb-14 pl-7 mt-16 md:pl-24 mt-8 overflow-hidden">
+  <h4 class="text-2xl text-gray-800 mb-7 font-medium">
+    <%= t('show.product.liked_title') %>
+  </h4>
+  <div class="relative w-full overflow-x-auto py-5">
+    <div class="w-[110rem] pr-12 flex justify-between items-center">
+      <div class="w-80 h-80 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+        <div class="px-5 py-5">
+          <p class="text-zinc-400 text-base">
+						<%= t('stores.index.category_type1') %>
+					</p>
+					<h4 class="text-white text-2xl font-medium">
+						<%= t('stores.index.goods_title1') %>
+					</h4>
+          <p class="text-3xl text-white pt-5">₴ 329</p>
+        </div>
+        <div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
+          <%= image_tag("shop_img/model1.png") %>
+        </div>
+      </div>
+      <div class="w-80 h-80 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+        <div class="px-5 py-5">
+          <p class="text-zinc-400 text-base">
+						<%= t('stores.index.category_type1') %>
+					</p>
+					<h4 class="text-white text-2xl font-medium">
+						<%= t('stores.index.goods_title2') %>
+					</h4>
+          <p class="text-3xl text-white pt-5">₴ 329</p>
+        </div>
+        <div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
+          <%= image_tag("shop_img/model2.png") %>
+        </div>
+      </div>
+      <div class="w-80 h-80 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+        <div class="px-5 py-5">
+          <p class="text-zinc-400 text-base">
+						<%= t('stores.index.category_type1') %>
+					</p>
+					<h4 class="text-white text-2xl font-medium">
+						<%= t('stores.index.goods_title1') %>
+					</h4>
+          <p class="text-3xl text-white pt-5">₴ 329</p>
+        </div>
+        <div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
+          <%= image_tag("shop_img/model3.png") %>
+        </div>
+      </div>
+      <div class="w-80 h-80 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+        <div class="px-5 py-5">
+          <p class="text-zinc-400 text-base">
+						<%= t('stores.index.categories_title1') %>
+					</p>
+					<h4 class="text-white text-2xl font-medium">
+						<%= t('stores.index.goods_title3') %>
+					</h4>
+          <p class="text-3xl text-white pt-5">₴ 329</p>
+        </div>
+        <div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
+          <%= image_tag("shop_img/model4.png") %>
+        </div>
+      </div>
+      <div class="w-80 h-80 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+        <div class="px-5 py-5">
+          <p class="text-zinc-400 text-base">
+						<%= t('stores.index.categories_title2') %>
+					</p>
+					<h4 class="text-white text-2xl font-medium">
+						<%= t('stores.index.goods_title1') %>
+					</h4>
+          <p class="text-3xl text-white pt-5">₴ 329</p>
+        </div>
+        <div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
+          <%= image_tag("shop_img/model5.png") %>
+        </div>
       </div>
     </div>
   </div>
