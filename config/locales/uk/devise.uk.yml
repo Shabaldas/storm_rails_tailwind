@@ -1,8 +1,12 @@
 uk:
   devise:
     titles:
+      sign_in: "Вхід"
       sign_up: "Зареєструватись"
       log_in: "Увійти"
+      goggle: "Вхід через Google"
+      remember_me: "Запам'ятати мене"
+      or: "Або"
       password_reset: "Зміна Пароля"
       accept_invitation: "Прийняти Запрошення"
       send_invitation: "Нове Запрошення"
@@ -93,6 +97,20 @@ uk:
       updated: "Ваш пароль змінено. Ви увійшли в систему."
       updated_not_active: "Ваш пароль успішно змінено."
     registrations:
+      registration: "Реєстрація"
+      personal_date: "Персональні дані"
+      first_name: "Ім'я"
+      last_name: "Прізвище"
+      phone: "Телефон"
+      email: "E-mail"
+      password: "Пароль"
+      save: "ЗБЕРЕГТИ"
+      edit_profile: "Редагувати профіль %{event_name}"
+      new_password: "Введіть новий пароль"
+      existing_password: "Введіть існуючий пароль"
+      update: "ОНОВИТИ"
+      back:  "НАЗАД"
+      email_or: "E-mail або номер телефону"
       edit:
         title: "Редагувати"
         confirmation: "Чекаємо на підтвердження від Вас: "

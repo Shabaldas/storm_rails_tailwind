@@ -1,8 +1,12 @@
 en:
   devise:
     titles:
+      sign_in: "Sign in"
       sign_up: "Sign Up"
       log_in: "Log In"
+      goggle: "Sign in with Goggle"
+      remember_me: "Remember me"
+      or: "Or"
       password_reset: "Password Reset"
     providers:
       google_oauth2: "Google"
@@ -70,6 +74,20 @@ en:
       updated: "Your password has been changed successfully. You are now signed in."
       updated_not_active: "Your password has been changed successfully."
     registrations:
+      registration: "Registration"
+      personal_date: "Personal date"
+      first_name: "First name"
+      last_name: "Last name"
+      phone: "Phone"
+      email: "E-mail"
+      password: "Password"
+      save: "SAVE"
+      edit_profile: "Edit profile %{event_name}"
+      new_password: "Enter a new password"
+      existing_password: "Enter an existing password"
+      update: "UPDATE"
+      back:  "BACK"
+      email_or: "E-mail or phone number"
       edit:
         title: "Edit"
         confirmation: "Currently waiting confirmation for: "

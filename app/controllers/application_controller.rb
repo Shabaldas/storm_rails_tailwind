@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
   protect_from_forgery with: :null_session
 
@@ -15,5 +16,15 @@ class ApplicationController < ActionController::Base
   def set_locale
     locale_in_cookies = I18n.available_locales.map(&:to_s).include?(cookies[:locale])
     I18n.locale = locale_in_cookies ? cookies[:locale] : I18n.default_locale
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up) do |parameter_devise|
+      parameter_devise.permit(:first_name, :last_name, :phone, :email, :password, :password_confirmation)
+    end
+
+    devise_parameter_sanitizer.permit(:account_update) do |parameter_devise|
+      parameter_devise.permit(:first_name, :last_name, :phone, :email, :password, :password_confirmation)
+    end
   end
 end
