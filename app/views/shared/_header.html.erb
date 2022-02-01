@@ -41,18 +41,18 @@
                     <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
                       <%= link_to t('global.header.log_out'), destroy_user_session_path %>
                     </p>
-                  <%- else %>
+                  <% else %>
                     <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
                       <%= link_to t('global.header.registration'), new_user_registration_path %>
                     </p>
                     <hr />
                     <p class="text-center px-7 pt-2 pb-1 cursor-pointer">
                       <div class="text-center px-7 pt-2 pb-1 cursor-pointer" data-controller="renderer">
-                        <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' }  %>
+                        <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' } %>
                         <span data-target="renderer.display"></span>
                       </div>
                     </p>
-                  <%- end %>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -120,12 +120,24 @@
         <li class="py-5">
           <%= link_to t('global.header.basket'), home_path %>
         </li>
-        <li class="py-5">
-          <%= link_to t('global.header.registration'), new_user_registration_path %>
-        </li>
-        <li class="py-5">
-          <%= link_to t('global.header.sign_in'), user_session_path %>
-        </li>
+        <%- if user_signed_in? %>
+          <li class="py-5">
+              <%= link_to t('global.header.edit_profile'), edit_user_registration_path %>
+          </li>
+          <li class="py-5">
+            <%= link_to t('global.header.log_out'), destroy_user_session_path %>
+          </li>
+        <% else %>
+          <li class="py-5">
+            <%= link_to t('global.header.registration'), new_user_registration_path %>
+          </li>
+          <li class="py-5">
+            <div class="py-5" data-controller="renderer">
+              <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true, action: 'ajax:success->renderer#render' } %>
+              <span data-target="renderer.display"></span>
+            </div>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div data-action="click->sidebar#toggle" data-sidebar-target="icon"
