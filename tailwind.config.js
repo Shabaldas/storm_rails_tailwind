@@ -19,7 +19,6 @@ module.exports = {
       '2xl': '1536px',
     },
     colors: {
-      'regal-orange': '#F1C232',
       inherit: colors.inherit,
       current: colors.current,
       transparent: colors.transparent,
