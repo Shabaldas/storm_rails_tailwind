@@ -59,41 +59,41 @@
           <%= t('show.product.btn') %>
         </button>
       </div>
-      <div class="font-base text-gray-800 mt-6">
-        <div data-controller="toggle" data-toggle-active-target='#activeTarget'>
-          <div data-action="click->toggle#toggle click@window->toggle#hide" role="button" data-toggle-target="button" tabindex="0" class="flex justify-between items-center">
+      <div data-controller="accordion" class="font-base text-gray-800 mt-6">
+        <div>
+          <div data-action="click->accordion#toggle" data-accordion-target="accTitle" id="acc_btn" data-id="acc_btn1" data-active="false" class="acc_title flex justify-between items-center cursor-pointer">
             <p class="font-medium pt-5 pb-3">
               <%= t('show.product.acc_title1') %>
             </p>
-            <div data-toggle-target="accordionIcon" class="mt-3"></div>
+            <div data-accordion-target="accordionIcon" class="mt-3"></div>
           </div>
-          <div id='activeTarget' data-toggle-target="content" class="hidden pt-3">
+          <div class="hidden pt-3">
             <p><%= t('show.product.content') %></p>
           </div>
           <div class="w-full h-px bg-zinc-400 mt-3"></div>
         </div>
-        <div data-controller="toggle" data-toggle-active-target='#activeTarget'>
-          <div data-action="click->toggle#toggle click@window->toggle#hide" role="button" data-toggle-target="button" tabindex="0" class="flex justify-between items-center">
+        <div>
+          <div data-action="click->accordion#toggle" data-accordion-target="accTitle" id="acc_btn" data-id="acc_btn2" data-active="false" class="acc_title flex justify-between items-center cursor-pointer">
             <p class="font-medium pt-5 pb-3">
               <%= t('show.product.acc_title2') %>
             </p>
-            <div data-toggle-target="accordionIcon" class="mt-3"></div>
+            <div data-accordion-target="accordionIcon" class="mt-3"></div>
           </div>
-          <div id='activeTarget' data-toggle-target="content" class="hidden pt-3">
+          <a class="hidden pt-3">
             <p><%= t('show.product.content') %></p>
-          </div>
+          </a>
           <div class="w-full h-px bg-zinc-400 mt-3"></div>
         </div>
-        <div data-controller="toggle" data-toggle-active-target='#activeTarget'>
-          <div data-action="click->toggle#toggle click@window->toggle#hide" role="button" data-toggle-target="button" tabindex="0" class="flex justify-between items-center">
+        <div>
+          <div data-action="click->accordion#toggle" data-accordion-target="accTitle" id="acc_btn" data-id="acc_btn3" data-active="false" class="acc_title flex justify-between items-center cursor-pointer">
             <p class="font-medium pt-5 pb-3">
               <%= t('show.product.acc_title3') %>
             </p>
-            <div data-toggle-target="accordionIcon" class="mt-3"></div>
+            <div data-accordion-target="accordionIcon" class="mt-3"></div>
           </div>
-          <div id='activeTarget' data-toggle-target="content" class="hidden pt-3">
+          <a class="hidden pt-3">
             <p><%= t('show.product.content') %></p>
-          </div>
+          </a>
           <div class="w-full h-px bg-zinc-400 mt-3"></div>
         </div>
       </div>
@@ -114,10 +114,10 @@
         </div>
       </div>
     </div>
-    <div class="swiper-button-next hidden lg:block absolute inset-y-1/3 mt-6 -right-2" style="color:#1f2937" tabindex="0" role="button"
-        aria-label="Next slide" aria-controls="swiper-wrapper-dec5216f065e46c3" aria-disabled="false"></div>
-      <div class="swiper-button-prev absolute inset-y-1/3 left-28 mt-6 hidden lg:block" style="color:#1f2937" tabindex="-1" role="button"
-        aria-label="Previous slide" aria-controls="swiper-wrapper-dec5216f065e46c3" aria-disabled="true"></div>
+    <div class="swiper-button-next hidden lg:block absolute inset-y-1/2 -right-2" style="color:#1f2937" tabindex="0"
+        aria-label="Next slide"  id="acc_btn"adata-active="false" id="1"="swiper-wrapper-dec5216f065e46c3" aria-disabled="false"></div>
+      <div class="swiper-button-prev absolute inset-y-1/2 left-28 hidden lg:block" style="color:#1f2937" tabindex="-1"
+        aria-label="Previous sli id="acc_btn"ddata-active="false" id="1" rols="swiper-wrapper-dec5216f065e46c3" aria-disabled="true"></div>
     <div class="swiper-pagination w-32 flex justify-between -ml-16 lg:ml-0 inset-x-1/2 mt-5"></div>
   </div>
 </div>

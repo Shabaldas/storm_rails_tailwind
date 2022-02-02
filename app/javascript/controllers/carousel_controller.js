@@ -9,4 +9,9 @@ export default class extends Carousel {
     this.swiper
     this.defaultOptions
   }
+  get defaultOptions() {
+    return {
+      clickable: true,
+    }
+  }
 }

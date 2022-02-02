@@ -2,7 +2,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['content', 'button', 'accordionIcon']
+  static targets = ['content', 'button']
   static values = { open: Boolean }
 
   connect() {
@@ -13,26 +13,15 @@ export default class extends Controller {
     this.enteringClass = this.data.get('enteringClass') || null
     this.leavingClass = this.data.get('leavingClass') || null
 
-    if (this.hasAccordionIconTarget){
-      this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-    </svg>`
-    }
-
     if (this.hasButtonTarget) {
       this.buttonTarget.addEventListener("keydown", this._onContentButtonKeydown)
     }
 
     this.element.setAttribute("aria-haspopup", "true")
+    console.dir(this.contentTargets)
   }
 
   disconnect() {
-
-    if (this.hasAccordionIconTarget){
-      this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-    </svg>`
-    }
     if (this.hasButtonTarget) {
       this.buttonTarget.removeEventListener("keydown", this._onContentButtonKeydown)
     }
@@ -56,11 +45,6 @@ export default class extends Controller {
       (() => {
         this.contentTarget.classList.remove(this.toggleClass)
         this.element.setAttribute("aria-expanded", "true")
-        if (this.hasAccordionIconTarget){
-          this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>`
-        }
         this._enteringClassList[0].forEach(
           (klass => {
             this.contentTarget.classList.add(klass)
@@ -89,11 +73,6 @@ export default class extends Controller {
         this._invisibleClassList[0].forEach(klass => this.contentTarget.classList.add(klass))
         this._visibleClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
         this._leavingClassList[0].forEach(klass => this.contentTarget.classList.add(klass))
-        if (this.hasAccordionIconTarget){
-          this.accordionIconTarget.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-        </svg>`
-        }
         setTimeout(
           (() => {
             this._leavingClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
