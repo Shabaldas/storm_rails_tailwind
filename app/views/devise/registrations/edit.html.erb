@@ -82,10 +82,10 @@
         <div class="flex flex-col lg:flex-row lg:justify-between items-center">
           <div data-controller="password" class="w-full lg:w-3/5" >
             <div class="mt-1">
-              <%= f.label :current_password %>
+              <%= f.label :password %>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :current_password, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
               <div data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></div>
             </div>
           </div>
@@ -112,10 +112,10 @@
         <div class="flex flex-col lg:flex-row lg:justify-between items-center">
           <div data-controller="password" class="w-full lg:w-2/4" >
             <div class="mt-1">
-              <%= f.label :password %>
+              <%= f.label :current_password %>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
+              <%= f.password_field :current_password, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
               <div data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></div>
             </div>
           </div>
