@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'static_pages#home', as: :home
 
   resources :products, only: [:index, :show]
+  resources :calculators, only: :index
   get 'print', to: 'static_pages#print', as: :print
   get 'rendering', to: 'static_pages#rendering', as: :rendering
   get 'modeling', to: 'static_pages#modeling', as: :modeling

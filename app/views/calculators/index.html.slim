@@ -1,0 +1,17 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+h2 Welcome to 3D Storm!
+#stl_cont style="width:500px;height:500px;margin:0 auto;"
+  javascript:
+    function load_prog(id) {console.log( JSON.stringify(stl_viewer.get_model_info(id)) );}
+    var stl_viewer=new StlViewer(
+      document.getElementById("stl_cont"),
+        {
+
+          model_loaded_callback:load_prog,
+          auto_resize: false,
+          auto_rotate: true
+          
+        }
+    );
+input type="file" onchange='stl_viewer.add_model({local_file:this.files[0]});' accept="*.*"
