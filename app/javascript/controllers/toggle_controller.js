@@ -2,7 +2,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = ['menu', 'button']
+  static targets = ['content', 'button']
   static values = { open: Boolean }
 
   connect() {
@@ -14,15 +14,16 @@ export default class extends Controller {
     this.leavingClass = this.data.get('leavingClass') || null
 
     if (this.hasButtonTarget) {
-      this.buttonTarget.addEventListener("keydown", this._onMenuButtonKeydown)
+      this.buttonTarget.addEventListener("keydown", this._onContentButtonKeydown)
     }
 
     this.element.setAttribute("aria-haspopup", "true")
+    console.dir(this.contentTargets)
   }
 
   disconnect() {
     if (this.hasButtonTarget) {
-      this.buttonTarget.removeEventListener("keydown", this._onMenuButtonKeydown)
+      this.buttonTarget.removeEventListener("keydown", this._onContentButtonKeydown)
     }
   }
 
@@ -42,20 +43,20 @@ export default class extends Controller {
   _show(cb) {
     setTimeout(
       (() => {
-        this.menuTarget.classList.remove(this.toggleClass)
+        this.contentTarget.classList.remove(this.toggleClass)
         this.element.setAttribute("aria-expanded", "true")
         this._enteringClassList[0].forEach(
           (klass => {
-            this.menuTarget.classList.add(klass)
+            this.contentTarget.classList.add(klass)
           }).bind(this),
         )
-        this._invisibleClassList[0].forEach(klass => this.menuTarget.classList.remove(klass))
+        this._invisibleClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
         this._visibleClassList[0].forEach(klass => {
-          this.menuTarget.classList.add(klass)
+          this.contentTarget.classList.add(klass)
         })
         setTimeout(
           (() => {
-            this._enteringClassList[0].forEach(klass => this.menuTarget.classList.remove(klass))
+            this._enteringClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
           }).bind(this),
           this.enterTimeout[0],
         )
@@ -69,15 +70,15 @@ export default class extends Controller {
     setTimeout(
       (() => {
         this.element.setAttribute("aria-expanded", "false")
-        this._invisibleClassList[0].forEach(klass => this.menuTarget.classList.add(klass))
-        this._visibleClassList[0].forEach(klass => this.menuTarget.classList.remove(klass))
-        this._leavingClassList[0].forEach(klass => this.menuTarget.classList.add(klass))
+        this._invisibleClassList[0].forEach(klass => this.contentTarget.classList.add(klass))
+        this._visibleClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
+        this._leavingClassList[0].forEach(klass => this.contentTarget.classList.add(klass))
         setTimeout(
           (() => {
-            this._leavingClassList[0].forEach(klass => this.menuTarget.classList.remove(klass))
+            this._leavingClassList[0].forEach(klass => this.contentTarget.classList.remove(klass))
             if (typeof cb == 'function') cb()
 
-            this.menuTarget.classList.add(this.toggleClass)
+            this.contentTarget.classList.add(this.toggleClass)
           }).bind(this),
           this.leaveTimeout[0],
         )
@@ -85,7 +86,7 @@ export default class extends Controller {
     )
   }
 
-  _onMenuButtonKeydown = event => {
+  _onContentButtonKeydown = event => {
     switch (event.keyCode) {
       case 13: // enter
       case 32: // space
