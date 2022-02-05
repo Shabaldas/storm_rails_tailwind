@@ -1,0 +1,8 @@
+en:
+  basket:
+    content:
+      title: "Your basket"
+      product_title: "Incrediable Hulk"
+      btn: "Make an order"
+      summary: "Summary"
+      delivery: "Delivery"
