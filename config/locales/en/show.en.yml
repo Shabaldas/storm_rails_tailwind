@@ -1,0 +1,16 @@
+en:
+  show:
+    product:
+      link: "Back to shop"
+      suptitle: "Collectible figurines"
+      title: "The Incredible Hulk"
+      parameter1: "Color"
+      parameter2: "Count"
+      parameter3: "Height"
+      acc_title1: "Description"
+      acc_title2: "Features"
+      acc_title3: "Delivery and returns"
+      content: "Hulk (David Banner) - a scientist working for the government. He had the idea of creating universal soldiers who fear nothing, are invulnerable and
+                recover quickly. He has a son, Bruce, and the father takes him blood for analysis."
+      btn: "Add to basket"
+      liked_title: "You may like it"
