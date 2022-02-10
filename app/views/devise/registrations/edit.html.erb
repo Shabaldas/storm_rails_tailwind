@@ -47,12 +47,12 @@
             </div>
             <div class="mt-1">
             <%= f.phone_field :phone,
+                              value: '+380' + current_user.phone,
                               required: false,
                               label: false,
                               class: "w-full rounded",
                               autofocus: true,
-                              placeholder: 'xxx-xxx-xxxx',
-                              input_html: { autocomplete: "phone" } %>
+                              placeholder: 'xxx-xxx-xxxx' %>
             </div>
           </div>
           <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
@@ -82,10 +82,10 @@
         <div class="flex flex-col lg:flex-row lg:justify-between items-center">
           <div data-controller="password" class="w-full lg:w-3/5" >
             <div class="mt-1">
-              <%= f.label :current_password %>
+              <%= f.label :password %>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :current_password, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
               <div data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></div>
             </div>
           </div>
@@ -112,10 +112,10 @@
         <div class="flex flex-col lg:flex-row lg:justify-between items-center">
           <div data-controller="password" class="w-full lg:w-2/4" >
             <div class="mt-1">
-              <%= f.label :password %>
+              <%= f.label :current_password %>
             </div>
             <div class="mt-1 relative">
-              <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
+              <%= f.password_field :current_password, autocomplete: "current-password", class: "w-full rounded form-control unhide", "data-password-target": "unhide" %>
               <div data-action="click->password#password" class="absolute bottom-3.5 right-2 password-field-icon-1 fas fa-eye-slash"></div>
             </div>
           </div>
@@ -126,7 +126,7 @@
             <%= f.button :submit, t('devise.registrations.update') %>
           </div>
           <div class="w-full md:w-56 mt-5 py-3 bg-yellow-400 flex flex-center justify-center rounded-lg hover:bg-yellow-500 uppercase">
-            <%= link_to t('devise.registrations.back'), :back %>
+            <%= link_to t('devise.registrations.back'), home_path %>
           </div>
         </div>
       </div>
