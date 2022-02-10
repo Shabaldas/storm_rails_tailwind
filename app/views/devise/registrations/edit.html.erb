@@ -47,12 +47,12 @@
             </div>
             <div class="mt-1">
             <%= f.phone_field :phone,
+                              value: '+380' + current_user.phone,
                               required: false,
                               label: false,
                               class: "w-full rounded",
                               autofocus: true,
-                              placeholder: 'xxx-xxx-xxxx',
-                              input_html: { autocomplete: "phone" } %>
+                              placeholder: 'xxx-xxx-xxxx' %>
             </div>
           </div>
           <div class="w-full mt-3 lg:mt-0 lg:w-3/5 ml-0 lg:ml-6">
