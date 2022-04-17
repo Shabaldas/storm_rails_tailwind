@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   get 'print', to: 'static_pages#print', as: :print
   get 'rendering', to: 'static_pages#rendering', as: :rendering
   get 'modeling', to: 'static_pages#modeling', as: :modeling
+
+  namespace :carts do
+    resource :add, only: [:create]
+  end
 end

@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   protect_from_forgery with: :null_session
 
+  def current_cart
+    cart = Cart.find_or_create_by(token: cookies[:cart_token])
+    cookies[:cart_token] ||= cart.token
+    cart
+  end
+  
+  helper_method :current_cart
+
   private
 
   def authenticate_admin_user!
