@@ -5,12 +5,23 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   protect_from_forgery with: :null_session
 
+  def default_url_options
+    if Rails.env.development?
+      {
+        host: 'localhost',
+        port: '3000'
+      }
+    else
+      {}
+    end
+  end
+
   def current_cart
     cart = Cart.find_or_create_by(token: cookies[:cart_token])
     cookies[:cart_token] ||= cart.token
     cart
   end
-  
+
   helper_method :current_cart
 
   private
