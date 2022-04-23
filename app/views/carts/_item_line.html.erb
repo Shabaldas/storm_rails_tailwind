@@ -1,0 +1,28 @@
+<%= content_tag :div, class: "row mb-8 align-items-center", id: dom_id(cart_item) do %>
+  <div class="basket-sidebar mt-8 h-4/6 overflow-y-auto pr-4">
+    <div class="flex justify-between items-center relative">
+      <div class="flex items-center">
+        
+        <%= link_to "remove",
+          carts_remove_path(product: cart_item.product.id),
+          method: :delete %>
+        <div class="w-16 h-16 bg-gray-300 ml-2">
+          <%= image_tag(cart_item.product.main_picture) %>
+        </div>
+        <div class="ml-3">
+          <h6 class="text-sm text-gray-800 font-medium">
+            <%= cart_item.product.name %>
+          </h6>
+          <div class="w-20 flex justify-between items-center mt-2">
+            <%= link_to '+', carts_add_path(product: cart_item.product.id), method: :post, remote: true %>
+            <p> <%= render "carts/item_quantity", cart_item: cart_item %></p>
+            <%= link_to '-', carts_reduce_path(product: cart_item.product.id), method: :post, remote: true %>
+          </div>
+        </div>
+      </div>
+      <div class="w-16 flex justify-end absolute bottom-0 right-0 sm:relative sm:-top-3 sm:-mt-1.5 text-sm text-gray-800 font-medium">
+        <%= number_to_uah(cart_item.product.price) %>
+      </div>
+    </div>
+  </div>
+<% end %>
