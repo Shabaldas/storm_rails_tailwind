@@ -1,82 +1,40 @@
-	<h4 class="text-lg text-gray-800">
-		<%= t('stores.index.categories_suptitle') %>
-	</h4>
+<%= turbo_frame_tag "filtering" do %>
+  <%= form_for :search, url: "#" do |f| %>
+
+    <%= f.text_field :query, class: "w-full py-2 flex flex-center justify-center rounded" %>
+    <h4 class="text-lg text-gray-800">
+      <%= t('stores.index.categories_suptitle') %>
+    </h4>
     <%- @product_categories.each do |category| %>
-    <div class="mt-3 cursor-pointer">
-      <div class="flex justify-between">
-        <div class="flex items-center">
-          <br><%= radio_button_tag 'category', category, @category == category,
-          class: "w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none",
-          style: "color:#facc15 ; background-image: none; border: none; border-radius: 50%;", id: category.name %>
-          <label class="ml-3 cursor-pointer" for="<%= category.name %>">
-            <%= category.name.humanize %>
-          </label>
+      <div class="mt-3 cursor-pointer">
+        <div class="flex justify-between">
+          <div class="flex items-center">
+            <%= f.check_box :category_id, { multiple: true, class: "w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none rounded" } ,
+              category.id, nil %>
+            <%= f.label category.name.humanize, class:"ml-3 cursor-pointer" %>
+          </div>
         </div>
-        <%= category.products.count %>
+      </div>
+    <% end %>
+    <hr />
+
+    <h4 class="text-lg text-gray-800">
+      <%= t('stores.index.price') %>
+    </h4>
+    <div class="pt-4 cursor-pointer pb-8">
+      <div class="price-range-slider" data-controller="priceslider">
+        <div class="price-container">
+          <div class="slider-track" data-priceslider-target="sliderTrack"></div>
+          <%= f.text_field :price, type: 'range', "min": '0', "max": '3000', 'value': "0", "data-priceslider-target": "sliderOne", "data-action": "input->priceslider#sliderOne" %>
+          <%= f.text_field :price, type: 'range', "min": '0', "max": '3000', "data-priceslider-target": "sliderTwo", "data-action": "input->priceslider#sliderTwo" %>
+        </div>
+        <div class="slider-range">
+          <span id="range1" data-priceslider-target="displayValOne"></span>
+          <span id="range2" data-priceslider-target="displayValTwo"></span>
+        </div>
       </div>
     </div>
+
+    <%= f.submit t('stores.index.search_btn'), class: "w-full py-2 bg-yellow-400 flex flex-center justify-center rounded hover:bg-yellow-500" %>
   <% end %>
-
-
-<div class="pt-3 pb-5">
-	<h4 class="text-lg text-gray-800">
-		<%= t('stores.index.price') %>
-	</h4>
-	<div class="pt-4 cursor-pointer pb-8">
-		<div class="price-range-slider" data-controller="priceslider">
-			<div class="price-container">
-				<div class="slider-track" data-priceslider-target="sliderTrack"></div>
-				<input type="range" min="0" max="3000" value="425" data-priceslider-target="sliderOne" data-action="input->priceslider#sliderOne" />
-				<input type="range" min="0" max="3000" value="1075" data-priceslider-target="sliderTwo" data-action="input->priceslider#sliderTwo" />
-			</div>
-			<div class="slider-range">
-				<span id="range1" data-priceslider-target="displayValOne"></span>
-				<span id="range2" data-priceslider-target="displayValTwo"></span>
-			</div>
-		</div>
-	</div>
-</div>
-<hr />
-<div class="pt-3 pb-4">
-	<h4 class="text-lg text-gray-800">
-		<%= t('stores.index.materials_suptitle') %>
-	</h4>
-	<div class="mt-3 cursor-pointer">
-		<div class="flex items-center">
-			<input id="material1" type="radio" name="material"
-				class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
-				style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
-			<label for="material1" class="ml-3 cursor-pointer">
-				<%= t('stores.index.materials_title1') %>
-			</label>
-		</div>
-	</div>
-	<div class="mt-3 cursor-pointer">
-		<div class="flex items-center">
-			<input id="material2" type="radio" name="material"
-				class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
-				style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
-			<label for="material2" class="ml-3 cursor-pointer">
-				<%= t('stores.index.materials_title2') %>
-			</label>
-		</div>
-	</div>
-	<div class="mt-3 cursor-pointer">
-		<div class="flex items-center">
-			<input id="material3" type="radio" name="material"
-				class="w-2.5 h-2.5 appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none "
-				style="color:#facc15 ; background-image: none; border: none; border-radius: 50%;" />
-			<label for="material3" class="ml-3 cursor-pointer">
-				<%= t('stores.index.materials_title3') %>
-			</label>
-		</div>
-	</div>
-</div>
-<hr />
-<div class="pt-5 pb-3 cursor-pointer text-gray-800">
-	<a href="#">
-		<button class="w-full py-2 bg-yellow-400 flex flex-center justify-center rounded hover:bg-yellow-500">
-			<%= t('stores.index.search_btn') %>
-		</button>
-	</a>
-</div>
+<% end %>

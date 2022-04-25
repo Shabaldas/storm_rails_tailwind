@@ -7,7 +7,9 @@
           carts_remove_path(product: cart_item.product.id),
           method: :delete %>
         <div class="w-16 h-16 bg-gray-300 ml-2">
-          <%= image_tag(cart_item.product.main_picture) %>
+          <% if cart_item.product.main_picture.present?%>
+            <%= image_tag(cart_item.product.main_picture) %>
+          <% end %>
         </div>
         <div class="ml-3">
           <h6 class="text-sm text-gray-800 font-medium">

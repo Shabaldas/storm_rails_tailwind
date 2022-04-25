@@ -35,8 +35,8 @@
       </h5>
       <p><%= render "carts/total_price" %></p>
     </div>
-    <div class="w-full h-16 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase">
-      <%= t('basket.content.btn') %>
+    <div>
+      <%= link_to t('basket.content.btn'), checkout_path, class: "w-full h-16 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase"%>
     </div>
   </div>
 </div>

@@ -11,7 +11,8 @@
 
     = f.input :files, as: :file, input_html: { multiple: true }
     - f.object.files.each do |file|
-      = image_tag file.variant(resize: "200x200"), required: true
+      - if file.variable?
+        = image_tag file.variant(resize: "200x200"), required: true
 
     = f.inputs 'Options' do
       - f.has_many :product_options, new_record: 'Add option', allow_destroy: true do |op_field|
