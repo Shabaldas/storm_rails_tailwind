@@ -22,16 +22,17 @@
         </div>
 
         <div class="mt-1"></div>
-          <p class="text-zinc-500 text-base">
-            <%= t('show.product.parameter1') %>
-          </p>
-          <div class="w-full lg:w-4/6 justify-between items-center mt-3">
-            <% if @product.options.present? %>
-              <%= form.collection_radio_buttons(:options, available_colors(@product.options.first.option_values), :itself, :itself ) do |builder| %>
-                <%= builder.radio_button style: "background-color: #{select_colors[builder.value.to_sym]}; ;background-image: none; border: none; height: 2rem; width: 2rem;"  %>
-              <% end %>
-            <% end %>
-          </div>
+          <% if @product.primary_product_option.present? %>
+            <p class="text-zinc-500 text-base">
+              <%= t('show.product.parameter1') %>
+            </p>
+            <div class="w-full lg:w-4/6 justify-between items-center mt-3">
+                <%= form.collection_radio_buttons(:options, available_colors(@product.primary_product_option.option_values), :itself, :itself ) do |builder| %>
+                  <%= builder.radio_button style: "background-color: #{select_colors[builder.value.to_sym]}; ;background-image: none; border: none; height: 2rem; width: 2rem;"  %>
+                <% end %>
+            </div>
+          <% end %>
+
 
           <p class="text-zinc-500 text-base mt-6">
             <%= t('show.product.parameter2') %>
