@@ -1041,6 +1041,11 @@
     webpack-cli "^4.0.0"
     webpack-sources "^2.0.1"
 
+"@svgdotjs/svg.js@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@svgdotjs/svg.js/-/svg.js-3.1.2.tgz#acd62ebc5a6ef5b3a70e4a3912ce643a150c56e7"
+  integrity sha512-0ZCWTiuRjCXT2SUoVDiu+8DLuRQlkxZbO680Y2QkV7jNsULzJajrx6A3MxA/IBQg6UGV5csgPZ8w7U57hZSK+A==
+
 "@tailwindcss/aspect-ratio@^0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.0.tgz#c635dd7331cbcc1b111cebdc2647dd3493ebdd3e"

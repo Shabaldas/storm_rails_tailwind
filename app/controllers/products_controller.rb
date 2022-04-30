@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    # ap  @product.files.first.download
   end
 
   private

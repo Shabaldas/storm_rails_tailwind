@@ -26,10 +26,24 @@
             <p class="text-zinc-500 text-base">
               <%= t('show.product.parameter1') %>
             </p>
-            <div class="w-full lg:w-4/6 justify-between items-center mt-3">
-                <%= form.collection_radio_buttons(:options, available_colors(@product.primary_product_option.option_values), :itself, :itself ) do |builder| %>
-                  <%= builder.radio_button style: "background-color: #{select_colors[builder.value.to_sym]}; ;background-image: none; border: none; height: 2rem; width: 2rem;"  %>
+            <div data-controller="changeBg" class="w-full lg:w-4/6 justify-between items-center mt-3">
+                <%= form.collection_radio_buttons(:options, available_colors(@product.primary_product_option.option_values), :itself, :itself )  do |builder| %>
+
+                <%= raw ap builder.value%>
+                <div data-action="click->changeBg#setColor">
+                  <%= builder.radio_button  style: "background-color: #{select_colors[builder.value.to_sym]}; ;background-image: none; border: none; height: 2rem; width: 2rem;"  %>
+                </div>
                 <% end %>
+            </div>
+          <% end %>
+          
+          
+          <% if @product.primary_product_option.present? %>
+            <p class="text-zinc-500 text-base">
+              <%= t('show.product.parameter1') %>
+            </p>
+            <div class="w-full lg:w-4/6 justify-between items-center mt-3">
+                <%= form.select :options, options_for_select(@product.product_option_values.pluck(:price) ) %>
             </div>
           <% end %>
 
@@ -44,6 +58,17 @@
             <option value="3">3</option>
           </select>
         </div>
+
+
+        <%== @product.files.first.download %>
+
+        <% if @product.files.attached? %>
+          <% @product.files.each do |file|%>
+            <div class="attachment vertical">
+              <%= image_tag(file) %>
+            </div>
+          <% end %>
+        <% end %>
 
         <%= link_to t('show.product.btn'), carts_add_path(product: @product.id), method: :post, class: "w-full h-14 bg-yellow-400 flex items-center justify-center font-medium uppercase text-gray-800 rounded-2xl mt-8" %>
 
@@ -204,9 +229,16 @@
     <div data-controller="carousel" class="swiper-container w-full lg:w-9/12 -ml-2 lg:ml-44 mt-16 lg:mt-10"
       data-carousel-options-value='{"pagination": { "el": ".swiper-pagination"}, "navigation": { "nextEl": ".swiper-button-next","prevEl": ".swiper-button-prev"}}'>
       <div class="swiper-wrapper">
-        <div class="swiper-slide flex justify-center items-center">
-          <%= image_tag("shop_img/hulk1.png") %>
+       
+        <div class="swiper-slide flex justify-center items-center ">
+          <div class="w-full h-full relative">
+            <%== @product.files.first.download %>
+            <div class="w-full h-full absolute top-0 left-0">
+              <%= image_tag(@product.files.first) %>
+            </div>
+          </div>
         </div>
+
         <div class="swiper-slide flex justify-center items-center ">
           <div class="w-full h-full relative">
             <svg class="relative z-30 mix-blend-multiply" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 599">
@@ -219,9 +251,7 @@
             </div>
           </div>
         </div>
-        <div class="swiper-slide flex justify-center items-center">
-          <%= image_tag("shop_img/hulk3.png") %>
-        </div>
+       
       </div>
     </div>
     <div class="swiper-button-next hidden lg:block absolute inset-y-1/2 -right-2" style="color:#1f2937" tabindex="0"

@@ -1,6 +1,6 @@
 module OptionHelper
   def available_colors(options)
-    options.pluck(:value).map(&:downcase)
+    options.pluck(:value)
   end
 
   def select_colors

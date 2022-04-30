@@ -17,7 +17,7 @@ ActiveAdmin.register Product do
     column :product_type
     column('Category') { |product| product.category&.name }
     column :main_picture do |product|
-      image_tag product.main_picture.variant(resize: '100x100') if product.main_picture.present?
+      # image_tag product.main_picture.variant(resize: '100x100') if product.main_picture.present?
     end
 
     actions
