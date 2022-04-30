@@ -21,6 +21,8 @@
           <p class="text-3xl">₴ <%=@product.price%></p>
         </div>
 
+        <%= @product.images.first.picture.download.html_safe %>
+
         <div class="mt-1"></div>
           <% if @product.primary_product_option.present? %>
             <p class="text-zinc-500 text-base">

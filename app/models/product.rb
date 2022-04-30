@@ -13,7 +13,9 @@ class Product < ApplicationRecord
   has_one :primary_option, through: :primary_product_option, class_name: 'Option', source: :option
 
   has_one_attached :main_picture
-  has_many_attached :files
+  # has_many_attached :files
+  has_many :images, class_name: 'ProductImage', dependent: :destroy
+  accepts_nested_attributes_for :images, allow_destroy: true
 
   belongs_to :category, class_name: 'ProductCategory'
 

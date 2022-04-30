@@ -1,8 +1,13 @@
 ActiveAdmin.register Product do
+  config.sort_order = :id_asc
+  config.filters = false
+
+  includes(:options)
   permit_params :name, :description, :status,
                 :category_id, :product_type, :price,
                 :main_picture, related_product_ids: [], files: [],
-                product_options_attributes: [:id, :option_id, :primary, :_destroy]  # rubocop:disable  Layout/HashAlignment
+                product_options_attributes: [:id, :option_id, :primary, :_destroy],  # rubocop:disable  Layout/HashAlignment
+                images_attributes: [:id, :picture, :_destroy]  # rubocop:disable  Layout/HashAlignment
 
   form partial: 'admin/products/form'
 
@@ -99,6 +104,10 @@ ActiveAdmin.register Product do
   end
 
   controller do
+    def scoped_coolection
+      Product.preload(:options)
+    end
+
     def find_resource
       finder = resource_class.is_a?(FriendlyId) ? :slug : :id
       scoped_collection.find_by(finder => params[:id])

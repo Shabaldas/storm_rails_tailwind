@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 ActiveAdmin.setup do |config|
+
+  ActiveStorage::Engine.config.active_storage.content_types_to_serve_as_binary.delete('image/svg+xml')
   # == Site Title
   #
   # Set the title that is displayed on the main layout
