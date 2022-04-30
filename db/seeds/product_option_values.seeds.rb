@@ -1,6 +1,5 @@
 after :product_options do
   ProductOption.all.each do |option|
-    # binding.irb
     3.times do
       ProductOptionValue.create(
         product_option: option,
