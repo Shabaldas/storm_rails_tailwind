@@ -113,24 +113,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_17_092337) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_items", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "product_id", null: false
-    t.bigint "order_id", null: false
-    t.decimal "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["product_id"], name: "index_order_items_on_product_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.decimal "subtotal"
-    t.decimal "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "product_categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -208,8 +190,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_17_092337) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "option_values", "options", on_delete: :cascade
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "products"
   add_foreign_key "product_option_values", "option_values", on_delete: :cascade
   add_foreign_key "product_option_values", "product_options", on_delete: :cascade
   add_foreign_key "product_options", "options", on_delete: :cascade
