@@ -1,6 +1,8 @@
 class CartItem < ApplicationRecord
   include ActionView::RecordIdentifier
 
+  # has_many :cart_item_options
+
   belongs_to :cart
   belongs_to :product
 

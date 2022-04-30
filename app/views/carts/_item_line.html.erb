@@ -16,7 +16,7 @@
             <%= cart_item.product.name %>
           </h6>
           <div class="w-20 flex justify-between items-center mt-2">
-            <%= link_to '+', carts_add_path(product: cart_item.product.id), method: :post, remote: true %>
+            <%= link_to '+', carts_add_path(product: { id: cart_item.product.id }), method: :post, remote: true %>
             <p> <%= render "carts/item_quantity", cart_item: cart_item %></p>
             <%= link_to '-', carts_reduce_path(product: cart_item.product.id), method: :post, remote: true %>
           </div>

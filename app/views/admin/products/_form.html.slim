@@ -10,6 +10,7 @@
     = image_tag @product.main_picture, height: '250', class: 'ml-5' if @product.main_picture.present?
 
     = f.input :files, as: :file, input_html: { multiple: true }
+    
     - f.object.files.each do |file|
       - if file.variable?
         = image_tag file.variant(resize: "200x200"), required: true

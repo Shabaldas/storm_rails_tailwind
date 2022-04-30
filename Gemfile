@@ -30,7 +30,6 @@ gem 'slim-rails'
 gem "sprockets-rails"
 gem 'rails-i18n'
 gem 'turbo-rails'
-gem 'inline_svg'
 
 gem 'image_processing', '~> 1.2'
 
