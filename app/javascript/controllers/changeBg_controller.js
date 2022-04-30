@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-
+static targets =["svgElem"]
   connect() {
     document.querySelector('.upperBg').style.fill = '#96e06cd0';
   }
@@ -11,9 +11,7 @@ export default class extends Controller {
   }
 
   setColor(e) {
-    if (e.target.classList.contains('color')) {
-      var color = e.target.getAttribute('data-color');
-      document.querySelector('.upperBg').style.fill = color;
-    }
+      var color = e.target.value;
+      document.querySelector('#svgElem svg path').setAttribute('fill', `${color}`);
   }
 }
