@@ -21,7 +21,8 @@ color_option = Option.create(
     option_type: :radio_buttons,
     measurement: :color
 )
-5.times do
-  color_option.option_values.create(value: Faker::Color.hex_color)
+
+["#ff0000", "#000000", "#ffffff", "#f6ff00", "#0062ff", "#009445"].each do |color|
+  color_option.option_values.create(value: color)
   print '.'.green
 end
