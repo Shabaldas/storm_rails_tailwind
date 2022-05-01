@@ -22,7 +22,7 @@ color_option = Option.create(
     measurement: :color
 )
 
-["#ff0000", "#000000", "#ffffff", "#f6ff00", "#0062ff", "#009445"].each do |color|
+["#00FF00", "#FFFF00", "#FFFFFF", "#000000", "#808080", "#FF0000", "#0000FF"].each do |color|
   color_option.option_values.create(value: color)
   print '.'.green
 end
