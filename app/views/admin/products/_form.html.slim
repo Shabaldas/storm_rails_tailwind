@@ -8,12 +8,9 @@
     = f.input :category,  as: :select, collection: nested_dropdown(ProductCategory.all.arrange), label: 'Category'
     = f.input :main_picture, as: :file
     = image_tag @product.main_picture, height: '250', class: 'ml-5' if @product.main_picture.present?
-
-    = f.input :files, as: :file, input_html: { multiple: true }
-    
-    - f.object.files.each do |file|
-      - if file.variable?
-        = image_tag file.variant(resize: "200x200"), required: true
+    - f.has_many :images, allow_destroy: true do |image_field|
+      - image_field.input :picture, as: :file
+      = image_tag image_field.object.picture, height: '250' if image_field.object.persisted?
 
     = f.inputs 'Options' do
       - f.has_many :product_options, new_record: 'Add option', allow_destroy: true do |op_field|
