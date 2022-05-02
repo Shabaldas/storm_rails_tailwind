@@ -1,7 +1,7 @@
 class CartItem < ApplicationRecord
   include ActionView::RecordIdentifier
 
-  # has_many :cart_item_options
+  has_many :cart_item_option_values, dependent: :destroy
 
   belongs_to :cart
   belongs_to :product
@@ -50,6 +50,8 @@ class CartItem < ApplicationRecord
                          partial: 'carts/total_price',
                          locals: { current_cart: cart }
   end
+
+   accepts_nested_attributes_for :cart_item_option_values
 
   def total_price
     quantity.to_i * product.price.to_f

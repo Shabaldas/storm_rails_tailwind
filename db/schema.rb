@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_30_214912) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_02_175213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_30_214912) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "cart_item_option_values", force: :cascade do |t|
+    t.bigint "cart_item_id"
+    t.bigint "product_option_value_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_item_id"], name: "index_cart_item_option_values_on_cart_item_id"
+    t.index ["product_option_value_id"], name: "index_cart_item_option_values_on_product_option_value_id"
+  end
+
   create_table "cart_items", force: :cascade do |t|
     t.bigint "cart_id", null: false
     t.bigint "product_id", null: false
@@ -90,7 +99,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_30_214912) do
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
     t.string "scope"
-    t.datetime "created_at", precision: nil
+    t.datetime "created_at"
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
@@ -194,11 +203,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_30_214912) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cart_item_option_values", "cart_items", on_delete: :cascade
+  add_foreign_key "cart_item_option_values", "product_option_values", on_delete: :cascade
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "option_values", "options", on_delete: :cascade
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "products"
   add_foreign_key "product_images", "products", on_delete: :cascade
   add_foreign_key "product_option_values", "option_values", on_delete: :cascade
   add_foreign_key "product_option_values", "product_options", on_delete: :cascade

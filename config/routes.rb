@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'modeling', to: 'static_pages#modeling', as: :modeling
 
   namespace :carts do
+    resources :cart_items, only: [:create]
     resource :add, only: [:create]
     resource :reduce, only: [:create]
     resource :remove, only: [:destroy]
