@@ -18,7 +18,6 @@ export default class extends Controller {
     }
 
     this.element.setAttribute("aria-haspopup", "true")
-    console.dir(this.contentTargets)
   }
 
   disconnect() {

@@ -1,0 +1,2 @@
+class CartItemOption < ApplicationRecord
+end

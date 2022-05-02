@@ -1,13 +1,17 @@
 module OptionHelper
   def available_colors(options)
-    options.pluck(:value).map(&:downcase)
+    options
   end
 
   def select_colors
     {
-      red: '#E9646B', green: '#96E06C',
-      black: '#000000', white: 'white',
-      yellow: '#F1C232', blue: '#67ACEC'
+      '#FFFFFF': 'white',
+      '#000000': 'black',
+      '#808080': 'gray',
+      '#00FF00': 'green',
+      '#FF0000': 'red',
+      '#FFFF00': 'yellow',
+      '#0000FF': 'blue'
     }
   end
 end

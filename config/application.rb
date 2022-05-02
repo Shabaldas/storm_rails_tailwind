@@ -11,6 +11,7 @@ module StormRailsTailwind
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    ActiveStorage::Engine.config.active_storage.content_types_to_serve_as_binary.delete('image/svg+xml')
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
