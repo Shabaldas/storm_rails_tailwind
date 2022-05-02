@@ -1,0 +1,44 @@
+en:
+  checkout:
+    title:
+      order: "Your order"
+    subtitles:
+      personal_data: "Personal data"
+      selected_goods: "Selected goods"
+      delivery: "Delivery method"
+      payment: "Payment"
+      comment: "Comment"
+    placeholders:
+      personal_data:
+        first_name: "Mark"
+        last_name: "Pazuniak"
+        email: "Indicate your email"
+        phone: "+380-(067)-555-0134"
+      delivery:
+        location: "Specify the location"
+        delivery_method: "Specify delivery method"
+        department: "Specify department"
+      comment: "Write additional wishes for the order"
+    delivery:
+      new_post:
+        title: "New Post"
+        specification: "accordingly to the carrier rates"
+        self_pickup: "Self-pickup"
+        courier: "Courier"
+        subtitles:
+          city: "City"
+          delivery_method: "Delivery method"
+          department: "Department"
+          street: "Street"
+          house: "House"
+          flat : "Flat"
+      ukr_post:
+        title: "Ukr post"
+        subtitles:
+          postal_index: "Postal index"
+    payment:
+      upon_receipt: "Upon receipt"
+      by_card: "Visa/MasterCard (LiqPay)"
+      summary: "Summary"
+      advertisement: "*Notice! Price indicates without carrier rates!"
+      btn: "Pay"

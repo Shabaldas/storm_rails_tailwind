@@ -1,0 +1,44 @@
+uk:
+  checkout:
+    title:
+      order: "Ваше замовлення"
+    subtitles:
+      personal_data: "Персональні дані"
+      selected_goods: "Обрані Товари"
+      delivery: "Спосіб Доставки"
+      payment: "Оплата"
+      comment: "Коментар"
+    placeholders:
+      personal_data:
+        first_name: "Марко"
+        last_name: "Пазиняк"
+        email: "Вкажіть електронну пошту"
+        phone: "+380-(067)-555-0134"
+      delivery:
+        location: "Вкажіть населений пункт"
+        delivery_method: "Оберіть спосіб доставки"
+        department: "Оберіть відділення"
+      comment: "Напишіть додаткові побажання до замовлення"
+    delivery:
+      new_post:
+        title: "New Post"
+        specification: "за тарифами перевізника"
+        self_pickup: "Самовивіз"
+        courier: "Кур'єр"
+        subtitles:
+          city: "Місто"
+          delivery_method: "Спосіб доставки"
+          department: "Відділення"
+          street: "Вулиця"
+          house: "Будинок"
+          flat : "Квартира"
+      ukr_post:
+        title: "Укр пошта"
+        subtitles:
+          postal_index: "Поштовий індекс"
+    payment:
+      upon_receipt: "При отриманні"
+      by_card: "Карткою Visa/MasterCard (LiqPay)"
+      summary: "Разом"
+      advertisement: "Зверніть увагу! Ціна вказана без тарифу доставки перевізника!"
+      btn: "Оплатити"
