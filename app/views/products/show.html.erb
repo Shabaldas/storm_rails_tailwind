@@ -8,7 +8,7 @@
         </svg>
         <%= link_to t('show.product.link'), products_path, class: "font-base font-medium text-gray-800 ml-2" %>
       </div>
-      <div class="mt-6">
+      <div data-controller="selected-size" class="mt-6">
         <div class="block md:flex md:justify-between items-end font-medium text-gray-800">
           <div>
             <p class="text-zinc-500 text-base font-normal">
@@ -18,7 +18,9 @@
               <%= @product.name %>
             </h4>
           </div>
-          <p class="text-3xl">₴ <%=@product.price%></p>
+          <p class="text-3xl" data-selected-size-target="price"> 
+            <%= @product.price %>
+          </p>
         </div>
 
         <div class="mt-1"></div>
@@ -40,7 +42,7 @@
               <%= t('show.product.parameter2') %>
             </p>
             <div>
-              <%= form.select :price, options_for_select(@product.size_and_price), {} ,{ class:'w-full rounded mt-1' } %>
+              <%= form.select :price, options_for_select(@product.size_and_price), {} ,{ class:'w-full rounded mt-1', 'data-action': "change->selected-size#changePrice" } %>
             </div>
           <% end %>
         </div>
