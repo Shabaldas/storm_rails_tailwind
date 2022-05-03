@@ -30,9 +30,10 @@ class CartItem < ApplicationRecord
                          locals: { count: cart.quantity }
 
     broadcast_replace_to cart,
-                         target: dom_id(self, 'quantity'),
-                         partial: 'carts/item_quantity',
+                         target: dom_id(self),
+                         partial: 'carts/item_line',
                          locals: { cart_item: self }
+
     broadcast_replace_to cart,
                          target: 'total_price',
                          partial: 'carts/total_price',
@@ -55,5 +56,10 @@ class CartItem < ApplicationRecord
 
   def total_price
     quantity.to_i * product.price.to_f
+  end
+
+  def total_price_secondat
+    (cart_item_option_values.map(&:price).sum) * quantity.to_i
+    # quantity.to_i
   end
 end

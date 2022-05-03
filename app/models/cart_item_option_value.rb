@@ -1,3 +1,4 @@
 class CartItemOptionValue < ApplicationRecord
-  # belongs_to :option_value, inverse_of: :cart_item_option_values
+  belongs_to :product_option_value
+  delegate :price, to: :product_option_value
 end

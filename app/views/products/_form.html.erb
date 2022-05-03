@@ -35,7 +35,7 @@
               <div class="w-full lg:w-4/6 flex justify-between items-center mt-3">
                 <%= o_v_f.collection_radio_buttons(:product_option_value_id, @product.product_colors, :id, :itself )  do |builder| %>
                   <div data-action="click->changeBg#setColor">
-                    <%= builder.radio_button value: builder.object.id,  style: "background-color: #{select_colors[builder.object.value.to_sym]}; ;background-image: none; border: none; height: 2rem; width: 2rem;"  %>
+                    <%= builder.radio_button value: builder.object.id, data: { color: select_colors[builder.object.value.to_sym] },  style: "background-color: #{select_colors[builder.object.value.to_sym]}; ;background-image: none; border: none; height: 2rem; width: 2rem;"  %>
                   </div>
                 <% end %>
               </div>

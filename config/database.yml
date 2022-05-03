@@ -13,7 +13,7 @@ default: &default
 
 development:
   <<: *default
-  database: storm_development
+  database: storm_rails_tailwind_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,4 +24,4 @@ test:
 
 production:
   <<: *default
-  database: storm_production
+  database: storm_rails_tailwind_production

@@ -1,9 +1,24 @@
 module Carts
   class CartItemsController < ApplicationController
-
     def create
-      @cart_item = current_cart.cart_items.build(cart_item_params)
 
+      option_ids = cart_item_params.dig('cart_item_option_values_attributes').values.map { |h| h['product_option_value_id'].to_i }
+      @test = current_cart.cart_items.where(product_id: cart_item_params[:product_id]).select { |x| x.cart_item_option_values.pluck(:product_option_value_id) == option_ids }.first
+      @cart_item = @test.presence || current_cart.cart_items.build(cart_item_params)
+
+      @cart_item.quantity += 1 if @cart_item.persisted?
+
+      @cart_item.save
+    end
+
+    def update_quantity
+      @cart_item = current_cart.cart_items.find_by(id: params[:id])
+
+      if params[:operation] == '+'
+        @cart_item.quantity += 1
+      else
+        @cart_item.quantity = [@cart_item.quantity - 1, 1].max
+      end
       @cart_item.save
     end
 
@@ -14,5 +29,5 @@ module Carts
             .permit(:product_id, cart_item_option_values_attributes: %i[id product_option_value_id])
             .merge(quantity: 1)
     end
- end
+  end
 end
