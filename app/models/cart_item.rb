@@ -17,10 +17,10 @@ class CartItem < ApplicationRecord
                         partial: 'carts/item_line',
                         locals: { cart_item: self }
 
-    broadcast_replace_to cart,
-                         target: 'total_price',
-                         partial: 'carts/total_price',
-                         locals: { current_cart: cart }
+    broadcast_replace_to product,
+                         target: 'cart_form',
+                         partial: 'products/form',
+                         locals: { current_cart: cart, product: product }
   end
 
   after_update_commit do

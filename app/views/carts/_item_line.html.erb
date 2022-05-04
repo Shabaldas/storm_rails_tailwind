@@ -23,7 +23,6 @@
         </div>
       </div>
       <div class="w-16 flex justify-end absolute bottom-0 right-0 sm:relative sm:-top-3 sm:-mt-1.5 text-sm text-gray-800 font-medium">
-        <%= raw ap cart_item.cart_item_option_values.map(&:price) %>
         <%= number_to_uah((cart_item.cart_item_option_values.map(&:price).sum) * cart_item.quantity) %>
       </div>
     </div>
