@@ -31,6 +31,9 @@ gem "sprockets-rails"
 gem 'rails-i18n'
 gem 'turbo-rails'
 gem 'pry', '~> 0.13.1'
+gem 'tzinfo'
+gem 'tzinfo-data'
+# gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 gem 'image_processing', '~> 1.2'
 
