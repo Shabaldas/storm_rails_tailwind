@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'modeling', to: 'static_pages#modeling', as: :modeling
 
   namespace :carts do
-    resources :cart_items, only: [:create] do 
+    resources :cart_items, only: [:create] do
       patch :update_quantity, on: :member
     end
     resource :add, only: [:create]

@@ -1,10 +1,11 @@
 class CartItem < ApplicationRecord
   include ActionView::RecordIdentifier
 
-  has_many :cart_item_option_values, dependent: :destroy
-
   belongs_to :cart
   belongs_to :product
+  has_many :cart_item_option_values, dependent: :destroy
+
+  accepts_nested_attributes_for :cart_item_option_values
 
   after_create_commit do
     broadcast_replace_to cart,
@@ -38,6 +39,10 @@ class CartItem < ApplicationRecord
                          target: 'total_price',
                          partial: 'carts/total_price',
                          locals: { current_cart: cart }
+    broadcast_replace_to product,
+                         target: 'cart_form',
+                         partial: 'products/form',
+                         locals: { current_cart: cart, product: product }
   end
 
   after_destroy_commit do
@@ -52,14 +57,11 @@ class CartItem < ApplicationRecord
                          locals: { current_cart: cart }
   end
 
-   accepts_nested_attributes_for :cart_item_option_values
-
   def total_price
     quantity.to_i * product.price.to_f
   end
 
   def total_price_secondat
-    (cart_item_option_values.map(&:price).sum) * quantity.to_i
-    # quantity.to_i
+    cart_item_option_values.sum(&:price) * quantity.to_i
   end
 end

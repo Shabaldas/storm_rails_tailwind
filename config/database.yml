@@ -6,8 +6,8 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
-  username: postgres
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
