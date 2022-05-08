@@ -1,0 +1,107 @@
+
+<div id='cart_form' data-controller="toggle">
+  <% cart_item = product.cart_items.build %>
+  <% value_for_select = product.size_and_price.map { |x| [x[:value], x[:id], { data: { price: x[:price] } }]} %>
+  <% color_value = select_colors[product.product_colors.first.value.to_sym] %>
+  <%= form_for( cart_item, url: carts_cart_items_path, method: :post) do |form| %>
+    <div data-controller="changeBg" class="w-screen h-full lg:max-w-screen-2xl lg:mx-auto block lg:flex lg:justify-between pb-14 px-7 mt-8 md:px-24 mt-8 overflow-hidden">
+      <div class="w-full lg:w-1/3">
+        <div class="flex items-center -ml-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <%= link_to t('show.product.link'), products_path, class: "font-base font-medium text-gray-800 ml-2" %>
+        </div>
+        <div data-controller="selected-size" class="mt-6">
+          <div class="block md:flex md:justify-between items-end font-medium text-gray-800">
+            <div>
+              <p class="text-zinc-500 text-base font-normal">
+                <%= product.category.name  %>
+              </p>
+              <h4 class="text-2xl pt-1">
+                <%= product.name %>
+              </h4>
+            </div>
+            <p class="text-3xl" data-selected-size-target="price" remote: true >
+              <%= number_to_uah(value_for_select.first&.last.dig(:data, :price).round).presence || number_to_uah(product.price) %>
+            </p>
+          </div>
+
+          <div class="mt-1"></div>
+
+          <% if product.primary_product_option.present? %>
+
+            <% form.object.cart_item_option_values.build %>
+            <%= form.fields_for :cart_item_option_values do |o_v_f| %>
+                <p class="text-zinc-500 text-base">
+                  <%= t('show.product.parameter1') %>
+                </p>
+                <div class="w-full lg:w-4/6 flex justify-between items-center mt-3" remote: true>
+                  <%= o_v_f.collection_radio_buttons(:product_option_value_id, product.product_colors, :id, :itself, { checked: product.product_colors.first.id } ) do |builder| %>
+                    <div data-action="click->changeBg#setColor">
+                      <%= builder.radio_button value: builder.object.id, data: { color: select_colors[builder.object.value.to_sym] },  style: "background-color: #{select_colors[builder.object.value.to_sym]}; background-image: none; border: none; height: 2rem; width: 2rem;"  %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <%= form.fields_for :cart_item_option_values do |o_v_f| %>
+              <p class="text-zinc-500 text-base">
+                <%= t('show.product.parameter2') %>
+              </p>
+              <div>
+                <%= o_v_f.select :product_option_value_id, options_for_select(value_for_select, selected: value_for_select.first ), {} ,{ class:'w-full rounded mt-1', 'data-action': "change->selected-size#changePrice" } %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="hidden">
+          <%= form.text_field :product_id, value: product.id, as: :hidden %>
+        </div>
+        <%= form.submit t('show.product.btn'),class: "w-full h-14 bg-yellow-400 flex items-center justify-center font-medium uppercase text-gray-800 rounded-2xl mt-8" %>
+        <div data-controller="accordion" class="font-base text-gray-800 mt-6">
+          <div>
+            <div data-action="click->accordion#toggle" data-accordion-target="accTitle" id="acc_btn" data-id="acc_btn1"
+                data-active="false" class="acc_title flex justify-between items-center cursor-pointer">
+              <p class="font-medium pt-5 pb-3">
+                <%= t('show.product.acc_title1') %>
+              </p>
+              <div data-accordion-target="accordionIcon" class="mt-3"></div>
+            </div>
+            <div class="hidden pt-3">
+              <p>
+                <%= product.description %>
+              </p>
+            </div>
+            <div class="w-full h-px bg-zinc-400 mt-3"></div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full lg:w-2/3 h-full max-h-max relative hidden" id="product-images-wrapper" data-color-value="<%= color_value %>" >
+        <div data-controller="carousel" class="swiper-container w-full lg:w-9/12 -ml-2 lg:ml-44 mt-16 lg:mt-10"
+            data-carousel-options-value='{"pagination": { "el": ".swiper-pagination"}, "navigation": { "nextEl": ".swiper-button-next","prevEl": ".swiper-button-prev"}}'>
+          <div class="swiper-wrapper">
+            <% if product.images.present? %>
+              <% product.images.each do |file|%>
+                <div class="swiper-slide flex justify-center items-center ">
+                  <div class="w-full h-full relative svgElem" >
+                    <%== file.picture.download %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="swiper-button-next hidden lg:block absolute inset-y-1/2 -right-2" style="color:#1f2937" tabindex="0"
+            aria-label="Next slide" id="acc_btn" data-active="false" id="1"="swiper-wrapper-dec5216f065e46c3"
+            aria-disabled="false">
+        </div>
+        <div class="swiper-button-prev absolute inset-y-1/2 left-28 hidden lg:block" style="color:#1f2937" tabindex="-1"
+          aria-label="Previous sli" id="acc_btn" data-active="false" id="1" rols="swiper-wrapper-dec5216f065e46c3"
+          aria-disabled="true">
+        </div>
+        <div class="swiper-pagination w-32 flex justify-between -ml-16 lg:ml-0 inset-x-1/2 mt-5"></div>
+      </div>
+    </div>
+  <% end %>
+</div>

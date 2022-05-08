@@ -84,7 +84,7 @@
               <div class="w-42 shadow rounded border overflow-hidden">
                 <ul class="block bg-white">
                   <span class="w-full h-px absolute top-8 bg-gray-300"></span>
-                  <%-I18n.available_locales.each do |locale| %>
+                  <%- I18n.available_locales.reject { |locale| current_locale?(locale) }.each do |locale| %>
                     <li class="text-base text-gray-900 text-center block px-5 py-1 cursor-pointer">
                       <%= link_to_unless current_locale?(locale), I18n.t("global.header.#{locale}_switch"),
                         locale_path(locale), method: :put %>
