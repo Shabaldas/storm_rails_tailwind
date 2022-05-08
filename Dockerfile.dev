@@ -1,0 +1,20 @@
+ARG RUBY_VERSION
+FROM ruby:3.0.1-alpine
+
+RUN apk add --no-cache --update build-base \
+  bash \
+  git \
+  postgresql-dev \
+  nodejs \
+  yarn \
+  imagemagick \
+  && rm -rf /var/cache/apk/*
+RUN mkdir -p /app
+WORKDIR /app
+
+COPY Gemfile Gemfile.lock ./
+COPY package.json yarn.lock ./
+
+RUN gem update --system
+RUN bundle install -j $(nproc)
+RUN yarn install

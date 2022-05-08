@@ -415,6 +415,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2022.1)
+      tzinfo (>= 1.0.0)
     unicode-display_width (2.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -490,6 +492,7 @@ DEPENDENCIES
   sprockets-rails
   turbo-rails
   turbolinks (~> 5)
+  tzinfo
   tzinfo-data
   web-console (>= 4.1.0)
   webdrivers
