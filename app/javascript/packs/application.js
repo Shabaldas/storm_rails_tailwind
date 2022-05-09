@@ -4,17 +4,13 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "swiper/swiper-bundle.min.css"
+import "@hotwired/turbo-rails"
 
 require("stylesheets/application.scss")
 require("controllers")
 
 Rails.start()
-Turbolinks.start()
 ActiveStorage.start()
-
-import { Turbo } from "@hotwired/turbo-rails"
-Turbo.session.drive = false

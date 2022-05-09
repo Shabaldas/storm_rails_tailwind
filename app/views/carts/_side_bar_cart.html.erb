@@ -14,10 +14,12 @@
       <%= t('basket.content.title') %>
     </h4>
   </div>
+  
+  <%= render "carts/empty_basket" %>
 
   <div id="cart_item">
     <% current_cart.cart_items.each do |cart_item| %>
-      <%= render "carts/item_line", cart_item: cart_item, remote: true %>
+      <%= render "carts/item_line", cart_item: cart_item %>
     <% end %>
   </div>
 

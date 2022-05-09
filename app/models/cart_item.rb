@@ -13,6 +13,11 @@ class CartItem < ApplicationRecord
                          partial: 'carts/item_count',
                          locals: { count: cart.quantity }
 
+    broadcast_replace_to cart,
+                        target: 'change_picture',
+                        partial: 'carts/empty_basket',
+                        locals: { current_cart: cart }
+
     broadcast_append_to cart,
                         target: 'cart_item',
                         partial: 'carts/item_line',
@@ -55,6 +60,12 @@ class CartItem < ApplicationRecord
                          target: 'total_price',
                          partial: 'carts/total_price',
                          locals: { current_cart: cart }
+
+    broadcast_replace_to cart,
+                         target: 'change_picture',
+                         partial: 'carts/empty_basket',
+                         locals: { current_cart: cart }
+
   end
 
   def total_price

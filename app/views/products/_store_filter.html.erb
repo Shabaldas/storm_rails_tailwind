@@ -1,6 +1,4 @@
-<%= turbo_frame_tag "filtering" do %>
   <%= form_for :search, url: "#" do |f| %>
-
     <%= f.text_field :query, class: "w-full py-2 flex flex-center justify-center rounded" %>
     <h4 class="text-lg text-gray-800">
       <%= t('stores.index.categories_suptitle') %>
@@ -37,4 +35,3 @@
 
     <%= f.submit t('stores.index.search_btn'), class: "w-full py-2 bg-yellow-400 flex flex-center justify-center rounded hover:bg-yellow-500" %>
   <% end %>
-<% end %>
