@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  before_action :turbo_frame_request_variant
   protect_from_forgery with: :null_session
 
   def default_url_options
@@ -25,6 +26,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart
 
   private
+
+  def turbo_frame_request_variant
+    request.variant = :turbo_frame if turbo_frame_request?
+  end
 
   def authenticate_admin_user!
     return unless !current_user || current_user.customer?

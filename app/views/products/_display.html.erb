@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "products_display" do %>
+  <%- products.each do |product| %>
+    <%= link_to product_path(product.id) do %>
+      <div id="<%= dom_id product %>" class="w-full h-56 md:h-72 bg-gradient-to-br from-gray-700 to-gray-800 rounded-3xl relative overflow-hidden">
+        <div class="px-5 py-5">
+          <p class="text-zinc-400 text-base">
+            <%= product.category.name%>
+          </p>
+          <h4 class="text-white text-2xl font-medium">
+            <%= product.name %>
+          </h4>
+          <p class="text-3xl text-white pt-5">
+            ₴ <%= product.price %>
+          </p>
+        </div>
+        <div class="w-7/12 lg:w-10/12 absolute bottom-0 right-0">
+          <% if product.main_picture.attached? %>
+            <%= image_tag(product.main_picture) %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

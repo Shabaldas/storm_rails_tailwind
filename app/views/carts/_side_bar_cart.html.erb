@@ -15,6 +15,14 @@
     </h4>
   </div>
 
+  <% if current_cart.cart_items.empty? %>
+    <%= turbo_frame_tag 'change_picture' do %>
+      <div class="absolute inset-1/3 flex flex-col items-center">
+        <%= image_tag("partials_img/empty_basket.png") %>
+      </div>
+    <% end %>
+  <% end %>
+
   <div id="cart_item">
     <% current_cart.cart_items.each do |cart_item| %>
       <%= render "carts/item_line", cart_item: cart_item, remote: true %>

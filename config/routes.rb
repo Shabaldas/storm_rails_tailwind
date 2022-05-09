@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :widgets
   ActiveAdmin.routes(self)
   put 'locales/:locale', to: 'locales#update', as: :locale,
                          constraints: { locale: /#{I18n.available_locales.join('|')}/ }
@@ -6,7 +7,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'static_pages#home', as: :home
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    collection do
+      post :search, to: "searches#show"
+    end
+  end
   resource :checkout, only: :show
 
   get 'print', to: 'static_pages#print', as: :print
