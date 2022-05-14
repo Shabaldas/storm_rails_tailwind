@@ -21,4 +21,5 @@ Rails.application.routes.draw do
     resource :reduce, only: [:create]
     resource :remove, only: [:destroy]
   end
+  resources :calculators, only: :index
 end

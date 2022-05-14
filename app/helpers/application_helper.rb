@@ -1,6 +1,8 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  COLORS = %w[FFFFFF E9646B F1C232 000000 96E06C 67ACEC].freeze
+
   def number_to_uah(amount)
     number_to_currency(amount, unit: '₴')
   end

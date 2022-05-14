@@ -1,0 +1,18 @@
+<%= simple_form_for :calculator do |f| %>
+  <div class="flex" data-controller="calculator">
+    <%= f.input :file, as: :file, input_html: { data: { action: "change->calculator#onDropFile" } } %>
+    <div class="flex-1" id="scene" data-calculator-target="scene"></div>
+    <div class="flex-1 print-params">
+      <div class="flex space-x-3 colors">
+        <% ApplicationHelper::COLORS.each do |color| %>
+          <div
+            class="w-5 h-5 cursor-pointer rounded-full"
+            style="background-color: #<%= color %>"
+            data-action="click->calculator#setColor"
+            data-calculator-color-param="<%= color %>"
+          ></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
