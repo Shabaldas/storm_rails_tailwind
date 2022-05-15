@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   root 'static_pages#home', as: :home
 
   resources :products, only: [:index, :show]
-  resource :checkout, only: :show
+  resources :orders, only: :update
 
+  get 'checkout', to: 'orders#checkout', as: :checkout
   get 'print', to: 'static_pages#print', as: :print
   get 'rendering', to: 'static_pages#rendering', as: :rendering
   get 'modeling', to: 'static_pages#modeling', as: :modeling
