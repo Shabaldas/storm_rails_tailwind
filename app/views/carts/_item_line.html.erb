@@ -3,9 +3,11 @@
     <div class="flex justify-between items-center relative">
       <div class="flex items-center">
         
-        <%= link_to "remove",
-          carts_remove_path(product: cart_item.product.id),
-          method: :delete %>
+        <div class="w-2 h-3">
+          <%= link_to image_tag("partials_img/delete.png"),
+            carts_remove_path(product: cart_item.product.id), method: :delete 
+          %>
+        </div>
         <div class="w-16 h-16 bg-gray-300 ml-2">
           <% if cart_item.product.main_picture.present?%>
             <%= image_tag(cart_item.product.main_picture) %>

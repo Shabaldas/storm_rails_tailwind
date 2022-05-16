@@ -1,3 +1,5 @@
+<%= turbo_stream_from current_cart %>
+
 <div class="w-screen h-full lg:max-w-screen-2xl lg:mx-auto block lg:flex lg:justify-between pb-14 px-7 mt-8 md:px-24 mt-8 overflow-hidden">
   <div class="w-full lg:w-2/3">
     <div class="text-2xl text-gray-800 font-medium">
@@ -11,9 +13,6 @@
         <%= t('checkout.subtitles.personal_data') %>
       </div>
     </div>
-    <%= raw ap @order%>
-    <%= raw ap @order.cart%>
-    <%= raw ap @order.cart.cart_items%>
     <%= form_for(@order) do |f| %>
       <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
       <div>
@@ -28,6 +27,7 @@
                                   class: "w-full rounded",
                                   label: false,
                                   placeholder: "#{t('checkout.placeholders.personal_data.first_name')}",
+                                  value: current_user&.first_name.presence || nil,
                                   input_html: { autocomplete: "first_name" } %>
             </div>
           </div>
@@ -41,6 +41,7 @@
                                 class: "w-full rounded",
                                 label: false,
                                 placeholder: "#{t('checkout.placeholders.personal_data.last_name')}",
+                                value: current_user&.last_name.presence || nil,
                                 input_html: { autocomplete: "last_name" } %>
             </div>
           </div>
@@ -58,6 +59,7 @@
                                 class: "w-full rounded",
                                 autofocus: true,
                                 placeholder: "#{t('checkout.placeholders.personal_data.phone')}",
+                                value: current_user&.phone.presence || nil,
                                 input_html: { autocomplete: "phone" } %>
             </div>
           </div>
@@ -71,11 +73,14 @@
                                 class: "w-full rounded",
                                 label: false,
                                 placeholder: "#{t('checkout.placeholders.personal_data.email')}",
+                                value: current_user&.email.presence || nil,
                                 input_html: { autocomplete: "email" } %>
             </div>
           </div>
         </div>
       </div>
+
+      
       <div class="flex justify-between mt-16">
         <div class="flex items-center">
           <div class="w-6 h-6">
@@ -86,38 +91,14 @@
           </div>
         </div>
         <p class="text-2xl text-gray-700 font-medium">
-          <span>₴</span>
-          <span>3890</span>
+          <span><%= render "carts/total_price" %></span>
         </p>
       </div>
       <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
       <div>
-        <div class="w-full text-gray-800">
-          <div class="flex justify-between py-2">
-            <div class="w-5/6 lg:w-2/6 flex items-center">
-              <div class="w-2 h-3">
-                <%= image_tag("partials_img/delete.png") %>
-              </div>
-              <div class="w-14 h-14 mx-4">
-                <%= image_tag("partials_img/product.png") %>
-              </div>
-              <div class="ml-4">
-                <p>Incredible Hulk</p>
-                <div class="flex items-center">
-                  <button>-</button>
-                  <p class="mx-3">1x</p>
-                  <button>+</button>
-                </div>
-              </div>
-            </div>
-            <p class="w-3/6 text-gray-500 mt-1 hidden lg:block">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor purus nisl. In est ipsum, condimentum
-              quis velit ut, convallis semper ligula.
-            </p>
-            <p class="w-fit mt-1 font-medium">₴ 765</p>
-          </div>
-          <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
-        </div>
+        <%- @order.cart.cart_items.each do |item| %>
+          <p><%= render "carts/item_line", cart_item: item %></p>
+        <% end %>
       </div>
       <div data-controller="delivery-tabs" id="tabs">
         <div class="flex justify-between mt-8">
@@ -373,7 +354,7 @@
           <%= t('checkout.payment.summary') %>
         </div>
         <p class="text-gray-800 text-2xl font-medium">
-          ₴ 3890
+          ₴ 4900
         </p>
       </div>
       <p class="text-sm text-gray-400 mt-8">
@@ -385,6 +366,9 @@
     </div>
   </div>
 </div>
+
+    
+
 <!-- <div class="py-16 px-6 px-md-14 bg-white">
   <div class="d-flex mb-12 align-items-center">
     <h3 class="mb-0">Order summary</h3>
