@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   namespace :carts do
     resources :cart_items, only: [:create] do
       patch :update_quantity, on: :member
+      delete :destroy_all, on: :collection
     end
     resource :add, only: [:create]
     resource :reduce, only: [:create]

@@ -1,0 +1,5 @@
+<div id="make_order">
+  <% unless current_cart.cart_items.empty? %>
+    <%= link_to t('basket.content.btn'), checkout_path, class: "w-full h-16 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase" %>
+  <% end %>
+</div>
