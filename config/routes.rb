@@ -7,11 +7,17 @@ Rails.application.routes.draw do
   root 'static_pages#home', as: :home
 
   resources :products, only: [:index, :show]
+  resources :print_models, only: [] do
+    post :manage, on: :collection
+  end
+  get :calculator, to: 'print_models#new', as: :calculator
+
   resource :checkout, only: :show
 
   get 'print', to: 'static_pages#print', as: :print
   get 'rendering', to: 'static_pages#rendering', as: :rendering
   get 'modeling', to: 'static_pages#modeling', as: :modeling
+
 
   namespace :carts do
     resources :cart_items, only: [:create] do
@@ -21,5 +27,5 @@ Rails.application.routes.draw do
     resource :reduce, only: [:create]
     resource :remove, only: [:destroy]
   end
-  resources :calculators, only: :index
+  # resources :calculators, only: :index
 end

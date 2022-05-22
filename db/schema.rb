@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_02_175213) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_22_140208) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -122,6 +122,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_175213) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "print_model_attributes", force: :cascade do |t|
+    t.bigint "print_model_id"
+    t.string "color"
+    t.string "material"
+    t.string "quality"
+    t.decimal "subtotal_price", precision: 8, scale: 2, default: "0.0"
+    t.decimal "price", precision: 8, scale: 2, default: "0.0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["print_model_id"], name: "index_print_model_attributes_on_print_model_id"
+  end
+
+  create_table "print_models", force: :cascade do |t|
+    t.string "name"
+    t.string "size"
+    t.float "weight"
+    t.float "volume"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "product_categories", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -208,6 +229,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_175213) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "option_values", "options", on_delete: :cascade
+  add_foreign_key "print_model_attributes", "print_models", on_delete: :cascade
   add_foreign_key "product_images", "products", on_delete: :cascade
   add_foreign_key "product_option_values", "option_values", on_delete: :cascade
   add_foreign_key "product_option_values", "product_options", on_delete: :cascade
