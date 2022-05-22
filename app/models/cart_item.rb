@@ -80,7 +80,6 @@ class CartItem < ApplicationRecord
                          target: 'make_order',
                          partial: 'carts/make_order',
                          locals: { current_cart: cart }
-
   end
 
   def total_price

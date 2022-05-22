@@ -29,19 +29,7 @@
         <%= link_to 'Destoy all cart items', destroy_all_carts_cart_items_path, method: :delete, class: "w-full bg-red-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase" %>
       </h5>
     </div>
-    <div class="flex justify-between items-center text-sm text-gray-800 font-medium">
-      <h5>
-        <%= t('basket.content.delivery') %>
-      </h5>
-      <p>₴ 65</p>
-    </div>
     <div class="w-full h-px bg-gray-300 my-4"></div>
-    <div class="flex justify-between items-center text-sm text-gray-800 font-medium">
-      <h5>
-        <%= t('basket.content.summary') %>
-      </h5>
-      <p><%= render "carts/total_price" %></p>
-    </div>
     <%= render "carts/make_order" %>
   </div>
 </div>
