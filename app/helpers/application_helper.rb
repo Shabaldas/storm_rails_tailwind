@@ -1,8 +1,8 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  COLORS = %w[FFFFFF E9646B F1C232 000000 96E06C 67ACEC].freeze
-  MATERIALS = %w[PLA ABS PET Nylon Elastan].freeze
+  COLORS = ['FFFFFF', 'E9646B', 'F1C232', '000000', '96E06C', '67ACEC'].freeze
+  MATERIALS = ['PLA', 'ABS', 'PET', 'Nylon', 'Elastan'].freeze
   QUALITY = [100, 200, 300].freeze
 
   def number_to_uah(amount)

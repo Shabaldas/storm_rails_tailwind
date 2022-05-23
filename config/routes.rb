@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'static_pages#home', as: :home
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resources :cart_items, only: :create, controller: 'products/cart_items'
+  end
   resources :print_models, only: [] do
     post :manage, on: :collection
   end
@@ -18,9 +20,8 @@ Rails.application.routes.draw do
   get 'rendering', to: 'static_pages#rendering', as: :rendering
   get 'modeling', to: 'static_pages#modeling', as: :modeling
 
-
   namespace :carts do
-    resources :cart_items, only: [:create] do
+    resources :cart_items, only: [:create, :destroy] do
       patch :update_quantity, on: :member
     end
     resource :add, only: [:create]
