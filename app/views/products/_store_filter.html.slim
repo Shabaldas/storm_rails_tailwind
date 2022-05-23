@@ -1,0 +1,25 @@
+div data-turbo='true'
+  = form_for @q, url: products_path, method: :get do |f|
+    = f.text_field :name_start, class: "w-full py-2 flex flex-center justify-center rounded"
+    h4.text-lg.text-gray-800.py-2
+      = t('stores.index.categories_suptitle')
+    - @product_categories.each do |category|
+      .mt-3.cursor-pointer
+        .flex.justify-between
+          .flex.items-center
+            = f.check_box :category_id_in, { multiple: true, class: "appearance-none bg-white ring-1 ring-offset-2 ring-gray-400 focus:outline-0 checked:bg-yellow-500 bg-none rounded" },
+              category.id, nil
+            = f.label category.name.humanize, class:"ml-3 cursor-pointer"
+    h4.text-lg.text-gray-800.py-2
+      = t('stores.index.price')
+    .pt-4.cursor-pointer.pb-8
+      .price-range-slider data-controller="priceslider"
+        .price-container
+          .slider-track data-priceslider-target="sliderTrack"
+          = f.text_field :product_options_product_option_values_price_gteq, type: 'range', "min": '0', "max": '3000', value: @q.product_options_product_option_values_price_gteq || '0', "data-priceslider-target": "sliderOne", "data-action": "input->priceslider#sliderOne"
+          = f.text_field :product_options_product_option_values_price_lteq, type: 'range', "min": '0', "max": '3000', value: @q.product_options_product_option_values_price_lteq || '1500',
+                  "data-priceslider-target": "sliderTwo", "data-action": "input->priceslider#sliderTwo"
+        .slider-range
+          span#range1 data-priceslider-target="displayValOne"
+          span#range2 data-priceslider-target="displayValTwo"
+    = f.submit t('stores.index.search_btn'), class: "w-full py-2 bg-yellow-400 flex flex-center justify-center rounded hover:bg-yellow-500"
