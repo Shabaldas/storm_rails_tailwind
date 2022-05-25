@@ -6,7 +6,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 export default class extends Controller {
   static targets = [
     "scene", "name", "consumption", "size", "volume",
-    "price"
+    "price", "form", "colorField", "sizeField", "weightField",
+    "volumeField", "subtotalPriceField"
   ]
 
   initialize() {
@@ -43,8 +44,9 @@ export default class extends Controller {
 
   calculatePrice() {
     if (!this.material || !this.quality) return
-
-    this.priceTarget.innerText = Math.round(this.pricePerGram[this.material][this.quality] * this.consumption)
+    const price = Math.round(this.pricePerGram[this.material][this.quality] * this.consumption);
+    this.priceTarget.innerText = price;
+    this.subtotalPriceFieldTarget.setAttribute('value', price);
   }
 
   connect() {
@@ -103,6 +105,7 @@ export default class extends Controller {
   setColor({ params: { color } }) {
     if (!this.stlObject) return
 
+    this.colorFieldTarget.setAttribute('value', color);
     this.color = `0x${color}`
     this.stlObject.material.color.setHex(this.color)
   }
@@ -133,11 +136,20 @@ export default class extends Controller {
       const material = new THREE.MeshStandardMaterial({ color: parseInt(this.color) })
       const volume = this.getVolume(geometry)
       const newPosition = Math.max(x, y, z)
+      const size = `${(x / 10).toFixed(2)} x ${(y / 10).toFixed(2)} x ${(z / 10).toFixed(2)}`
+      const volumeValue = (volume / 1000).toFixed(2)
 
-      this.volumeTarget.innerText = (volume / 1000).toFixed(2)
+      this.volumeTarget.innerText = volumeValue;
+      this.volumeFieldTarget.setAttribute('value', volumeValue);
+
       this.consumption = volume * this.consumptionPerCubicGram
-      this.consumptionTarget.innerText = this.consumption.toFixed(1)
-      this.sizeTarget.innerText = `${(x / 10).toFixed(2)} x ${(y / 10).toFixed(2)} x ${(z / 10).toFixed(2)}`
+
+      const weight = this.consumption.toFixed(1)
+      this.consumptionTarget.innerText = weight;
+      this.weightFieldTarget.setAttribute('value', weight);
+
+      this.sizeTarget.innerText = size
+      this.sizeFieldTarget.setAttribute('value', size);
 
       this.calculatePrice()
       this.stlObject = new THREE.Mesh(geometry, material)
@@ -176,5 +188,10 @@ export default class extends Controller {
     this.consumptionTarget.innerText = 0
     this.sizeTarget.innerText = '0 x 0 x 0'
     this.priceTarget.innerText = 0
+    // this.formTarget.reset()
+  }
+
+  submitForm() {
+    this.formTarget.requestSubmit();
   }
 }
