@@ -27,12 +27,19 @@ module Carts
       @cart_item.save
     end
 
-    private
+    def destroy
+      @cart_item = current_cart.cart_items.find_by(id: params[:id])
 
-    def cart_item_params
-      params.require(:cart_item)
-            .permit(:product_id, cart_item_option_values_attributes: [:id, :product_option_value_id])
-            .merge(quantity: 1)
+      if @cart_item.cartable.is_a?(Product)
+        @cart_item.destroy
+      else
+        print_model = @cart_item.cartable.print_model
+        if print_model.print_model_attributes.one?
+          print_model.destroy
+        else
+          @cart_item.cartable.destroy
+        end
+      end
     end
   end
 end

@@ -2,7 +2,8 @@ class CartItem < ApplicationRecord
   include ActionView::RecordIdentifier
 
   belongs_to :cart
-  belongs_to :product
+  belongs_to :cartable, polymorphic: true
+
   has_many :cart_item_option_values, dependent: :destroy
 
   accepts_nested_attributes_for :cart_item_option_values
@@ -14,9 +15,9 @@ class CartItem < ApplicationRecord
                          locals: { count: cart.quantity }
 
     broadcast_replace_to cart,
-                        target: 'change_picture',
-                        partial: 'carts/empty_basket',
-                        locals: { current_cart: cart }
+                         target: 'change_picture',
+                         partial: 'carts/empty_basket',
+                         locals: { current_cart: cart }
 
     broadcast_replace_to cart,
                         target: 'make_order',
@@ -27,6 +28,12 @@ class CartItem < ApplicationRecord
                         target: 'cart_item',
                         partial: 'carts/item_line',
                         locals: { cart_item: self }
+    if cartable.is_a?(Product)
+      broadcast_replace_to cartable,
+                           target: 'cart_form',
+                           partial: 'products/form',
+                           locals: { current_cart: cart, product: cartable }
+    end
 
     broadcast_replace_to product,
                          target: 'cart_form',
@@ -54,10 +61,12 @@ class CartItem < ApplicationRecord
                          target: 'total_price',
                          partial: 'carts/total_price',
                          locals: { current_cart: cart }
-    broadcast_replace_to product,
-                         target: 'cart_form',
-                         partial: 'products/form',
-                         locals: { current_cart: cart, product: product }
+    if cartable.is_a?(Product)
+      broadcast_replace_to cartable,
+                           target: 'cart_form',
+                           partial: 'products/form',
+                           locals: { current_cart: cart, product: cartable }
+    end
   end
 
   after_destroy_commit do
