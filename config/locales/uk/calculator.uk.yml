@@ -1,0 +1,38 @@
+uk:
+  calculator:
+    subtitles:
+      characteristics: "Характеристики моделі"
+      settings: "Параметри друку"
+    model:
+      format_explaining: "Додайте файли форматів STL або OBJ"
+      characteristics:
+        model: "Модель"
+        dimensions: "Габарити"
+        volume: "Об’єм моделі"
+        area: "Площа моделі"
+        consumptions: "Розхід пластика"
+    settings:
+      desc: "Ціна змінюється в залежності від параметрів заповнення внутрішнього об’єму
+        моделі і товщини стінки."
+      estimated_cost: "Орієнтовна вартість"
+      approximately: "Приблизно"
+      subtitles:
+        thickness: "Товщина стінки"
+        filling: "Заповнення моделі"
+        color: "Колір"
+        material: "Матеріал"
+        quality: "Якість"
+      print:
+        fdm: "Пластик FDM"
+        abs: "Пластик ABS"
+        pla: "Пластик PLA"
+        copet: "Пластик coPet"
+        combined: "Еластан і Поліамід"
+        sla_dlt: "Друк за технологією SLA/DLT"
+        standart: "Фотополімер стандарт"
+        high: "Фотополімер високої щільності"
+        lithium: "Фотополімер літієвий"
+    btns:
+      upload_model: "Завантажити модель"
+      order_print: "Замовити друк"
+      change_model: "Інша модель"

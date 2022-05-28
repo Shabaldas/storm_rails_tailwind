@@ -1,0 +1,37 @@
+en:
+  calculator:
+    subtitles:
+      characteristics: "Model's characteristics"
+      settings: "Print settings"
+    model:
+      format_explaining: "Add files with STL or OBJ formats "
+      characteristics:
+        model: "Model"
+        dimensions: "Dimensions"
+        volume: "Model volume"
+        area: "Model area"
+        consumptions: "Consumption of plastic"
+    settings:
+      desc: "The price varies depending on the parameters of filling the internal volume of the model and the wall thickness."
+      estimated_cost: "Estimated cost"
+      approximately: "Approximately"
+      subtitles:
+        thickness: "Wall thickness"
+        filling: "Filling the model"
+        color: "Color"
+        material: "Material"
+        quality: "Quality"
+      print:
+        fdm: "FDM printing"
+        abs: "ABS Plastic"
+        pla: "PLA Plastic"
+        copet: "coPet Plastic"
+        combined: "Elastan & Poliamid"
+        sla_dlt: "SLA / DLT printing"
+        standart: "Photopolymer standard"
+        high: "High density photopolymer"
+        lithium: "Lithium photopolymer"
+    btns:
+      upload_model: "Upload model"
+      order_print: "Order print"
+      change_model: "Change model"

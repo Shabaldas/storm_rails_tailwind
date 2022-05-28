@@ -21,3 +21,28 @@ input[type='radio']:checked, input[type='radio']:focus{
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow)
 }
+.filling-container{
+  position: relative;
+  width: 65%;
+}
+#filling_slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #f1c232;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#filling_progressBar {
+  width: 45%;
+  height: 5px;
+  background-color: #f1c232;
+  border-radius: 3px;
+  position: absolute;
+  top:12px;
+  left: 0;
+  z-index: 0;
+}
