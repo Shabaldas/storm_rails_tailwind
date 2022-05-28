@@ -21,7 +21,7 @@ uk:
       comment: "Напишіть додаткові побажання до замовлення"
     delivery:
       new_post:
-        title: "New Post"
+        title: "Нова Пошта"
         specification: "за тарифами перевізника"
         self_pickup: "Самовивіз"
         courier: "Кур'єр"
