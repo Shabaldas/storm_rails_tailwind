@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'database_cleaner'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'rails-controller-testing'
   gem 'rubocop', require: false
@@ -47,6 +48,8 @@ group :development, :test do
   gem 'rubocop-rspec'
   gem 'shoulda-matchers'
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+  gem 'factory_bot_rails'
+  gem 'webmock'
 end
 
 group :development do
