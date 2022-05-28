@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   end
   get :calculator, to: 'print_models#new', as: :calculator
 
-  resource :checkout, only: :show
+  resources :orders, only: :update
 
+  get 'checkout', to: 'orders#checkout', as: :checkout
   get 'print', to: 'static_pages#print', as: :print
   get 'rendering', to: 'static_pages#rendering', as: :rendering
   get 'modeling', to: 'static_pages#modeling', as: :modeling

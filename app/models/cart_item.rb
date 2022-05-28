@@ -8,7 +8,7 @@ class CartItem < ApplicationRecord
 
   accepts_nested_attributes_for :cart_item_option_values
 
-  after_create_commit do
+  after_create_commit do # rubocop :disable  Metrics/BlockLength
     broadcast_replace_to cart,
                          target: 'cart_count',
                          partial: 'carts/item_count',
@@ -18,6 +18,11 @@ class CartItem < ApplicationRecord
                          target: 'change_picture',
                          partial: 'carts/empty_basket',
                          locals: { current_cart: cart }
+
+    broadcast_replace_to cart,
+                        target: 'make_order', # rubocop :disable Layout/ArgumentAlignment
+                        partial: 'carts/make_order',
+                        locals: { current_cart: cart }
 
     broadcast_append_to cart,
                         target: 'cart_item',
@@ -29,6 +34,16 @@ class CartItem < ApplicationRecord
                            partial: 'products/form',
                            locals: { current_cart: cart, product: cartable }
     end
+
+    # broadcast_replace_to product,
+    #                      target: 'cart_form',
+    #                      partial: 'products/form',
+    #                      locals: { current_cart: cart, product: product }
+
+    broadcast_replace_to cart,
+                         target: 'total_price',
+                         partial: 'carts/total_price',
+                         locals: { current_cart: cart }
   end
 
   after_update_commit do
@@ -68,6 +83,11 @@ class CartItem < ApplicationRecord
     broadcast_replace_to cart,
                          target: 'change_picture',
                          partial: 'carts/empty_basket',
+                         locals: { current_cart: cart }
+
+    broadcast_replace_to cart,
+                         target: 'make_order',
+                         partial: 'carts/make_order',
                          locals: { current_cart: cart }
   end
 
