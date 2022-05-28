@@ -8,7 +8,7 @@ en:
       characteristics:
         model: "Model"
         dimensions: "Dimensions"
-        volune: "Model volume"
+        volume: "Model volume"
         area: "Model area"
         consumptions: "Consumption of plastic"
     settings:

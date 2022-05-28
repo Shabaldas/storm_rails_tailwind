@@ -1,10 +1,10 @@
-<div class="w-screen h-full lg:max-w-screen-2xl md:px-8 ml-8" data-controller="upload-model">
-   <div data-controller="sidebar" class="lg:mx-auto block lg:flex lg:justify-between
-   pb-14 px-7 mt-8 md:px-24 mt-8 overflow-hidden">
-    <div class="w-full lg:w-2/3">
+<div class="w-full h-full max-w-screen-2xl mx-auto relative top-2 z-20" data-controller="upload-model">
+  <div data-controller="sidebar" class="lg:mx-auto block lg:flex lg:justify-between
+    pb-14 mt-8 px-7 md:px-24 mt-8 overflow-hidden">
+    <div class="w-full xl:w-2/3">
       <section>
-        <div data-upload-model-target="uploadContainer" class="w-full h-[544px] flex flex-col justify-center items-center
-        border-2 border-dashed border-zinc-400 rounded-2xl">
+        <div data-upload-model-target="uploadContainer" class="w-full h-[420px] md:h-[544px] flex flex-col
+          justify-center items-center border-2 border-dashed border-zinc-400 rounded-2xl">
           <div class="flex">
             <div class="w-32">
               <%= image_tag("calculator_img/file_expanding1.png") %>
@@ -13,25 +13,24 @@
               <%= image_tag("calculator_img/file_expanding2.png") %>
             </div>
           </div>
-          <div class="w-80">
-            <p class="w-52 text-base text-gray-500 text-center ml-14">
+          <div class="w-full md:w-1/2 mx-auto flex flex-col justify-center items-center">
+            <p class="text-base text-gray-500 text-center w-[220px] px-2">
               <%= t('calculator.model.format_explaining') %>
             </p>
-            <form>
-              <button class="relative w-full h-14 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg
-                text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer">
-                <input id="file" type="file" accept="stl, obj" class="w-full h-full absolute t-0 l-0 opacity-0" />
-                <p>
-                  <%= t('calculator.btns.upload_model') %>
-                </p>
-              </button>
-            </form>
+            <button class="relative p-4 mt-10 bg-yellow-400 rounded-lg
+                text-base text-center sm:text-xl font-medium uppercase cursor-pointer">
+              <input id="file" type="file" accept=".stl, .obj" class="w-full h-full absolute top-0 left-0
+                opacity-0 cursor-pointer" />
+              <p>
+                <%= t('calculator.btns.upload_model') %>
+              </p>
+            </button>
           </div>
         </div>
         <div data-upload-model-target="viewContainer" style="display: none;">
-          <div class="w-full h-[544px] relative border-2 border border-zinc-400 rounded-2xl ">
-            <div
-              class="model__panel w-12 mt-6 ml-6 absolute top-2 left-2 bg-white flex flex-col justify-center items-center px-2 py-1 rounded-lg">
+          <div class="w-full h-[544px] relative border-2 border border-zinc-400 rounded-2xl">
+            <div class="model__panel w-12 mt-6 ml-6 absolute top-2 left-2 bg-white flex flex-col justify-center
+              items-center px-2 py-1 rounded-lg">
               <button class="mt-2 mb-2">
                 <%= image_tag("calculator_img/zoom_in.png") %>
               </button>
@@ -49,9 +48,11 @@
               <%= image_tag("calculator_img/xyz.png") %>
             </div>
           </div>
-          <button data-action="click->sidebar#toggle" class="relative w-full h-14 mt-10 bg-yellow-400 flex lg:hidden justify-center items-center rounded-lg
-            text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer"">
-            <div class="w-6">
+          <button data-action="click->sidebar#toggle"
+            class="relative w-full h-14 mt-10 bg-yellow-400 flex lg:hidden
+            justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium
+            uppercase cursor-pointer">
+            <div class=" w-6">
               <%= image_tag("calculator_img/settings.png") %>
             </div>
             <h4 class="ml-2 font-medium">
@@ -68,51 +69,52 @@
                   <%= t('calculator.subtitles.characteristics') %>
                 </h4>
               </div>
-              <button class="w-full lg:w-1/4 h-14 lg:h-12 change-model flex lg:justify-center items-center mb-8 lg:mb-0 px-4 py-2 border-2 border-zinc-800
-               rounded-xl font-medium uppercase relative">
-                <input id="file" type="file" accept="stl, obj" class="w-full h-full absolute t-0 l-0 opacity-0" />
-                  <div class="flex items-center mx-auto">
-                    <p class="mr-2">
-                      <%= image_tag("calculator_img/change_model.png") %>
-                    </p>
-                    <%= t('calculator.btns.change_model') %>
-                  </div>
+              <button class="w-full lg:w-1/4 h-14 lg:h-12 change-model flex lg:justify-center items-center mb-8 lg:mb-0 px-4
+                py-2 border-2 border-zinc-800 rounded-xl font-medium uppercase relative">
+                <input id="file" type="file" accept=".stl, .obj"
+                  class="w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer" />
+                <div class="flex items-center mx-auto">
+                  <p class="mr-2">
+                    <%= image_tag("calculator_img/change_model.png") %>
+                  </p>
+                  <%= t('calculator.btns.change_model') %>
+                </div>
               </button>
             </div>
             <div class="w-full h-0.5 bg-zinc-300 my-4"></div>
             <div class="model-parametres flex flex-col lg:flex-row justify-between">
               <div class="w-full lg:w-2/5">
-                <div class="flex flex-col lg:flex-row justify-between lg:justify-start items-center my-4">
-                  <p class="w-full lg:w-2/4 text-center lg:text-start">
+                <div class="flex flex-col lg:flex-row justify-between items-center my-4">
+                  <p class="w-full lg:w-fit text-center lg:text-start">
                     <%= t('calculator.model.characteristics.model') %>
                   </p>
-                  <p>Baby_Groot_Planter.stl</p>
+                  <p class="w-[172px] truncate text-center md:text-left ">Baby_Groot_Planterjhgjivivvi.stl</p>
                 </div>
-                <div class="flex flex-col lg:flex-row justify-between lg:justify-start items-center my-4">
-                  <p class="w-full lg:w-2/4 text-center lg:text-start">
+                <div class="flex flex-col lg:flex-row justify-between items-center my-4">
+                  <p class="w-full lg:w-fit text-center lg:text-start">
                     <%= t('calculator.model.characteristics.dimensions') %>
                   </p>
-                  <p>42 x 32 x 14 cм</p>
+                  <p class="w-1/2 text-center md:text-left">42 x 32 x 14 cм</p>
                 </div>
-                <div class="flex flex-col lg:flex-row justify-between lg:justify-start items-center my-4">
-                  <p class="w-full lg:w-2/4 text-center lg:text-start">
+                <div class="flex flex-col lg:flex-row justify-between items-center my-4">
+                  <p class="w-full lg:w-fit text-center lg:text-start">
                     <%= t('calculator.model.characteristics.volume') %>
                   </p>
-                  <p>18,35 см<sup>3</sup></p>
+                  <p class="w-1/2 text-center md:text-left">18,35 см<sup>3</sup></p>
                 </div>
               </div>
               <div class="w-full lg:w-2/5">
-                <div class="flex flex-col lg:flex-row justify-between lg:justify-start items-center my-4">
-                  <p class="w-full lg:w-2/4 text-center lg:text-start">
+                <div class="flex flex-col lg:flex-row justify-between items-center my-4">
+                  <p class="w-full lg:w-fit text-center lg:text-start">
                     <%= t('calculator.model.characteristics.area') %>
                   </p>
-                  <p>347,12 см<sup>3</sup></p>
+                  <p class="w-[100px] text-center md:text-left">347,12 см<sup>3</sup></p>
                 </div>
-                <div class="flex flex-col lg:flex-row justify-between lg:justify-start items-center my-4">
-                  <p class="w-full lg:w-2/4 text-center lg:text-start">
+                <div class="flex flex-col lg:flex-row justify-between items-center my-4">
+                  <p class="w-full lg:w-fit text-center lg:text-start">
                     <%= t('calculator.model.characteristics.consumptions') %>
                   </p>
-                  <p>66,44 г</p>
+                  <p class="w-[100px] text-center md:text-left">66,44 г</p>
                 </div>
               </div>
             </div>
@@ -120,11 +122,11 @@
         </div>
       </section>
     </div>
-    <div data-sidebar-target="sidebarContainer" data-expanded="1" class="w-full h-full min-h-fit overflow-auto lg:w-1/3 lg:ml-10 text-base bg-white p-8 lg:rounded-2xl
-    fixed lg:relative z-40 inset-y-0 left-0 transform lg:transform-none -translate-x-full transition duration-700 ease-in-out">
-      <section data-upload-model-target="settingsContainer"
-        class="sidebar relative">
-        <div class="close-btn absolute -top-2 -right-2" data-action="click->sidebar#toggle">
+    <div data-sidebar-target="sidebarContainer" data-expanded="1"
+      class="w-full h-full min-h-fit overflow-auto lg:w-1/3 xl:ml-10 text-base bg-white px-8 pt-6 pb-8 xl:rounded-2xl
+      fixed xl:relative z-40 inset-y-0 left-0 transform xl:transform-none -translate-x-full transition duration-700 ease-in-out">
+      <section data-upload-model-target="settingsContainer" class="sidebar relative">
+        <div class="close-btn absolute top-0 -right-4 block xl:hidden" data-action="click->sidebar#toggle">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -175,8 +177,7 @@
                 <h5 class="text-gray-500">
                   <%= t('calculator.settings.subtitles.color') %>
                 </h5>
-                <div class="colors-wrapper">
-                </div>
+                <div class="colors-wrapper"></div>
               </div>
             </div>
             <div class="w-full h-0.5 bg-zinc-200 my-4"></div>
@@ -214,12 +215,12 @@
               <h4>від ₴ 3890</h4>
             </div>
             <button class="w-full h-14 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg
-            text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer"">
+              text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer">
               <%= t('calculator.btns.order_print') %>
             </button>
           </div>
         </form>
       </section>
     </div>
-   </div>
+  </div>
 </div>

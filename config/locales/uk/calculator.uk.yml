@@ -8,7 +8,7 @@ uk:
       characteristics:
         model: "Модель"
         dimensions: "Габарити"
-        volune: "Об’єм моделі"
+        volume: "Об’єм моделі"
         area: "Площа моделі"
         consumptions: "Розхід пластика"
     settings:
