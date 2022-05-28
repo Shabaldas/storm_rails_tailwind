@@ -10,7 +10,7 @@ ua:
       count: 'Кількість'
   product_categories:
     show:
-      no_products: 'Продукти відсутні, сука!'
+      no_products: 'Продукти відсутні!'
 
   active_admin:
     dashboard: "Панель управління"

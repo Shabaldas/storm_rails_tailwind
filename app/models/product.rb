@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   has_many :product_relations, dependent: :destroy
   has_many :related_products, through: :product_relations, source: :related_to
   has_many :images, class_name: 'ProductImage', dependent: :destroy
-  has_many :cart_items, dependent: :destroy
+  has_many :cart_items, as: :cartable, dependent: :destroy
   has_one :primary_product_option, ->(_where) { where primary: true }, class_name: 'ProductOption', dependent: :destroy # rubocop:disable  Rails/InverseOf
   has_one :size_product_option, ->(_where) { where primary: false }, class_name: 'ProductOption', dependent: :destroy # rubocop:disable  Rails/InverseOf
   has_one :primary_option, through: :primary_product_option, class_name: 'Option', source: :option

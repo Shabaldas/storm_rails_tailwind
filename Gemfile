@@ -30,8 +30,8 @@ gem "sprockets-rails"
 gem 'rails-i18n'
 gem 'turbo-rails'
 gem 'pry', '~> 0.13.1'
-
 gem 'image_processing', '~> 1.2'
+gem 'ransack'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

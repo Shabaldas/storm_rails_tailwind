@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
   def index
     @product_categories = ProductCategory.all
-    @pagy, @products = pagy Product.all, items: 7
+    @q = Product.ransack(params[:q])
+    @pagy, @products = pagy @q.result(distinct: true), items: 7
 
     respond_to do |format|
       format.html

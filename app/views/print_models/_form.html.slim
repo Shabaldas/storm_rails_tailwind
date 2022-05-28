@@ -1,0 +1,46 @@
+div data-controller="calculator"
+  = simple_form_for @print_model, url: manage_print_models_path, html: { data: { calculator_target: 'form' } } do |f|
+    #print_model_id_field
+      = turbo_stream.update('print_model_id_field') do
+        = f.input :id, as: :hidden, input_html: { value: @print_model.id, id: @print_model.id }
+    = f.input :size, as: :hidden, input_html: { data: { calculator_target: 'sizeField' } }
+    = f.input :weight, as: :hidden, input_html: { data: { calculator_target: 'weightField' } }
+    = f.input :volume, as: :hidden, input_html: { data: { calculator_target: 'volumeField' } }
+
+    = f.input :file, as: :file, input_html: { data: { action: "change->calculator#onDropFile" } }
+    .flex
+      #scene.flex-auto data-calculator-target="scene"
+      .flex-auto.print-params
+        = f.fields_for :print_model_attributes do |attribute_field|
+          #print_model_id_field
+            = turbo_stream.update('print_model_id_field') do
+              = f.input :id, as: :hidden, input_html: { value: @print_model.id, id: @print_model.id }
+
+          .flex.space-x-3.colors
+            - ApplicationHelper::COLORS.each do |color|
+              .w-5.h-5.cursor-pointer.rounded-full data-action="click->calculator#setColor" data-calculator-color-param=color style=("background-color: ##{color}")
+          = attribute_field.input :material, collection: ApplicationHelper::MATERIALS, value_method: proc { |m| m.downcase }, input_html: { data: { action: "change->calculator#setMaterial" } }
+          = attribute_field.input :quality, collection: ApplicationHelper::QUALITY, label_method: proc { |q| "#{q} micron" }, input_html: { data: { action: "change->calculator#setQuality" } }
+          = attribute_field.input :color, as: :hidden, input_html: { data: { calculator_target: 'colorField' } }
+          = attribute_field.input :subtotal_price, as: :hidden, input_html: { data: { calculator_target: 'subtotalPriceField' } }
+          .flex
+            div Price
+            div data-calculator-target="price"  0
+            span ₴
+        = f.submit class: 'bg-yellow-400', data: { action: 'click->calculator#submitForm' }
+  .flex.space-x-3
+    div data-calculator-target="name"
+    .flex
+      div Plastic consumption
+      div data-calculator-target="consumption"  0
+      span g
+    .flex
+      div Size
+      div data-calculator-target="size"  0 x 0 x 0
+      span cm
+    .flex
+      div Model volume
+      div data-calculator-target="volume"  0
+      span
+        | cm
+          sup 3
