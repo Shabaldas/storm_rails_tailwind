@@ -30,8 +30,6 @@ gem "sprockets-rails"
 gem 'rails-i18n'
 gem 'turbo-rails'
 gem 'pry', '~> 0.13.1'
-gem 'liqpay', github: 'liqpay/sdk-ruby'
-
 gem 'image_processing', '~> 1.2'
 gem 'ransack'
 

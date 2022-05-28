@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   get :calculator, to: 'print_models#new', as: :calculator
 
-  resource :checkout, only: :show
+  resources :orders, only: :update
 
   get 'checkout', to: 'orders#checkout', as: :checkout
   get 'print', to: 'static_pages#print', as: :print
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   namespace :carts do
     resources :cart_items, only: [:create, :destroy] do
       patch :update_quantity, on: :member
-      delete :destroy_all, on: :collection
     end
     resource :add, only: [:create]
     resource :reduce, only: [:create]

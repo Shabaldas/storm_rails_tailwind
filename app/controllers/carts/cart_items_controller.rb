@@ -12,10 +12,6 @@ module Carts
       @cart_item.save
     end
 
-    def destroy_all
-      current_cart.cart_items.destroy_all
-    end
-
     def update_quantity
       @cart_item = current_cart.cart_items.find_by(id: params[:id])
 

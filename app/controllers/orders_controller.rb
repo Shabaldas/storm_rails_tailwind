@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  layout "checkout"
+  layout 'checkout'
   # before_action :
   def checkout
     @order = current_cart.order.presence || create_orders

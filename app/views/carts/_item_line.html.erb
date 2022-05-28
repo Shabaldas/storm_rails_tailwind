@@ -5,7 +5,7 @@
         
         <div class="w-2 h-3">
           <%= link_to image_tag("partials_img/delete.png"),
-            carts_remove_path(product: cart_item.product.id), method: :delete 
+            carts_cart_item_path(cart_item), method: :delete, remote: true
           %>
         </div>
         <div class="w-16 h-16 bg-gray-300 ml-2">
