@@ -18,12 +18,11 @@ export default class extends Controller {
   }
 
   showDeliveryContent(e) {
-    const tabsContainer = document.querySelector('#tabs');
-    const selectedDeliveryType = tabsContainer.querySelectorAll('input:checked')[0].id;
+    const deliveryType = e.currentTarget.id;
     this.deliveryContentTargets.forEach(target => target.classList.add('hidden'));
 
     this.deliveryContentTargets.forEach(target => {
-      const isSameTarget = target.dataset.content === selectedDeliveryType;
+      const isSameTarget = target.dataset.content === deliveryType;
       if (isSameTarget) {
         target.classList.remove('hidden')
       } else {
