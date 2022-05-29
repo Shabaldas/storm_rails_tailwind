@@ -46,3 +46,16 @@ input[type='radio']:checked, input[type='radio']:focus{
   left: 0;
   z-index: 0;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #dbdbdb9c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(195, 194, 194);
+  border-radius: 4px;
+}
