@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_204545) do
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 50
     t.string "scope"
-    t.datetime "created_at", precision: nil
+    t.datetime "created_at"
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
@@ -125,6 +125,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_204545) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.string "email"
+    t.integer "status", default: 0
+    t.decimal "subtotal", precision: 8, scale: 2
+    t.decimal "total", precision: 8, scale: 2
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "print_model_attributes", force: :cascade do |t|
     t.bigint "print_model_id"
     t.string "color"
@@ -142,30 +155,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_204545) do
     t.string "size"
     t.float "weight"
     t.float "volume"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "order_items", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "product_id", null: false
-    t.bigint "order_id", null: false
-    t.decimal "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["product_id"], name: "index_order_items_on_product_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone"
-    t.string "email"
-    t.integer "status", default: 0
-    t.decimal "subtotal", precision: 8, scale: 2
-    t.decimal "total", precision: 8, scale: 2
-    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -249,22 +238,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_204545) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "widgets", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_item_option_values", "cart_items", on_delete: :cascade
   add_foreign_key "cart_item_option_values", "product_option_values", on_delete: :cascade
   add_foreign_key "cart_items", "carts"
-  add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "orders", on_delete: :cascade
   add_foreign_key "option_values", "options", on_delete: :cascade
   add_foreign_key "print_model_attributes", "print_models", on_delete: :cascade
-  add_foreign_key "order_items", "products"
   add_foreign_key "product_images", "products", on_delete: :cascade
   add_foreign_key "product_option_values", "option_values", on_delete: :cascade
   add_foreign_key "product_option_values", "product_options", on_delete: :cascade

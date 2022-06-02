@@ -6,41 +6,132 @@ div data-controller="calculator"
     = f.input :size, as: :hidden, input_html: { data: { calculator_target: 'sizeField' } }
     = f.input :weight, as: :hidden, input_html: { data: { calculator_target: 'weightField' } }
     = f.input :volume, as: :hidden, input_html: { data: { calculator_target: 'volumeField' } }
+    .w-full.h-full.max-w-screen-2xl.mx-auto.relative.top-2.z-20 data-controller="upload-model"
+      .block.pb-14.mt-8.px-7.mt-8.overflow-hidden class="lg:mx-auto lg:flex lg:justify-between md:px-24" data-controller="sidebar"
+        .w-full class="xl:w-2/3"
+          section
+            .w-full.flex.flex-col.justify-center.items-center.border-2.border-dashed.border-zinc-400.rounded-2x class="h-[420px] md:h-[544px]" data-upload-model-target="uploadContainer" data-calculator-target="uploadContainer"
+              .flex
+                .w-32
+                  = image_tag("calculator_img/file_expanding1.png")
+                .w-32 class="-ml-12"
+                  = image_tag("calculator_img/file_expanding2.png")
+              .w-full.mx-auto.flex.flex-col.justify-center.items-center class="md:w-1/2"
+                p.text-base.text-gray-500.text-center.px-2 class="w-[220px]"
+                  = t('calculator.model.format_explaining')
+                button.relative.p-4.mt-10.bg-yellow-400.rounded-lg.text-base.text-center.font-medium.uppercase.cursor-pointer class="sm:text-xl"
+                  = f.input :file, as: :file, label: false, input_html: { id: 'file', accept: '.stl, .obj', required: true, class: 'w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer', data: { action: "change->calculator#onDropFile" } }
+                  p
+                    = t('calculator.btns.upload_model')
+            div data-upload-model-target="viewContainer" style="display: none;"
+              .w-full.relative.rounded-2xl class="h-[544px]" id='bla'
+                #scene data-calculator-target="scene"
+                .model__panel.w-12.mt-6.ml-6.absolute.top-2.left-2.bg-white.flex.flex-col.justify-center.items-center.px-2.py-1.rounded-lg
+                  button class="mt-2 mb-2" data-action="click->calculator#toggleZoom" data-calculator-zoom-type-param='zoomIn'
+                    = image_tag("calculator_img/zoom_in.png")
+                  button class="mt-2 mb-2"  data-action="click->calculator#toggleZoom" data-calculator-zoom-type-param='zoomOut'
+                    = image_tag("calculator_img/zoom_out.png")
+                  button class="mt-2 mb-2" data-action="click->calculator#toggleAutorotate"
+                    = image_tag("calculator_img/rotate.png")
+                  button class="mt-2 mb-2" data-action="click->calculator#toggleGrid"
+                    = image_tag("calculator_img/grid.png")
+                div class="absolute top-8 right-8" data-calculator-target="axesContainer"
+              button data-action="click->sidebar#toggle" class="relative w-full h-14 mt-10 bg-yellow-400 flex lg:hidden justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer"
+                .w-6
+                  = image_tag("calculator_img/settings.png")
+                h4 class="ml-2 font-medium"
+                  = t('calculator.subtitles.settings')
 
-    = f.input :file, as: :file, input_html: { data: { action: "change->calculator#onDropFile" } }
-    .flex
-      #scene.flex-auto data-calculator-target="scene"
-      .flex-auto.print-params
-        = f.fields_for :print_model_attributes do |attribute_field|
-          #print_model_id_field
-            = turbo_stream.update('print_model_id_field') do
-              = f.input :id, as: :hidden, input_html: { value: @print_model.id, id: @print_model.id }
+              .model_details.mt-6.text-gray-800
+                .flex.flex-col.flex-col-reverse.justify-between.items-center class="lg:flex-row "
+                  .flex.items-center
+                    .w-7.mr-3
+                      = image_tag("calculator_img/cube.png")
+                    h4
+                      = t('calculator.subtitles.characteristics')
+                  button class="w-full lg:w-1/4 h-14 lg:h-12 change-model flex lg:justify-center items-center mb-8 lg:mb-0 px-4 py-2 border-2 border-zinc-800 rounded-xl font-medium uppercase relative"
+                    = f.input :file, as: :file, label: false, input_html: { id: 'file', accept: '.stl, .obj', required: true, class: 'w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer', data: { action: "change->calculator#onDropFile" } }
+                    .flex.items-center.mx-auto
+                      p.mr-2
+                        = image_tag("calculator_img/change_model.png")
+                      = t('calculator.btns.change_model')
+                div class="w-full h-0.5 bg-zinc-300 my-4"
+                div class="model-parametres flex flex-col lg:flex-row justify-between"
+                  div class="w-full lg:w-2/5"
+                    div class="flex flex-col lg:flex-row justify-between items-center my-4"
+                      p class="w-full lg:w-fit text-center lg:text-start"
+                        = t('calculator.model.characteristics.model')
+                      p class="w-[172px] truncate text-center md:text-left" data-calculator-target="name" Baby_Groot_Planterjhgjivivvi.stl
+                    div class="flex flex-col lg:flex-row justify-between items-center my-4"
+                      p class="w-full lg:w-fit text-center lg:text-start"
+                        = t('calculator.model.characteristics.dimensions')
+                      p class="w-1/2 text-center md:text-left" data-calculator-target="size"  42 x 32 x 14 cм
+                    div class="flex flex-col lg:flex-row justify-between items-center my-4"
+                      p class="w-full lg:w-fit text-center lg:text-start"
+                        = t('calculator.model.characteristics.volume')
+                      p.text-center class=" w-1/2 md:text-left" data-calculator-target="volume"
+                        | 18,35 см
+                        sup
+                          | 3
+                  div class="w-full lg:w-2/5"
+                    div class="flex flex-col lg:flex-row justify-between items-center my-4"
+                      p class="w-full lg:w-fit text-center lg:text-start"
+                        = t('calculator.model.characteristics.area')
+                      p.text-center class="w-[100px] md:text-left"
+                        | 347,12 см
+                        sup
+                          | 3
+                    div class="flex flex-col lg:flex-row justify-between items-center my-4"
+                      p class="w-full lg:w-fit text-center lg:text-start"
+                        = t('calculator.model.characteristics.consumptions')
+                      p class="w-[100px] text-center md:text-left" data-calculator-target="consumption" 66,44 г
+        div data-sidebar-target="sidebarContainer" data-expanded="1" class="w-full h-full min-h-fit overflow-auto lg:w-1/3 xl:ml-10 text-base bg-white px-8 pt-6 pb-8 xl:rounded-2xl fixed xl:relative z-40 inset-y-0 left-0 transform xl:transform-none -translate-x-full transition duration-700 ease-in-out"
+          section data-upload-model-target="settingsContainer" class="sidebar relative"
+            div class="close-btn absolute top-0 -right-4 block xl:hidden" data-action="click->sidebar#toggle"
+              svg.h-6.w-6[xmlns="http://www.w3.org/2000/svg" fill="none" viewbox="0 0 24 24" stroke="currentColor"]
+                path[stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"]
+            div class="flex items-center"
+              div class="w-6"
+                = image_tag("calculator_img/settings.png")
+              h4 class="ml-2 font-medium"
+                = t('calculator.subtitles.settings')
+              div class="settings-close"
+            p class="text-gray-500 mt-4"
+              = t('calculator.settings.desc')
+            div class="w-full h-0.5 bg-zinc-200 my-4"
+            div class="settings__content"
+              = f.fields_for :print_model_attributes do |attribute_field|
+                = attribute_field.input :color, as: :hidden,  input_html: { required: true, data: { calculator_target: 'colorField' } }
+                = attribute_field.input :subtotal_price, as: :hidden, input_html: { data: { calculator_target: 'subtotalPriceField' } }
+                div class="settings__visual"
+                  div class="colors"
+                    h5 class="text-gray-500"
+                      = t('calculator.settings.subtitles.color')
+                    div class="colors-wrapper"
+                      .flex-auto.print-params
+                        .flex.colors.justify-between
+                          - ApplicationHelper::COLORS.each do |color|
+                            .w-8.h-8.cursor-pointer.rounded-full.border data-action="click->calculator#setColor" data-calculator-color-param=color style=("background-color: ##{color}")
+                  div class="w-full h-0.5 bg-zinc-200 my-4"
+                  div class="print"
+                    div class="mt-2 mb-4"
+                      h4 class="text-gray-500 mb-2"
+                        = t('calculator.settings.subtitles.material')
+                      = attribute_field.input :material, label: false, collection: ApplicationHelper::MATERIALS, value_method: proc { |m| m.downcase }, input_html: { class: 'w-full rounded', data: { action: "change->calculator#setMaterial" } },required: true
+                    div class="mt-2 mb-4"
+                      h4 class="text-gray-500 mb-2"
+                        = t('calculator.settings.subtitles.quality')
+                      = attribute_field.input :quality, label: false, collection: ApplicationHelper::QUALITY, label_method: proc { |q| "#{q} micron" }, input_html: { class: 'w-full rounded', data: { action: "change->calculator#setQuality" } },  required: true
+                div data-upload-model-target="orderContainer"
+                  div class="w-full h-0.5 bg-zinc-300 my-6"
+                  div class="flex items-center"
+                    = image_tag("partials_img/payment.png")
+                      h4 class="ml-2 font-medium"
+                        = t('calculator.settings.estimated_cost')
+                  div class="flex justify-between items-center my-6 font-medium text-xl"
+                    h4
+                      = t('calculator.settings.approximately')
+                    h4 data-calculator-target="price" від ₴ 1
+                  button class="w-full h-14 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase cursor-pointer"
+                    = t('calculator.btns.order_print')
 
-          .flex.space-x-3.colors
-            - ApplicationHelper::COLORS.each do |color|
-              .w-5.h-5.cursor-pointer.rounded-full data-action="click->calculator#setColor" data-calculator-color-param=color style=("background-color: ##{color}")
-          = attribute_field.input :material, collection: ApplicationHelper::MATERIALS, value_method: proc { |m| m.downcase }, input_html: { data: { action: "change->calculator#setMaterial" } }
-          = attribute_field.input :quality, collection: ApplicationHelper::QUALITY, label_method: proc { |q| "#{q} micron" }, input_html: { data: { action: "change->calculator#setQuality" } }
-          = attribute_field.input :color, as: :hidden, input_html: { data: { calculator_target: 'colorField' } }
-          = attribute_field.input :subtotal_price, as: :hidden, input_html: { data: { calculator_target: 'subtotalPriceField' } }
-          .flex
-            div Price
-            div data-calculator-target="price"  0
-            span ₴
-        = f.submit class: 'bg-yellow-400', data: { action: 'click->calculator#submitForm' }
-  .flex.space-x-3
-    div data-calculator-target="name"
-    .flex
-      div Plastic consumption
-      div data-calculator-target="consumption"  0
-      span g
-    .flex
-      div Size
-      div data-calculator-target="size"  0 x 0 x 0
-      span cm
-    .flex
-      div Model volume
-      div data-calculator-target="volume"  0
-      span
-        | cm
-          sup 3
