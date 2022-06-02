@@ -7,7 +7,8 @@ export default class extends Controller {
   static targets = [
     "scene", "name", "consumption", "size", "volume",
     "price", "form", "colorField", "sizeField", "weightField",
-    "volumeField", "subtotalPriceField"
+    "volumeField", "subtotalPriceField", "uploadContainer",
+    "axesContainer"
   ]
 
   initialize() {
@@ -24,6 +25,11 @@ export default class extends Controller {
       nylon: { 100: 10, 200: 8, 300: 7 },
       elastan: { 100: 10, 200: 8, 300: 7 }
     }
+    this.containerWidth = this.uploadContainerTarget.clientWidth
+    this.containerHeight = this.uploadContainerTarget.clientHeight
+    this.autoRotate = true
+    this.grid = false
+    this.objectHeigh = 0
   }
 
   setMaterial({ target: { value } }) {
@@ -45,36 +51,8 @@ export default class extends Controller {
   calculatePrice() {
     if (!this.material || !this.quality) return
     const price = Math.round(this.pricePerGram[this.material][this.quality] * this.consumption);
-    this.priceTarget.innerText = price;
+    this.priceTarget.innerText = "від ₴ " + price;
     this.subtotalPriceFieldTarget.setAttribute('value', price);
-  }
-
-  connect() {
-    this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color({ color: 0xDEE0E2 })
-
-    this.setCamera(20, 20, 20)
-
-    this.setLight(50, 50, 50)
-    this.setLight(-50, 50, -50)
-
-    this.setAmbientLight()
-
-    this.renderer = new THREE.WebGLRenderer()
-    this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 2)
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-
-    const animate = () => {
-      requestAnimationFrame(animate)
-
-      this.controls.update()
-      this.controls.autoRotate = true
-
-      this.renderer.render(this.scene, this.camera);
-    }
-
-    this.sceneTarget.appendChild(this.renderer.domElement)
-    animate()
   }
 
   setLight(x, y, z) {
@@ -89,16 +67,61 @@ export default class extends Controller {
   }
 
   setHelpers() {
-    const axesHelper = new THREE.AxesHelper(50);
-    axesHelper.setColors(new THREE.Color(0xff0000), new THREE.Color(0x0000ff), new THREE.Color(0x00ff00))
-    this.scene.add(axesHelper);
+    const gridHelper = new THREE.GridHelper(200, 20)
+    gridHelper.name = 'gridHelper';
+    gridHelper.position.y = -this.objectHeigh/2;
 
-    const gridHelper = new THREE.GridHelper(200, 200)
     this.scene.add(gridHelper)
   }
 
+  removeHelpers() {
+    this.scene.remove(this.scene.getObjectByName('gridHelper'));
+  }
+
+  toggleAutorotate(e) {
+    e.preventDefault()
+    this.autoRotate = !this.autoRotate;
+  }
+
+  toggleGrid(e) {
+    e.preventDefault();
+
+    this.grid = !this.grid;
+
+    if (this.grid) {
+      this.setHelpers()
+    } else {
+      this.removeHelpers()
+    }
+  }
+
+  toggleZoom(e) {
+    e.preventDefault();
+
+    const zoomType = e.params.zoomType;
+    const fov = this.getFov();
+    this.camera.fov = this.clickZoom(fov, zoomType);
+    this.camera.updateProjectionMatrix();
+  }
+
+  getFov() {
+    return Math.floor(
+        (2 * Math.atan(this.camera.getFilmHeight() / 2 / this.camera.getFocalLength()) * 180) / Math.PI
+    );
+  };
+
+  clickZoom(value, zoomType) {
+    if (value >= 20 && zoomType === "zoomIn") {
+      return value - 5;
+    } else if (value <= 75 && zoomType === "zoomOut") {
+      return value + 5;
+    } else {
+      return value;
+    }
+  };
+
   setCamera(x, y, z) {
-    this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera = new THREE.PerspectiveCamera(45, this.containerWidth / this.containerHeight, 0.1, 1000);
     this.camera.position.set(x, y, z)
   }
 
@@ -110,7 +133,63 @@ export default class extends Controller {
     this.stlObject.material.color.setHex(this.color)
   }
 
+  setAxes() {
+    this.axesScene = new THREE.Scene();
+    this.axesScene.background = null;
+    this.axesCamera = new THREE.PerspectiveCamera(45, this.containerWidth / this.containerHeight, 0.1, 1000);
+    this.axesCamera.position.set(20, 20, 20)
+
+    const axesHelper = new THREE.AxesHelper(1000);
+
+    axesHelper.setColors(new THREE.Color(0xff0000), new THREE.Color(0x0000ff), new THREE.Color(0x00ff00))
+
+    this.axesScene.add(axesHelper);
+  }
+
   onDropFile(event) {
+    event.preventDefault();
+
+    this.sceneTarget.innerHTML = ''
+    this.axesContainerTarget.innerHTML = '';
+
+    this.scene = new THREE.Scene();
+    this.setAxes()
+
+    this.scene.background = new THREE.Color(0xffffff)
+
+    this.setCamera(20, 20, 20)
+
+    this.setLight(50, 50, 50)
+    this.setLight(-50, 50, -50)
+
+    this.setAmbientLight()
+    this.renderer = new THREE.WebGLRenderer()
+    const axesRenderer = new THREE.WebGLRenderer()
+
+    axesRenderer.setClearColor( 0x000000, 0 );
+    axesRenderer.setSize(150, 150)
+
+    this.renderer.setSize(this.containerWidth, this.containerHeight)
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    const axesControls = new OrbitControls(this.axesCamera, axesRenderer.domElement);
+
+    const animate = () => {
+      requestAnimationFrame(animate)
+      axesControls.update()
+      axesControls.autoRotate = this.autoRotate
+      this.controls.update()
+      this.controls.autoRotate = this.autoRotate
+      this.axesScene.position.set(this.scene.position.x, this.scene.position.y, this.scene.position.z)
+      this.axesCamera.position.set(this.camera.position.x, this.camera.position.y, this.camera.position.z)
+      axesRenderer.render(this.axesScene, this.axesCamera)
+      this.renderer.render(this.scene, this.camera);
+    }
+
+    this.sceneTarget.appendChild(this.renderer.domElement)
+    this.axesContainerTarget.appendChild(axesRenderer.domElement)
+    
+    animate()
+
     const stlFile = event.target.files[0]
     const reader = new FileReader()
     this.scene.remove(this.stlObject)
@@ -125,6 +204,7 @@ export default class extends Controller {
       const x = box.max.x + Math.abs(box.min.x)
       const y = box.max.y + Math.abs(box.min.y)
       const z = box.max.z + Math.abs(box.min.z)
+      this.objectHeigh = z
 
       if (x > 180 || x < 10 || y > 180 || y < 10 || z > 180 || z < 10) {
         alert('Error: Loaded model sizes must be between 1 sm and 18 sm')
@@ -140,6 +220,7 @@ export default class extends Controller {
       const volumeValue = (volume / 1000).toFixed(2)
 
       this.volumeTarget.innerText = volumeValue;
+      this.nameTarget.innerText = stlFile.name;
       this.volumeFieldTarget.setAttribute('value', volumeValue);
 
       this.consumption = volume * this.consumptionPerCubicGram
@@ -155,6 +236,7 @@ export default class extends Controller {
       this.stlObject = new THREE.Mesh(geometry, material)
       this.camera.position.set(newPosition, newPosition, newPosition)
       this.stlObject.rotateX(-Math.PI / 2)
+      this.stlObject.name = 'currentObject'
       this.scene.add(this.stlObject)
     }, false);
     if (reader.readAsBinaryString !== undefined) {

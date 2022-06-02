@@ -59,3 +59,7 @@ input[type='radio']:checked, input[type='radio']:focus{
   background: rgb(195, 194, 194);
   border-radius: 4px;
 }
+
+#scene > canvas {
+  border-radius: 1rem;
+}
