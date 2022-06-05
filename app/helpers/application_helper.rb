@@ -51,4 +51,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def active_class(link_path)
+    current_page?(link_path) ? 'border-b-2 border-yellow-400' : ''
+  end
 end

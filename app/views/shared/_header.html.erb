@@ -9,13 +9,13 @@
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
         <ul class="h-full flex flex-col lg:flex-row flex-initial justify-between items-center text-center tracking-wide">
           <li class="px-4 cursor-pointer">
-            <%= link_to t('global.header.head'), home_path %>
+            <%= link_to t('global.header.head'), home_path, class: active_class(home_path) %>
           </li>
           <li class="px-4 cursor-pointer">
-            <%= link_to t('global.header.calculator'), calculator_path %>
+            <%= link_to t('global.header.calculator'), calculator_path, class: active_class(calculator_path) %>
           </li>
           <li class="px-4 cursor-pointer">
-            <%= link_to t('global.header.store'), products_path %>
+            <%= link_to t('global.header.store'), products_path, class: active_class(products_path) %>
           </li>
         </ul>
       </nav>
