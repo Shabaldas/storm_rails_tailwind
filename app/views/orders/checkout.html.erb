@@ -96,6 +96,7 @@
       </div>
       <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
       <div>
+        <%= render "carts/empty_co_basket" %>
         <%- @order.cart.cart_items.each do |item| %>
           <p><%= render "carts/item_line", cart_item: item %></p>
         <% end %>
