@@ -54,6 +54,9 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_link_to (1.0.5)
+      actionpack
+      addressable
     active_skin (0.0.13)
     active_storage_validations (0.9.7)
       activejob (>= 5.2.0)
@@ -441,6 +444,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_link_to
   active_skin
   active_storage_validations
   activeadmin

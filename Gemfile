@@ -5,6 +5,7 @@ ruby '3.0.1'
 
 gem 'activeadmin'
 gem 'active_skin'
+gem 'active_link_to'
 gem 'ancestry'
 gem 'active_storage_validations'
 gem 'rails', "~> 7.0.2", ">= 7.0.2.2"
