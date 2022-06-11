@@ -1,4 +1,4 @@
-<div id='cart_form' data-controller="toggle">
+<div id='cart_form'>
   <% cart_item = product.cart_items.build %>
   <% value_for_select = product.size_and_price.map { |x| [x[:value], x[:id], { data: { price: x[:price] } }]} %>
   <% color_value = select_colors[product.product_colors.first.value.to_sym] %>
