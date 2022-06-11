@@ -25,7 +25,7 @@ jobs:
           POSTGRES_USER: ${{ env.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
         with:
           bundler: default
