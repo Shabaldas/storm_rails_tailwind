@@ -7,7 +7,7 @@ ActiveAdmin.register Product do
                 :category_id, :product_type, :price,
                 :main_picture, related_product_ids: [], files: [],
                 product_options_attributes: [:id, :option_id, :primary, :_destroy],  # rubocop:disable  Layout/HashAlignment
-                images_attributes: [:id, :picture, :_destroy] # rubocop:disable  Layout/HashAlignment
+                images_attributes: [:id, :picture, :_destroy] # rubocop:disable Layout/HashAlignment
   form partial: 'admin/products/form'
 
   index do

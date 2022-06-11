@@ -21,7 +21,7 @@
                 <%= product.name %>
               </h4>
             </div>
-            <p class="text-3xl" data-selected-size-target="price" >
+            <p class="text-3xl" data-selected-size-target="price">
               <%= number_to_uah(value_for_select.first&.last.dig(:data, :price).round).presence || number_to_uah(product.price) %>
             </p>
           </div>

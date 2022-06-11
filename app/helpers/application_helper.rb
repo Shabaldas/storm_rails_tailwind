@@ -6,7 +6,7 @@ module ApplicationHelper
   QUALITY = [100, 200, 300].freeze
 
   def number_to_uah(amount)
-    number_to_currency(amount, unit: '₴')
+    number_to_currency(amount, unit: '₴ ', precision: 0)
   end
 
   def enum_select(items)
