@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'print', to: 'static_pages#print', as: :print
   get 'rendering', to: 'static_pages#rendering', as: :rendering
   get 'modeling', to: 'static_pages#modeling', as: :modeling
+  post 'save_phone_number', to: 'static_pages#save_phone_number', as: :save_phone_number
 
   namespace :carts do
     resources :cart_items, only: [:create, :destroy] do
