@@ -11,12 +11,12 @@
 
         <% if cart_item.cartable.is_a?(Product) && cart_item.cartable.main_picture.present? %>
           <div class="w-16 h-16 bg-gray-300 ml-2">
-            <%= image_tag(cart_item.cartable.main_picture) %>
+            <%= image_tag(cart_item.cartable&.main_picture) %>
           </div>
         <% end %>
         
         <% if cart_item.cartable.is_a?(PrintModelAttribute)%>
-          <div class="w-16 h-16 bg-gray-300 ml-2">
+          <div class="w-16 h-16 items-center ml-2">
             <%= stl_or_obj(cart_item.cartable.name) %>
           </div>
         <% end %>
