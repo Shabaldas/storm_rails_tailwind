@@ -6,6 +6,6 @@ export default class extends Controller {
     changePrice(e) {
       const selector = e.target;
       const currentPrice = +selector.options[selector.selectedIndex].dataset.price;
-      this.priceTarget.textContent = `₴ ${currentPrice}`;
+      this.priceTarget.textContent = `${currentPrice} ₴`;
     }
 }
