@@ -20,6 +20,11 @@ class CartItem < ApplicationRecord
                          locals: { current_cart: cart }
 
     broadcast_replace_to cart,
+                         target: 'change_picture_in_co',
+                         partial: 'carts/empty_co_basket',
+                         locals: { current_cart: cart }
+
+    broadcast_replace_to cart,
                         target: 'make_order', # rubocop :disable Layout/ArgumentAlignment
                         partial: 'carts/make_order',
                         locals: { current_cart: cart }
@@ -83,6 +88,11 @@ class CartItem < ApplicationRecord
     broadcast_replace_to cart,
                          target: 'change_picture',
                          partial: 'carts/empty_basket',
+                         locals: { current_cart: cart }
+
+    broadcast_replace_to cart,
+                         target: 'change_picture_in_co',
+                         partial: 'carts/empty_co_basket',
                          locals: { current_cart: cart }
 
     broadcast_replace_to cart,
