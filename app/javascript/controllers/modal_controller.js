@@ -4,7 +4,7 @@ import { Controller } from '@hotwired/stimulus';
 export default class extends Controller {
   static targets = ["container"]
   static values = {
-    backdropColor: { type: String, default: 'rgba(0, 0, 0, 0.8)' }
+    backdropColor: { type: String, default: 'rgba(0, 0, 0, 0.1)' }
   }
 
   connect() {
@@ -45,12 +45,6 @@ export default class extends Controller {
 
     // Unhide the modal
     this.containerTarget.classList.remove(this.toggleClass);
-
-    // Insert the background
-    if (!this.data.get("disable-backdrop")) {
-      document.body.insertAdjacentHTML('beforeend', this.backgroundHtml);
-      this.background = document.querySelector(`#${this.backgroundId}`);
-    }
   }
 
   close(e) {
@@ -64,8 +58,6 @@ export default class extends Controller {
     // Hide the modal
     this.containerTarget.classList.add(this.toggleClass);
 
-    // Remove the background
-    if (this.background) { this.background.remove() }
   }
 
   closeBackground(e) {

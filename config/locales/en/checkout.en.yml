@@ -42,3 +42,6 @@ en:
       summary: "Summary"
       advertisement: "*Notice! Price indicates without carrier rates!"
       btn: "Pay"
+    success_msg1: "Hurray! Order accepted."
+    success_msg2: "Wait for the call."
+    my_office_btn: "My office"
