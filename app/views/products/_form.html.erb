@@ -53,7 +53,8 @@
             <% end %>
           <% end %>
         </div>
-        <%= form.submit t('show.product.btn'),class: "w-full h-14 bg-yellow-400 flex items-center justify-center font-medium uppercase text-gray-800 rounded-2xl mt-8" %>
+        <%= form.submit t('show.product.btn'),class: "w-full mt-10 flex justify-center items-center text-base text-gray-800 bg-yellow-400 font-medium px-4 py-3
+          rounded-lg uppercase hover:bg-yellow-500 cursor-pointer transition ease-in duration-400" %>
         <div data-controller="accordion" class="font-base text-gray-800 mt-6">
           <div>
             <div data-action="click->accordion#toggle" data-accordion-target="accTitle" id="acc_btn" data-id="acc_btn1"
