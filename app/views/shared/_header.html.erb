@@ -9,7 +9,7 @@
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
         <ul class="h-full flex flex-col lg:flex-row flex-initial justify-between items-center text-center tracking-wide">
           <li class="px-4 cursor-pointer">
-            <%= active_link_to t('global.header.head'), home_path %>
+            <%= active_link_to t('global.header.head'), home_path, active: :exact %>
           </li>
           <li class="px-4 cursor-pointer">
             <%= active_link_to t('global.header.calculator'), calculator_path %>
