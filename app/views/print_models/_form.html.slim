@@ -14,13 +14,11 @@ div data-controller="calculator"
               .flex
                 .w-32
                   = image_tag("calculator_img/file_expanding1.png")
-                .w-32 class="-ml-12"
-                  = image_tag("calculator_img/file_expanding2.png")
               .w-full.mx-auto.flex.flex-col.justify-center.items-center class="md:w-1/2"
                 p.text-base.text-gray-500.text-center.px-2 class="w-[220px]"
                   = t('calculator.model.format_explaining')
                 button.relative.px-4.py-3.mt-10.bg-yellow-400.rounded-lg.text-base.text-gray-800.text-center.font-medium.uppercase.cursor-pointer class="hover:bg-yellow-500 transition ease-in duration-400"
-                  = f.input :file, as: :file, label: false, input_html: { id: 'file', accept: '.stl, .obj', required: true, class: 'w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer', data: { action: "change->calculator#onDropFile" } }
+                  = f.input :file, as: :file, label: false, input_html: { id: 'file', accept: '.stl', required: true, class: 'w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer', data: { action: "change->calculator#onDropFile" } }
                   p
                     = t('calculator.btns.upload_model')
             div data-upload-model-target="viewContainer" style="display: none;"
@@ -49,7 +47,7 @@ div data-controller="calculator"
                     h4
                       = t('calculator.subtitles.characteristics')
                   button class="w-full lg:w-1/4 change-model flex lg:justify-center items-center mb-8 lg:mb-0 px-4 py-2.5 border-2 border-zinc-800 rounded-xl font-medium uppercase relative"
-                    = f.input :file, as: :file, label: false, input_html: { id: 'file', accept: '.stl, .obj', required: true, class: 'w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer', data: { action: "change->calculator#onDropFile" } }
+                    = f.input :file, as: :file, label: false, input_html: { id: 'file', accept: '.stl', required: true, class: 'w-full h-full absolute top-0 left-0 opacity-0 cursor-pointer', data: { action: "change->calculator#onDropFile" } }
                     .flex.items-center.mx-auto
                       p.mr-2
                         = image_tag("calculator_img/change_model.png")

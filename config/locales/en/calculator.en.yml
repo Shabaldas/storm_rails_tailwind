@@ -4,7 +4,7 @@ en:
       characteristics: "Model's characteristics"
       settings: "Print settings"
     model:
-      format_explaining: "Add files with STL or OBJ formats "
+      format_explaining: "Add file with STL format"
       characteristics:
         model: "Model"
         dimensions: "Dimensions"

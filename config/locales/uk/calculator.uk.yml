@@ -4,7 +4,7 @@ uk:
       characteristics: "Характеристики моделі"
       settings: "Параметри друку"
     model:
-      format_explaining: "Додайте файли форматів STL або OBJ"
+      format_explaining: "Додайте файл формату STL"
       characteristics:
         model: "Модель"
         dimensions: "Габарити"
