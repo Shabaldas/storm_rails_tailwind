@@ -8,6 +8,7 @@ gem 'active_skin'
 gem 'active_link_to'
 gem 'ancestry'
 gem 'active_storage_validations'
+gem 'aws-sdk-s3', require: false
 gem 'rails', "~> 7.0.2", ">= 7.0.2.2"
 gem 'foreman'
 gem 'puma', '~> 5.0'
