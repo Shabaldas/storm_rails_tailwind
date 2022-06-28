@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   put 'locales/:locale', to: 'locales#update', as: :locale,
@@ -32,3 +33,4 @@ Rails.application.routes.draw do
   end
   # resources :calculators, only: :index
 end
+# rubocop:enable Metrics/BlockLength

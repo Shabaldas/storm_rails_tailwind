@@ -138,10 +138,7 @@
 		<p class="text-base text-zinc-500 py-3">
 			<%= t('static_page.home.question_suptitle') %>
 		</p>
-    <div data-turbo='true'>
-      <%= turbo_frame_tag 'print_model_id_field' do%>
-        <%= render 'question_form'%>
-      <%end%>
+      <%= render 'question_form'%>
     </div>
 	</div>
 </div>

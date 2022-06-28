@@ -11,13 +11,7 @@ class StaticPagesController < ApplicationController
 
   def save_phone_number
     @call_question = CallQuestion.new(call_question_params)
-    respond_to do |format|
-      format.turbo_stream do
-        unless @call_question.save
-          render turbo_stream: turbo_stream.update('print_model_id_field', partial: 'question_form')
-        end
-      end
-    end
+    @call_question.save
   end
 
   private

@@ -1,13 +1,16 @@
-<%= form_for @call_question, url: save_phone_number_path, data: { controller: :form, action: "turbo:submit-end->form#clear" }, local: true  do |f| %>
-  <div class="flex items-center justify-center mt-3">
-    <%= f.text_field :phone_number, class: "w-full lg:w-10/12 h-11 rounded-l-lg py-2.5", type: "tel", placeholder: "+38 (067) 00 00 000" %>
-    <%= f.button nil, class: "flex items-center justify-center bg-yellow-400 w-12 h-11 rounded-r-lg border border-slate-400" do %>
-      <svg class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg>
+<%= turbo_frame_tag 'call-question' do %>
+  <% call_question ||= @call_question %>
+  <%= form_for call_question, url: save_phone_number_path do |f| %>
+    <div class="flex items-center justify-center mt-3">
+      <%= f.text_field :phone_number, class: "w-full h-11 rounded-l-lg py-2.5", type: "tel", placeholder: "+38 (067) 00 00 000" %>
+      <%= f.button nil, class: "flex items-center justify-center bg-yellow-400 w-12 h-11 rounded-r-lg border border-slate-400" do %>
+        <svg class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      <% end %>
+    </div>
+    <% if call_question.errors.any? %>
+      <%= t('static_page.home.phone_number') %>
     <% end %>
-  </div>
-  <% @call_question.errors.full_messages_for(:phone_number).each do |message| %>
-    <div><%= message %></div>
   <% end %>
 <% end %>
