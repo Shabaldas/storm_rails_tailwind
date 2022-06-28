@@ -1,6 +1,8 @@
 en:
   static_page:
     home:
+      phone_number: "Phone number should be in the correct format and can't be blank"
+      we_will_call: "Thanks for your request. We will call you soon!"
       3d_print: "3D-print"
       title_part1: "Your ideas,"
       title_part2: "our incarnations"
