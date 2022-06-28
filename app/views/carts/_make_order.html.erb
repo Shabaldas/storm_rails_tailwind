@@ -6,8 +6,10 @@
       </h5>
       <p><%= render "carts/total_price" %></p>
     </div>
-    <%= link_to t('basket.content.btn'), checkout_path, class: "w-full h-16 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase" %>
+    <%= link_to t('basket.content.btn'), checkout_path, class: "w-full mt-10 flex justify-center items-center text-base
+     text-gray-800 bg-yellow-400 font-medium px-4 py-3 rounded-lg uppercase hover:bg-yellow-500 cursor-pointer transition ease-in duration-400" %>
   <% else %>
-    <%= link_to 'Back to Products', products_path, class: "w-full h-16 mt-10 bg-yellow-400 flex justify-center items-center rounded-lg text-base px-3 text-center sm:px-0 sm:text-xl font-medium uppercase" %>
+    <%= link_to 'Back to Products', products_path, class: "w-full mt-10 flex justify-center items-center text-base
+    text-gray-800 bg-yellow-400 font-medium px-4 py-3 rounded-lg uppercase hover:bg-yellow-500 cursor-pointer transition ease-in duration-400" %>
   <% end %>
 </div>

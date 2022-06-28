@@ -4,8 +4,8 @@ export default class extends Controller {
   static targets=["sidebarContainer"]
 
   connect(){
-    console.log('yessss')
   }
+
   toggle() {
     console.log('clcl')
     if (this.sidebarContainerTarget.dataset.expanded === "1") {

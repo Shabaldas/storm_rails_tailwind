@@ -121,10 +121,11 @@
 
         </div>
         <div class="flex flex-col lg:flex-row lg:justify-between items-center mt-3">
-          <div class="w-full md:w-56 mt-5 py-3 bg-yellow-400 flex flex-center justify-center rounded-lg hover:bg-yellow-500 uppercase">
+          <div class="w-full md:w-56 flex justify-center items-center text-base text-gray-800 bg-yellow-400 font-medium px-4 py-3
+            mt-2 rounded-lg uppercase hover:bg-yellow-500 cursor-pointer transition ease-in duration-400">
             <%= f.button :submit, t('devise.registrations.update') %>
           </div>
-          <div class="w-full md:w-56 mt-5 py-3 bg-yellow-400 flex flex-center justify-center rounded-lg hover:bg-yellow-500 uppercase">
+          <div class="w-full md:w-56 mt-5 py-3 bg-yellow-400 flex flex-center justify-center rounded-lg hover:bg-yellow-500 uppercase cursor-pointer transition ease-in duration-400">
             <%= link_to t('devise.registrations.back'), home_path %>
           </div>
         </div>
