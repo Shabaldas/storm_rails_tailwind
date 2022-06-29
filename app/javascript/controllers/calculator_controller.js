@@ -205,7 +205,7 @@ export default class extends Controller {
       const z = box.max.z + Math.abs(box.min.z)
       this.objectHeigh = z
 
-      if (x > 180 || x < 10 || y > 180 || y < 10 || z > 180 || z < 10) {
+      if (x > 180 || x < 5 || y > 180 || y < 5 || z > 180 || z < 5) {
         alert('Error: Loaded model sizes must be between 1 sm and 18 sm')
         event.target.value = null
         this.resetToDefaults()
