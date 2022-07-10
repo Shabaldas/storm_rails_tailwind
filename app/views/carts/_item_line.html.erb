@@ -1,7 +1,7 @@
 <%= content_tag :div, class: "row mb-8 align-items-center", id: dom_id(cart_item) do %>
   <div class="basket-sidebar mt-8 h-4/6 overflow-y-auto pr-2">
     <div class="flex justify-between items-center relative">
-      <div class="flex items-center">
+      <div class="flex items-center w-7/12">
 
         <div class="w-2 h-3">
           <%= link_to image_tag("partials_img/delete.png"),
@@ -14,7 +14,7 @@
             <%= image_tag(cart_item.cartable&.main_picture) %>
           </div>
         <% end %>
-        
+
         <% if cart_item.cartable.is_a?(PrintModelAttribute)%>
           <div class="w-16 h-16 items-center ml-2">
             <%= stl_or_obj(cart_item.cartable.name) %>
@@ -22,17 +22,21 @@
         <% end %>
 
         <div class="ml-3">
-          <h6 class="w-5/6 text-sm text-gray-800 font-medium">
+          <h6 class="text-sm text-gray-800 font-medium">
             <%= cart_item.cartable.name %>
           </h6>
-          <div class="w-20 flex justify-between items-center mt-2">
-            <%= link_to '+', update_quantity_carts_cart_item_path(cart_item, operation: '+'), method: :patch, remote: true %>
-            <p> <%= render "carts/item_quantity", cart_item: cart_item %></p>
+          <div class="w-16 flex justify-between items-center absolute bottom-0 right-0">
             <%= link_to '-', update_quantity_carts_cart_item_path(cart_item, operation: '-'), method: :patch, remote: true %>
+            <p> <%= render "carts/item_quantity", cart_item: cart_item %></p>
+            <%= link_to '+', update_quantity_carts_cart_item_path(cart_item, operation: '+'), method: :patch, remote: true %>
+          </div>
+          <div class="flex items-center text-gray-800 mt-4 text-sm">
+            <div class="w-[22px] h-[22px] rounded-full bg-lime-600 mr-2"></div>
+            <p>425x325x144 мм</p>
           </div>
         </div>
       </div>
-      <div class="w-28 flex justify-end absolute bottom-0 right-0 sm:relative sm:-top-3 sm:-mt-1.5 text-sm text-gray-800 font-medium">
+      <div class="absolute top-0 right-0 text-sm text-gray-800 font-medium">
         <% if cart_item.cartable.is_a?(PrintModelAttribute) %>
           <%= number_to_uah(cart_item.cartable.subtotal_price * cart_item.quantity) %>
         <% else %>

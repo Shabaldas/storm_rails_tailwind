@@ -1,10 +1,9 @@
 <%= turbo_stream_from current_cart %>
 
 <div id='activeTarget' data-toggle-target="content" class="w-screen md:w-[28rem] h-screen bg-white shadow-lg shadow-gray-600 fixed right-0 top-0 pt-6 px-2 md:pl-8 md:pr-5 hidden z-50">
-  <div data-action="click->toggle#toggle" class="block sm:hidden absolute top-5 right-5">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="#6E7579" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-    </svg>
+  <div data-action="click->toggle#toggle" class="block absolute top-6 right-5 flex items-baseline cursor-pointer">
+    <%= image_tag("partials_img/remove_icon.png") %>
+    <p class="text-base text-zinc-500 font-medium ml-2">Очистити</p>
   </div>
   <div class="flex items-center">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
