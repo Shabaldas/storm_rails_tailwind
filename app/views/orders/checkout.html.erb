@@ -13,7 +13,10 @@
         <%= t('checkout.subtitles.personal_data') %>
       </div>
     </div>
-    <%= form_for(@order) do |f| %>
+
+    <%= raw ap @order.cart.cart_items %>
+
+    <%= form_for(@order, url: order_path(@order.id, test: 'PPP'), method: :patch, data: { turbo: 'false' }) do |f| %>
       <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
       <div>
         <div class="flex flex-col lg:flex-row lg:justify-between items-center">
@@ -304,8 +307,8 @@
             </div>
           </div>
           <!-- <%=raw ap @order%> -->
-          <%= turbo_frame_tag "modal" %>
-          <%= button_to 'TESTPAY', order_path(@order), data: { turbo_frame: 'modal' }, method: :patch %>
+          <%#= turbo_frame_tag "modal" %>
+          <%#= button_to 'TESTPAY', order_path(@order), data: { turbo: 'false' }, method: :patch %>
         </div>
         <div class="mt-2 mb-4 w-full h-px bg-gray-400"></div>
         <div class="flex flex-col lg:flex-row justify-between items-center">
@@ -344,6 +347,7 @@
         <textarea name="comment" placeholder="Write additional wishes for the order" style="width:100%; resize:none;"
           rows="5"></textarea>
       </div>
+      <%= f.submit %>
     <% end %>
 
   </div>
