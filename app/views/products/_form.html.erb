@@ -1,4 +1,4 @@
-<div id='cart_form' data-controller="toggle">
+<div id='cart_form'>
   <% cart_item = product.cart_items.build %>
   <% value_for_select = product.size_and_price.map { |x| [x[:value], x[:id], { data: { price: x[:price] } }]} %>
   <% color_value = select_colors[product.product_colors.first.value.to_sym] %>
@@ -21,7 +21,7 @@
                 <%= product.name %>
               </h4>
             </div>
-            <p class="text-3xl" data-selected-size-target="price" >
+            <p class="text-3xl" data-selected-size-target="price">
               <%= number_to_uah(value_for_select.first&.last.dig(:data, :price).round).presence || number_to_uah(product.price) %>
             </p>
           </div>
@@ -53,7 +53,8 @@
             <% end %>
           <% end %>
         </div>
-        <%= form.submit t('show.product.btn'),class: "w-full h-14 bg-yellow-400 flex items-center justify-center font-medium uppercase text-gray-800 rounded-2xl mt-8" %>
+        <%= form.submit t('show.product.btn'),class: "w-full mt-10 flex justify-center items-center text-base text-gray-800 bg-yellow-400 font-medium px-4 py-3
+          rounded-lg uppercase hover:bg-yellow-500 cursor-pointer transition ease-in duration-400" %>
         <div data-controller="accordion" class="font-base text-gray-800 mt-6">
           <div>
             <div data-action="click->accordion#toggle" data-accordion-target="accTitle" id="acc_btn" data-id="acc_btn1"

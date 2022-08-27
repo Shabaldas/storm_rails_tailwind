@@ -9,13 +9,13 @@
       <nav class="w-2/3 hidden lg:block text-gray-800 font-medium">
         <ul class="h-full flex flex-col lg:flex-row flex-initial justify-between items-center text-center tracking-wide">
           <li class="px-4 cursor-pointer">
-            <%= link_to t('global.header.head'), home_path %>
+            <%= active_link_to t('global.header.head'), home_path, active: :exact %>
           </li>
           <li class="px-4 cursor-pointer">
-            <%= link_to t('global.header.calculator'), calculator_path %>
+            <%= active_link_to t('global.header.calculator'), calculator_path %>
           </li>
           <li class="px-4 cursor-pointer">
-            <%= link_to t('global.header.store'), products_path %>
+            <%= active_link_to t('global.header.store'), products_path %>
           </li>
         </ul>
       </nav>
@@ -108,36 +108,33 @@
       </div>
       <ul>
         <li class="py-5">
-          <%= link_to t('global.header.head'), home_path %>
+          <%= active_link_to t('global.header.head'), home_path, active: :exact %>
         </li>
         <li class="py-5">
-          <%= link_to t('global.header.calculator'), calculator_path %>
+          <%= active_link_to t('global.header.calculator'), calculator_path, active: :exact %>
         </li>
         <li class="py-5">
-          <%= link_to t('global.header.my_office'), home_path %>
-        </li>
-        <li class="py-5">
-          <%= link_to t('global.header.store'), products_path %>
+          <%= active_link_to t('global.header.store'), products_path, active: :exact %>
         </li>
         <%- if user_signed_in? %>
           <li class="py-5">
-            <%= link_to t('global.header.edit_profile'), edit_user_registration_path %>
+            <%= active_link_to t('global.header.edit_profile'), edit_user_registration_path, active: :exact %>
           </li>
           <li class="py-5">
-            <%= link_to t('global.header.log_out'), destroy_user_session_path %>
+            <%= active_link_to t('global.header.log_out'), destroy_user_session_path, active: :exact %>
           </li>
-          <% else %>
+        <% else %>
             <li class="py-5">
-              <%= link_to t('global.header.registration'), new_user_registration_path %>
+              <%= active_link_to t('global.header.registration'), new_user_registration_path, active: :exact %>
             </li>
             <li class="py-5">
               <div class="py-5" data-controller="renderer">
-                <%= link_to t('global.header.sign_in'), user_session_path, data: { remote: true,
-                  action: 'ajax:success->renderer#render' } %>
+                <%= active_link_to t('global.header.sign_in'), user_session_path, data: { remote: true,
+                  action: 'ajax:success->renderer#render' }, active: :exact %>
                   <span data-target="renderer.display"></span>
               </div>
             </li>
-            <% end %>
+        <% end %>
       </ul>
     </div>
     <div data-action="click->sidebar#toggle" data-sidebar-target="icon" class="w-6 mobile-content-button focus:outline-none focus:bg-gray-700 lg:hidden z-30">

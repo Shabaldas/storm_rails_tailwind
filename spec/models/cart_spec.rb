@@ -1,5 +1,6 @@
-require 'rails_helper'
-
 RSpec.describe Cart, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'association' do
+    it { is_expected.to belong_to(:order).optional }
+    it { is_expected.to have_many(:cart_items) }
+  end
 end

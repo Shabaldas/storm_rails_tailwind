@@ -6,6 +6,7 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'webmock/rspec'
+# require 'shoulda-matchers'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -21,16 +22,10 @@ require 'webmock/rspec'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
-if Rails.env.test?
-  require 'simplecov'
-
-  SimpleCov.start
-end
-
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -38,7 +33,11 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-# rubocop:disable Metrics/BlockLength
+if Rails.env.test?
+  require 'simplecov'
+  SimpleCov.start
+end
+
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -48,6 +47,13 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  Shoulda::Matchers.configure do |conf|
+    conf.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
@@ -69,34 +75,13 @@ RSpec.configure do |config|
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
-  Shoulda::Matchers.configure do |conf|
-    conf.integrate do |with|
-      with.test_framework :rspec
-      with.library :rails
-    end
+
+  config.after(:all) do
+    DatabaseCleaner.clean_with(
+      :truncation,
+      except: ['ar_internal_metadata']
+    )
   end
   # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
-  config.include Devise::Test::IntegrationHelpers, type: :request
-
-  # clean out the queue after each spec
-  config.after do
-    ActiveJob::Base.queue_adapter.enqueued_jobs = []
-    ActiveJob::Base.queue_adapter.performed_jobs = []
-  end
-
-  config.around :each, perform_enqueued: true do |example|
-    @old_perform_enqueued_jobs = ActiveJob::Base.queue_adapter.perform_enqueued_jobs
-    ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
-    example.run
-    ActiveJob::Base.queue_adapter.perform_enqueued_jobs = @old_perform_enqueued_jobs
-  end
-
-  config.around :each, peform_enququed_at: true do |example|
-    @old_perform_enqueued_at_jobs = ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs
-    ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = true
-    example.run
-    ActiveJob::Base.queue_adapter.perform_enqueued_at_jobs = @old_perform_enqueued_at_jobs
-  end
+  # config.filter_gems_from_backtrace('gem name')
 end
-# rubocop:enable Metrics/BlockLength

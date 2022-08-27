@@ -1,12 +1,12 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  COLORS = ['FFFFFF', 'E9646B', 'F1C232', '000000', '96E06C', '67ACEC'].freeze
+  COLORS = ['FFFFFF', 'E9646B', 'F1C232', '202020', '96E06C', '67ACEC'].freeze
   MATERIALS = ['PLA', 'ABS', 'PET', 'Nylon', 'Elastan'].freeze
   QUALITY = [100, 200, 300].freeze
 
   def number_to_uah(amount)
-    number_to_currency(amount, unit: '₴')
+    number_to_currency(amount, unit: '₴ ', precision: 0)
   end
 
   def enum_select(items)

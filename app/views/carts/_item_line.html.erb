@@ -8,11 +8,19 @@
             carts_cart_item_path(cart_item), method: :delete, remote: true
           %>
         </div>
-        <div class="w-16 h-16 bg-gray-300 ml-2">
-          <% if cart_item.cartable.is_a?(Product) && cart_item.cartable.main_picture.present?%>
-            <%= image_tag(cart_item.cartable.main_picture) %>
-          <% end %>
-        </div>
+
+        <% if cart_item.cartable.is_a?(Product) && cart_item.cartable.main_picture.present? %>
+          <div class="w-16 h-16 bg-gray-300 ml-2">
+            <%= image_tag(cart_item.cartable&.main_picture) %>
+          </div>
+        <% end %>
+        
+        <% if cart_item.cartable.is_a?(PrintModelAttribute)%>
+          <div class="w-16 h-16 items-center ml-2">
+            <%= stl_or_obj(cart_item.cartable.name) %>
+          </div>
+        <% end %>
+
         <div class="ml-3">
           <h6 class="w-5/6 text-sm text-gray-800 font-medium">
             <%= cart_item.cartable.name %>
@@ -25,7 +33,11 @@
         </div>
       </div>
       <div class="w-28 flex justify-end absolute bottom-0 right-0 sm:relative sm:-top-3 sm:-mt-1.5 text-sm text-gray-800 font-medium">
-        <%= number_to_uah((cart_item.cart_item_option_values.map(&:price).sum) * cart_item.quantity) %>
+        <% if cart_item.cartable.is_a?(PrintModelAttribute) %>
+          <%= number_to_uah(cart_item.cartable.subtotal_price * cart_item.quantity) %>
+        <% else %>
+          <%= number_to_uah((cart_item.cart_item_option_values.sum(&:price)) * cart_item.quantity) %>
+        <% end %>
       </div>
     </div>
   </div>

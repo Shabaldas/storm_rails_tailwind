@@ -138,13 +138,7 @@
 		<p class="text-base text-zinc-500 py-3">
 			<%= t('static_page.home.question_suptitle') %>
 		</p>
-		<div class="flex items-center justify-center mt-3">
-			<input type="tel" placeholder="+38 (067) 00 00 000" class="w-full lg:w-10/12 h-11 rounded-l-lg py-2.5" />
-			<button class="flex items-center justify-center bg-yellow-400 w-12 h-11 rounded-r-lg border border-slate-400">
-				<svg class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-			</button>
-		</div>
+      <%= render 'question_form'%>
+    </div>
 	</div>
 </div>

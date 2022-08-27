@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   put 'locales/:locale', to: 'locales#update', as: :locale,
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   get 'print', to: 'static_pages#print', as: :print
   get 'rendering', to: 'static_pages#rendering', as: :rendering
   get 'modeling', to: 'static_pages#modeling', as: :modeling
+  post 'save_phone_number', to: 'static_pages#save_phone_number', as: :save_phone_number
 
   namespace :carts do
     resources :cart_items, only: [:create, :destroy] do
@@ -31,3 +33,4 @@ Rails.application.routes.draw do
   end
   # resources :calculators, only: :index
 end
+# rubocop:enable Metrics/BlockLength

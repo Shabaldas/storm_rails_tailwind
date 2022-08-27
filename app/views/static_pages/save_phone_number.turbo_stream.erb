@@ -1,0 +1,6 @@
+<% if @call_question.errors.any? %>
+  <%= turbo_stream.replace("call-question", partial: "static_pages/question_form", locals: { call_question: @call_question }) %>
+<% else %>
+  <%= turbo_stream.replace("call-question", partial: "static_pages/question_form", locals: { call_question: CallQuestion.new } ) %>
+  <%= turbo_stream.append("call-question", partial: "static_pages/call_question_modal") %>
+<% end %>
