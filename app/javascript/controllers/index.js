@@ -6,3 +6,14 @@ import { application } from "./application"
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
+
+
+// import Dropdown from 'stimulus-dropdown'
+// application.register('dropdown', Dropdown)
+
+import { Toggle, Dropdown, Tabs, Popover } from "tailwindcss-stimulus-components"
+application.register('toggle', Toggle)
+application.register('dropdown', Dropdown)
+// application.register('modal', Modal)
+application.register('tabs', Tabs)
+application.register('popover', Popover)

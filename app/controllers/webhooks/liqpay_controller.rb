@@ -5,6 +5,10 @@ class Webhooks::LiqpayController < ApplicationController
     data = params['data']
     signature = params['signature']
 
+    ap '???????????'
+    ap params
+    ap '???????????'
+
     return unless liqpay.match?(data, signature)
 
     responce_hash = liqpay.decode_data(data)

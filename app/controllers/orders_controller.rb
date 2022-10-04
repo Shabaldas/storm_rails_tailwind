@@ -36,6 +36,9 @@ class OrdersController < ApplicationController
         server_url: webhooks_liqpay_callback_url
       }
     )
+    ap '<<<<<<<<<<<<'
+    ap liqpay_request
+    ap '<<<<<<<<<<<<'
 
     @order.update(order_params)
     redirect_to liqpay_request['href']

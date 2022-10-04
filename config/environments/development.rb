@@ -59,7 +59,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.hosts << '89d8-194-44-56-95.eu.ngrok.io'
+  config.hosts << 'cdd1-194-44-50-53.eu.ngrok.io'
 
   # config.asset_host = "http://localhost:3000"
   # Raises error for missing translations.
