@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   get 'modeling', to: 'static_pages#modeling', as: :modeling
   post 'save_phone_number', to: 'static_pages#save_phone_number', as: :save_phone_number
 
+  namespace :webhooks do
+    post 'liqpay', to: 'liqpay#create', as: :liqpay_callback
+
+    # resources :liqpay, only: :create
+  end
   namespace :carts do
     resources :cart_items, only: [:create, :destroy] do
       patch :update_quantity, on: :member

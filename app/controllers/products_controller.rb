@@ -12,6 +12,10 @@ class ProductsController < ApplicationController
     end
   end
 
+  def products
+    @products ||= Product.all
+  end
+
   def show
     @product = Product.find(params[:id])
   end
